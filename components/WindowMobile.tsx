@@ -1,16 +1,8 @@
-"use client";
-
-import { motion } from 'framer-motion';
 import { cn } from '@/utils/cn';
 
 export default function Window({ children, className, ...rest }: { children?: React.ReactNode, drag?: boolean, className?: string, [key: string]: any }) {
   return (
-    <motion.div
-      whileTap={{ scale: 1.01, opacity: 0.9 }}
-      drag
-      dragMomentum={false}
-      dragElastic={0.05}
-      // dragConstraints={{ left: -300, right: 300, top: -300, bottom: 300 }}
+    <div
       className={cn("text-dark bg-light rounded-xl shadow-2xl outline-primary overflow-hidden", className)}
       {...rest}
     >
@@ -23,6 +15,6 @@ export default function Window({ children, className, ...rest }: { children?: Re
 
         {children}
       </div>
-    </motion.div>
+    </div>
   );
 }

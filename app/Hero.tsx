@@ -3,10 +3,12 @@ import Window from '@/components/Window';
 import MenuBar from './MenuBar';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { cn } from '@/utils/cn';
 
 
 export default function Hero({ className, ...rest }: { className?: string, [key: string]: any }) {
+  const constraintsRef = useRef(null);
   const [windowOrder, setWindowOrder] = useState([0, 1, 2, 3]);
 
   function handleWindowMouseDown(windowI: number) {
@@ -20,7 +22,7 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
   }
 
   return (
-    <div className={`min-h-screen relative bg-primary text-onPrimary overflow-hidden ${className}`} {...rest}>
+    <div className={cn("min-h-screen relative bg-primary text-onPrimary overflow-hidden", className)} {...rest}>
       <MenuBar className="absolute top-0 inset-x-0"/>
 
       <div className="absolute left-1/2 top-[calc(50%-3rem)] -translate-x-1/2 -translate-y-1/2 w-[70rem] h-[36rem] flex items-center justify-center">
@@ -29,9 +31,11 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
         </h1>
       </div>
 
+      <div ref={constraintsRef} className="invisible absolute top-0 -bottom-[10rem] -inset-x-[10rem] -z-[9999] pointer-events-none"/>
+
       <Window
-        drag
         className="absolute top-[calc(50%-21rem)] left-[calc(50%-22rem)] w-[44rem] h-[28rem]"
+        dragConstraints={constraintsRef}
         style={{ zIndex: windowOrder[0] }}
         onMouseDown={() => handleWindowMouseDown(0)}
       >
@@ -45,8 +49,8 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
       </Window>
 
       <Window
-        drag
         className="absolute top-[calc(50%-14rem)] left-[calc(50%+3rem)] w-[32rem] h-[24rem]"
+        dragConstraints={constraintsRef}
         style={{ zIndex: windowOrder[1] }}
         onMouseDown={() => handleWindowMouseDown(1)}
       >
@@ -60,8 +64,8 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
       </Window>
 
       <Window
-        drag
         className="absolute top-[calc(50%-5rem)] left-[calc(50%-35rem)] w-[28rem] h-[20rem]"
+        dragConstraints={constraintsRef}
         style={{ zIndex: windowOrder[2] }}
         onMouseDown={() => handleWindowMouseDown(2)}
       >
@@ -75,12 +79,12 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
       </Window>
 
       <Window
-        drag
         className="absolute top-[calc(50%+4rem)] left-[calc(50%-16rem)] w-[32rem] h-[18rem]"
+        dragConstraints={constraintsRef}
         style={{ zIndex: windowOrder[3] }}
         onMouseDown={() => handleWindowMouseDown(3)}
       >
-        <div className="px-4 pt-10">
+        <div className="px-4 pt-12 pb-4">
           <p className="text-3xl text-center font-heading">
             A developer, designer, and student.
           </p>
