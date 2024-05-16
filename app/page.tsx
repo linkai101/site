@@ -1,6 +1,6 @@
-import Hero from './Hero';
-import HeroMobile from './HeroMobile';
-import SelectedWorks from './SelectedWorks';
+import Hero from '@/components/home/hero';
+import HeroMobile from '@/components/home/hero-mobile';
+import SelectedWorks from '@/components/home/selected-works';
 
 export default function Home() {
   return <>

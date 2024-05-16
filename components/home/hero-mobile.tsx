@@ -1,5 +1,5 @@
-import WindowMobile from '@/components/WindowMobile';
-import MenuBar from './MenuBar';
+import WindowMobile from './window-mobile';
+import MenuBar from './menu-bar';
 import TiltChip from '@/components/ui/tilt-chip';
 
 import Image from 'next/image';
@@ -22,6 +22,7 @@ export default function HeroMobile({ className, ...rest }: { className?: string,
               src="/assets/hero_1.png"
               alt=""
               fill
+              priority
             />
           </div>
         </WindowMobile>
@@ -32,6 +33,7 @@ export default function HeroMobile({ className, ...rest }: { className?: string,
               src="/assets/hero_2.png"
               alt=""
               fill
+              priority
             />
           </div>
         </WindowMobile>
@@ -42,6 +44,7 @@ export default function HeroMobile({ className, ...rest }: { className?: string,
               src="/assets/hero_3.png"
               alt=""
               fill
+              priority
             />
           </div>
         </WindowMobile>
@@ -84,7 +87,7 @@ export default function HeroMobile({ className, ...rest }: { className?: string,
             alt="Linkai's logo"
             width={128}
             height={128}
-            className="w-12 h-12 mt-12 opacity-50"
+            className="w-12 h-12 mt-12 opacity-5 pointer-events-none"
           />
           </div>
         </WindowMobile>

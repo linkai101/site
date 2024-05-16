@@ -1,6 +1,6 @@
 "use client";
-import Window from '@/components/Window';
-import MenuBar from './MenuBar';
+import Window from './window';
+import MenuBar from './menu-bar';
 import TiltChip from '@/components/ui/tilt-chip';
 
 import Image from 'next/image';
@@ -46,6 +46,7 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
             src="/assets/hero_1.png"
             alt=""
             fill
+            priority
           />
         </div>
       </Window>
@@ -61,6 +62,7 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
             src="/assets/hero_2.png"
             alt=""
             fill
+            priority
           />
         </div>
       </Window>
@@ -76,6 +78,7 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
             src="/assets/hero_3.png"
             alt=""
             fill
+            priority
           />
         </div>
       </Window>
@@ -129,7 +132,7 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
             alt="Linkai's logo"
             width={128}
             height={128}
-            className="w-12 h-12 mt-12 opacity-50"
+            className="w-12 h-12 mt-12 opacity-50 pointer-events-none"
           />
         </div>
       </Window>
