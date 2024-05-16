@@ -50,7 +50,7 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
           <div className="row-span-2">
             <div className="aspect-video bg-light/20 rounded-lg"/> {/* THUMBNAIL */}
 
-            <div className={cn("flex gap-8 justify-between mt-1", i%2==0 ? "md:-ml-10" : "md:-mr-10 md:flex-row-reverse")}>
+            <div className={cn("flex gap-6 justify-between mt-1", i%2==0 ? "md:-ml-10" : "md:-mr-10 md:flex-row-reverse")}>
               <div className={cn("-mt-6", i%2==1 && "md:text-right")}>
                 <h3 className="text-3xl leading-8 text-primary font-mono font-bold uppercase">
                   {project.title}
@@ -60,7 +60,7 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
                 </p>
               </div>
 
-              <p className={cn("text-lg text-right text-primary leading-6 font-mono uppercase", i%2==1 && "md:text-left")}>
+              <p className={cn("text-right text-primary leading-6 font-mono uppercase", i%2==1 && "md:text-left")}>
                 {project.tag}
               </p>
             </div>
@@ -93,7 +93,7 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
 function BgArc({ width, height, ...rest }: { width: number, height: number, [key: string]: any }) {
   return (
     <svg viewBox={`0 0 ${width} ${height+2}`} xmlns="http://www.w3.org/2000/svg" {...rest}>
-      <path fill="transparent" stroke="#C7956D" strokeOpacity="0.2" strokeWidth={0.2} d={`M0,1 Q${width/2},${height*2+1} ${width},1`}></path>
+      <path fill="transparent" stroke="#C7956D" strokeOpacity="0.2" strokeWidth={0.25} d={`M0,1 Q${width/2},${height*2+1} ${width},1`}></path>
     </svg>
   );
 }

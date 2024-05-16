@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { cn } from '@/utils/cn';
 
-export default function Window({ children, className, ...rest }: { children?: React.ReactNode, drag?: boolean, className?: string, [key: string]: any }) {
+export default function Window({ children, className, ...rest }: { children?: React.ReactNode, className?: string, [key: string]: any }) {
   return (
     <motion.div
       whileTap={{ scale: 1.01, opacity: 0.9 }}

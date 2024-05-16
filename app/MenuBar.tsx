@@ -7,8 +7,9 @@ export default function MenuBar({ className, ...rest }: { className?: string, [k
         <Image
           src="/assets/logo_white.png"
           alt="Linkai's logo"
-          width={20}
-          height={20}
+          width={128}
+          height={128}
+          className="w-[20px] h-[20px]"
         />
         
         <p className="font-bold">
