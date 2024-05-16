@@ -1,11 +1,13 @@
 "use client";
 import Window from '@/components/Window';
 import MenuBar from './MenuBar';
+import TiltChip from '@/components/ui/tilt-chip';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { cn } from '@/utils/cn';
-
+import { TbArrowUpRight, TbBrandGithubCopilot, TbBrandLinkedin, TbMail } from "react-icons/tb";
 
 export default function Hero({ className, ...rest }: { className?: string, [key: string]: any }) {
   const constraintsRef = useRef(null);
@@ -84,10 +86,51 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
         style={{ zIndex: windowOrder[3] }}
         onMouseDown={() => handleWindowMouseDown(3)}
       >
-        <div className="px-4 pt-12 pb-4">
+        <div className="h-full p-4 flex flex-col items-center justify-center">
           <p className="text-3xl text-center font-heading">
             A developer, designer, and student.
           </p>
+
+          <div className="flex justify-center flex-wrap gap-x-3 gap-y-2 mt-3">
+            <Link href="https://github.com/linkai101" target="_blank" rel="noopener noreferrer">
+              <TiltChip className="px-1.5 py-[2px] flex items-center gap-2 text-sm font-mono uppercase">
+                <TbBrandGithubCopilot size={16}/>
+                  GitHub
+                <TbArrowUpRight size={14} className="-ml-1"/>
+              </TiltChip>
+            </Link>
+
+            <Link href="https://www.linkedin.com/in/linkaiwu/" target="_blank" rel="noopener noreferrer">
+              <TiltChip className="px-1.5 py-[2px] flex items-center gap-2 text-sm font-mono uppercase">
+                <TbBrandLinkedin size={20} className="-mr-0.5"/>
+                  LinkedIn
+                <TbArrowUpRight size={14} className="-ml-1"/>
+              </TiltChip>
+            </Link>
+
+            <Link href="mailto:linkai@linkaiwu.com" target="_blank" rel="noopener noreferrer">
+              <TiltChip className="pl-[2px] pr-1.5 py-[2px] flex items-center gap-2 text-sm font-mono">
+                <div className="px-[4px] py-[1px] bg-primary text-onPrimary font-bold uppercase rounded-full">
+                  <TbMail size={18}/>
+                </div>
+                {/* <div className="px-1.5 bg-primary text-onPrimary font-bold uppercase rounded-full">
+                  Email me!
+                </div> */}
+
+                linkai@linkaiwu.com
+
+                <TbArrowUpRight size={14} className="-ml-1"/>
+              </TiltChip>
+            </Link>
+          </div>
+
+          <Image
+            src="/assets/logo_primary.png"
+            alt="Linkai's logo"
+            width={128}
+            height={128}
+            className="w-12 h-12 mt-12 opacity-50"
+          />
         </div>
       </Window>
     </div>
