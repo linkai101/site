@@ -17,6 +17,7 @@ module.exports = {
         mono: ["Reddit Mono", "monospace"],
         cursive: ["Pinyon Script", "cursive"],
         sketch: ["Londrina Solid", "sans-serif"],
+        sketchOutline: ["Londrina Sketch", "sans-serif"],
       },
       fontSize: {
         "10xl": "10rem",
@@ -24,7 +25,6 @@ module.exports = {
       },
       colors: {
         primary: "#C7956D",
-        onPrimary: "#FCF5ED",
         light: "#FCF5ED",
         dark: "#1F1717",
       },

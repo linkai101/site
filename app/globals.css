@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -18,4 +19,70 @@ body {
   margin: 0;
   background-color: theme('colors.dark');
   color: theme('colors.light');
+}
+
+/* components/ui/slider.tsx */
+@layer utilities {
+  .pause {
+    animation-play-state: paused;
+  }
+}
+@keyframes scroll-5 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-12rem * 5));
+  }
+}
+@keyframes -scroll-5 {
+  0% {
+    transform: translateX(calc(-12rem * 5));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.slider {
+  position: relative;
+  overflow: hidden;
+}
+.slider::before,
+.slider::after {
+  background: linear-gradient(to right, theme('colors.dark') 0%, #ffffff00 100%);
+  content: '';
+  z-index: 2;
+  position: absolute;
+  height: 100%;
+  width: 6rem;
+  pointer-events: none;
+}
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+.slider::before {
+  left: 0;
+  top: 0;
+}
+.slider .slide-track-5 {
+  animation: scroll-5 30s linear infinite;
+  display: flex;
+  width: calc(12rem * 5 * 2);
+}
+.slider .-slide-track-5 {
+  animation: -scroll-5 30s linear infinite;
+  display: flex;
+  width: calc(12rem * 5 * 2);
+}
+.slider .slide-track-10 {
+  animation: scroll-5 30s linear infinite;
+  display: flex;
+  width: calc(12rem * 10 * 2);
+}
+.slider .-slide-track-10 {
+  animation: -scroll-5 30s linear infinite;
+  display: flex;
+  width: calc(12rem * 10 * 2);
 }
