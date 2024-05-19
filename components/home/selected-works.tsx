@@ -32,7 +32,7 @@ const featured = [
 
 export default function SelectedWorks({ className, ...rest }: { className?: string, [key: string]: any }) {
   return (
-    <div className={cn("pt-24 pb-24 md:pb-12 px-2 relative overflow-hidden", className)} {...rest}>
+    <div className={cn("py-24 px-2 relative overflow-hidden", className)} {...rest}>
       <h2 className="container max-w-3xl text-6xl text-center font-heading">
         The{' '}
         <span className="relative text-primary font-cursive">
@@ -45,7 +45,7 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
 
       <div className="container max-w-5xl grid grid-cols-1 md:grid-cols-2 grid-flow-row-dense gap-x-36 lg:gap-x-48 gap-y-24 md:gap-y-12 mt-32">
         {featured.map((project, i) => <Fragment key={project.title}>
-          {i%2==0 && <div className="hidden md:block h-24"/>} {/* SPACER */}
+          {i%2==0 && <div className="hidden md:block h-32"/>} {/* SPACER */}
 
           <div className="row-span-2">
             <div className="aspect-video bg-light/20 rounded-lg"/> {/* THUMBNAIL */}
@@ -66,7 +66,7 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
             </div>
           </div>
 
-          {i%2==1 && <div className="hidden md:block h-24"/>} {/* SPACER */}
+          {i%2==1 && <div className="hidden md:block h-32"/>} {/* SPACER */}
         </Fragment>)}
         
         <div className="hidden md:block h-48"/> {/* SPACER */}
