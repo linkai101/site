@@ -17,9 +17,8 @@ html {
 body {
   padding: 0;
   margin: 0;
-  background-color: theme('colors.dark');
-  color: theme('colors.light');
 }
+
 
 /* components/ui/slider.tsx */
 @layer utilities {
@@ -27,7 +26,7 @@ body {
     animation-play-state: paused;
   }
 }
-@keyframes scroll-5 {
+/* @keyframes scroll-5 {
   0% {
     transform: translateX(0);
   }
@@ -42,6 +41,22 @@ body {
   100% {
     transform: translateX(0);
   }
+} */
+@keyframes scroll-10 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-12rem * 10));
+  }
+}
+@keyframes -scroll-10 {
+  0% {
+    transform: translateX(calc(-12rem * 10));
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 .slider {
   position: relative;
@@ -49,6 +64,16 @@ body {
 }
 .slider::before,
 .slider::after {
+  background: linear-gradient(to right, theme('colors.light') 0%, #ffffff00 100%);
+  content: '';
+  z-index: 2;
+  position: absolute;
+  height: 100%;
+  width: 6rem;
+  pointer-events: none;
+}
+.dark .slider::before,
+.dark .slider::after {
   background: linear-gradient(to right, theme('colors.dark') 0%, #ffffff00 100%);
   content: '';
   z-index: 2;
@@ -66,7 +91,7 @@ body {
   left: 0;
   top: 0;
 }
-.slider .slide-track-5 {
+/* .slider .slide-track-5 {
   animation: scroll-5 30s linear infinite;
   display: flex;
   width: calc(12rem * 5 * 2);
@@ -75,14 +100,14 @@ body {
   animation: -scroll-5 30s linear infinite;
   display: flex;
   width: calc(12rem * 5 * 2);
-}
+} */
 .slider .slide-track-10 {
-  animation: scroll-5 30s linear infinite;
+  animation: scroll-10 60s linear infinite;
   display: flex;
   width: calc(12rem * 10 * 2);
 }
 .slider .-slide-track-10 {
-  animation: -scroll-5 30s linear infinite;
+  animation: -scroll-10 60s linear infinite;
   display: flex;
   width: calc(12rem * 10 * 2);
 }

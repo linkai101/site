@@ -76,11 +76,8 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
             Designing, developing, and learning for meaningful impact.
           </p>
 
-          {/* <p className="text-5xl text-center font-heading uppercase underline decoration-2 underline-offset-4 mt-8">
-            View my projects
-          </p> */}
           <p className="text-center mt-8">
-            <ContrastLink href="/portfolio" className="text-5xl font-heading uppercase">
+            <ContrastLink href="/portfolio" className="text-5xl font-heading">
               View my portfolio
             </ContrastLink>
           </p>
