@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import ContrastLink from '@/components/ui/contrast-link';
 
 import { Fragment } from 'react';
@@ -7,20 +8,20 @@ const featured = [
   {
     title: 'Wisconsin Robotics',
     description: 'Website & outreach',
-    tag: '[UX / Dev / CAD / Electrical]',
-    thumbnail: '',
+    tag: '[UX / Dev / Electrical]',
+    thumbnail: '/assets/portfolio/wisconsinrobotics.png',
   },
   {
     title: 'STEM to the Sky',
     description: 'Website & CMS',
     tag: '[UX / Dev]',
-    thumbnail: '',
+    thumbnail: '/assets/portfolio/stemtothesky.png',
   },
   {
     title: 'Oracle of Blair',
     description: 'Website & predictive model',
     tag: '[UX / Dev / Data]',
-    thumbnail: '',
+    thumbnail: '/assets/portfolio/oracleofblair.png',
   },
   {
     title: '3D art',
@@ -37,8 +38,8 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
         The{' '}
         <span className="relative text-primary font-cursive">
           intersection
-          <BgArc width={100} height={60} className="absolute -bottom-[2rem] left-1/2 -translate-x-[calc(50%+2rem)] w-[100rem] -rotate-[10deg] -z-[1]"/>
-          <BgArc width={200} height={150} className="absolute -top-[2.5rem] left-1/2 -translate-x-[calc(50%-9rem)] w-[200rem] rotate-[170deg] -z-[1]"/>
+          <BgArc width={100} height={60} className="absolute -bottom-[2rem] left-1/2 -translate-x-[calc(50%+2rem)] w-[100rem] -rotate-[10deg] -z-50"/>
+          <BgArc width={200} height={150} className="absolute -top-[2.5rem] left-1/2 -translate-x-[calc(50%-9rem)] w-[200rem] rotate-[170deg] -z-50"/>
         </span>
         {' '}of tech, art, and people is where I like to be.
       </h2>
@@ -48,7 +49,14 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
           {i%2==0 && <div className="hidden md:block h-32"/>} {/* SPACER */}
 
           <div className="row-span-2">
-            <div className="aspect-video bg-light/20 rounded-lg"/> {/* THUMBNAIL */}
+            <div className="relative aspect-video bg-light/10 rounded-lg overflow-hidden -z-[1]"> {/* THUMBNAIL */}
+              <Image
+                src={project.thumbnail}
+                alt={project.title}
+                fill
+                className="object-cover object-center"
+              />
+            </div>
 
             <div className={cn("flex gap-6 justify-between mt-1", i%2==0 ? "md:-ml-10" : "md:-mr-10 md:flex-row-reverse")}>
               <div className={cn("-mt-6", i%2==1 && "md:text-right")}>
