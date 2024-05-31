@@ -48,7 +48,7 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
 
       <div className="container max-w-5xl flex flex-col gap-24 mt-24">
         {featured.map((project, i) => (
-          <div className={cn(i % 2 === 0 ? "mr-auto pr-5 pl-3 md:-rotate-2 flex-row-reverse text-right" : "ml-auto pr-3 pl-5 md:rotate-2", "w-full max-w-3xl py-3 aspect-video flex gap-8 border-2 border-light/5 rounded-xl")} key={project.title}>
+          <div className={cn(i % 2 === 0 ? "mr-auto md:-rotate-1" : "ml-auto md:rotate-2", "w-full max-w-3xl pr-3 pl-5 py-3 aspect-video flex gap-8 border-2 border-light/5 rounded-xl")} key={project.title}>
             <div className="max-w-48 flex flex-col justify-between gap-4 pt-4">
               <div>
                 <h3 className="text-3xl leading-8 text-primary font-mono font-bold uppercase">
@@ -75,7 +75,7 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
           </div>
         ))}
 
-        <div className={featured.length % 2 === 0 ? "md:mr-auto md:-rotate-2" : "md:ml-auto md:rotate-2"}>
+        <div className={featured.length % 2 === 0 ? "md:mr-auto md:-rotate-1" : "md:ml-auto md:rotate-2"}>
           <p className="container max-w-xs text-lg leading-6 text-center font-mono uppercase">
             Designing, developing, and learning for meaningful impact.
           </p>
