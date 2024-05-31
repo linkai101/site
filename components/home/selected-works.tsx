@@ -8,32 +8,34 @@ const featured = [
   {
     title: 'Wisconsin Robotics',
     description: 'Website & outreach',
-    tag: '[UX / Dev / Electrical]',
+    tags: ['dev', 'ux', 'electrical'],
     thumbnail: '/assets/portfolio/wisconsinrobotics.png',
+    wide: true,
   },
   {
     title: 'STEM to the Sky',
     description: 'Website & CMS',
-    tag: '[UX / Dev]',
+    tags: ['dev', 'ux'],
     thumbnail: '/assets/portfolio/stemtothesky.png',
   },
+  // {
+  //   title: 'Oracle of Blair',
+  //   description: 'Website & predictive model',
+  //   tags: ['data', 'dev', 'ux'],
+  //   thumbnail: '/assets/portfolio/oracleofblair.png',
+  // },
   {
-    title: 'Oracle of Blair',
-    description: 'Website & predictive model',
-    tag: '[UX / Dev / Data]',
-    thumbnail: '/assets/portfolio/oracleofblair.png',
-  },
-  {
-    title: '3D art',
-    description: 'Misc. 3D projects',
-    tag: '[3D]',
-    thumbnail: '',
+    title: 'Boba Barista',
+    description: '3D character design',
+    tags: ['3d'],
+    thumbnail: '/assets/portfolio/redpandabobabarista.png',
+    wide: true,
   },
 ];
 
 export default function SelectedWorks({ className, ...rest }: { className?: string, [key: string]: any }) {
   return (
-    <div className={cn("py-24 px-2 relative overflow-hidden", className)} {...rest}>
+    <div className={cn("pt-24 pb-36 px-2 relative overflow-hidden", className)} {...rest}>
       <h2 className="container max-w-3xl text-6xl text-center font-heading">
         The{' '}
         <span className="relative text-primary font-cursive">
@@ -44,12 +46,25 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
         {' '}of tech, art, and people is where I like to be.
       </h2>
 
-      <div className="container max-w-5xl grid grid-cols-1 md:grid-cols-2 grid-flow-row-dense gap-x-36 lg:gap-x-48 gap-y-24 md:gap-y-12 mt-32">
-        {featured.map((project, i) => <Fragment key={project.title}>
-          {i%2==0 && <div className="hidden md:block h-32"/>} {/* SPACER */}
+      <div className="container max-w-5xl flex flex-col gap-24 mt-24">
+        {featured.map((project, i) => (
+          <div className={cn(i % 2 === 0 ? "mr-auto pr-5 pl-3 md:-rotate-2 flex-row-reverse text-right" : "ml-auto pr-3 pl-5 md:rotate-2", "w-full max-w-3xl py-3 aspect-video flex gap-8 border-2 border-light/5 rounded-xl")} key={project.title}>
+            <div className="max-w-48 flex flex-col justify-between gap-4 pt-4">
+              <div>
+                <h3 className="text-3xl leading-8 text-primary font-mono font-bold uppercase">
+                  {project.title}
+                </h3>
+                <p className="leading-5 text-primary/50 font-mono uppercase mt-1">
+                  {project.description}
+                </p>
+              </div>
 
-          <div className="row-span-2">
-            <div className="relative aspect-video bg-light/10 rounded-lg overflow-hidden -z-[1]"> {/* THUMBNAIL */}
+              <p className="text-sm text-primary leading-5 font-mono font-semibold uppercase">
+                [{project.tags.join(' / ')}]
+              </p>
+            </div>
+
+            <div className="flex-1 relative bg-light/10 rounded-xl overflow-hidden -z-[1]"> {/* THUMBNAIL */}
               <Image
                 src={project.thumbnail}
                 alt={project.title}
@@ -57,29 +72,10 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
                 className="object-cover object-center"
               />
             </div>
-
-            <div className={cn("flex gap-6 justify-between mt-1", i%2==0 ? "md:-ml-10" : "md:-mr-10 md:flex-row-reverse")}>
-              <div className={cn("-mt-6", i%2==1 && "md:text-right")}>
-                <h3 className="text-3xl leading-8 text-primary font-mono font-bold uppercase">
-                  {project.title}
-                </h3>
-                <p className="leading-5 text-primary/50 font-mono uppercase">
-                  {project.description}
-                </p>
-              </div>
-
-              <p className={cn("text-right text-primary leading-6 font-mono uppercase", i%2==1 && "md:text-left")}>
-                {project.tag}
-              </p>
-            </div>
           </div>
+        ))}
 
-          {i%2==1 && <div className="hidden md:block h-32"/>} {/* SPACER */}
-        </Fragment>)}
-        
-        <div className="hidden md:block h-48"/> {/* SPACER */}
-
-        <div className="md:-ml-10">
+        <div className={featured.length % 2 === 0 ? "md:mr-auto md:-rotate-2" : "md:ml-auto md:rotate-2"}>
           <p className="container max-w-xs text-lg leading-6 text-center font-mono uppercase">
             Designing, developing, and learning for meaningful impact.
           </p>
