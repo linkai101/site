@@ -6,7 +6,7 @@ import { cn } from '@/utils/cn';
 export default function Card({ project, className, ...rest }: { className?: string, [key: string]: any }) {
   return (
     <motion.div
-      className={cn("relative bg-primary/10 rounded-xl overflow-hidden shadow-inner focus:outline-primary", className)}
+      className={cn("relative bg-primary/10 rounded-xl overflow-hidden select-none md:select-auto shadow-inner focus:outline-primary", className)}
       // initial="closed"
       whileHover="open"
       whileTap="open"
@@ -46,7 +46,7 @@ export default function Card({ project, className, ...rest }: { className?: stri
           src={project.thumbnail}
           alt={project.title}
           fill
-          className="object-cover object-center"
+          className="object-cover object-center pointer-events-none"
         />
       </motion.div>
     </motion.div>
