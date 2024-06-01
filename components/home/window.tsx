@@ -23,7 +23,7 @@ export default function Window({ children, className, ...rest }: { children?: Re
           scale: 1,
           transition: {
             type: 'spring',
-            delay: Math.random() * 0.1,
+            delay: Math.random() * 0.2,
             duration: 0.5,
           }
         },
