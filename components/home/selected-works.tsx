@@ -1,6 +1,6 @@
 "use client";
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, Fragment } from 'react';
 import { motion, useInView } from 'framer-motion';
 import ContrastLink from '@/components/ui/contrast-link';
 
@@ -74,18 +74,22 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
         {' '}of tech, art, and people is where I like to be.
       </motion.h2>
 
-      <div className="container max-w-5xl flex flex-col gap-24 mt-24">
-        {featured.map((project, i) => (
+      <div className="container max-w-5xl flex flex-col gap-12 md:gap-24 mt-16 md:mt-24">
+        {featured.map((project, i) => <Fragment key={project.title}>
           <Card
-            key={project.title}
-            className={cn(i % 2 === 0 ? "mr-auto md:-rotate-1" : "ml-auto md:rotate-2", "w-full max-w-3xl")}
+            className={cn(i % 2 === 0 ? "mr-auto md:-rotate-1" : "ml-auto md:rotate-2", "hidden md:block w-full max-w-3xl")}
             project={project}
             i={i}
           />
-        ))}
+          <CardMobile
+            className={cn(i % 2 === 0 ? "mr-auto md:-rotate-1" : "ml-auto md:rotate-2", "block md:hidden w-full max-w-3xl")}
+            project={project}
+            i={i}
+          />
+        </Fragment>)}
 
         <PortfolioCard
-          className={featured.length % 2 === 0 ? "md:mr-auto md:-rotate-1" : "md:ml-auto md:rotate-2"}
+          className={cn(featured.length % 2 === 0 ? "md:mr-auto md:-rotate-1" : "md:ml-auto md:rotate-2", "mt-4 md:mt-0")}
         />
       </div>
     </motion.div>
@@ -129,7 +133,7 @@ function Card({ project, i, className, ...rest }: { project: any, i: number, cla
       ref={ref}
     >
       <motion.div
-        className="h-full pr-3 pl-5 py-3 aspect-video flex gap-8 border-2 border-light/5 rounded-xl"
+        className="h-full pr-3 pl-5 py-3 md:aspect-video flex flex-col md:flex-row gap-8 border-2 border-light/5 rounded-xl"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={{
@@ -165,7 +169,62 @@ function Card({ project, i, className, ...rest }: { project: any, i: number, cla
           </p>
         </div>
 
-        <div className="flex-1 relative bg-light/10 rounded-xl overflow-hidden -z-[1]"> {/* THUMBNAIL */}
+        <div className="flex-1 aspect-video md:aspect-auto relative bg-light/10 rounded-xl overflow-hidden -z-[1]"> {/* THUMBNAIL */}
+          <Image
+            src={project.thumbnail}
+            alt={project.title}
+            fill
+            className="object-cover object-center"
+          />
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+function CardMobile({ project, i, className, ...rest }: { project: any, i: number, className?: string, [key: string]: any }) {
+  const ref = useRef<HTMLHeadingElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  return (
+    <div
+      className={className}
+      ref={ref}
+    >
+      <motion.div
+        className="h-full pr-3 pl-5 py-3 md:aspect-video flex flex-col md:flex-row gap-8 border-2 border-light/5 rounded-xl"
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={{
+          hidden: {
+            opacity: 0,
+          },
+          visible: {
+            opacity: 1,
+            transition: {
+              type: 'spring',
+              duration: 1.2,
+            }
+          },
+        }}
+        {...rest}
+      >
+        <div className="max-w-48 flex flex-col justify-between gap-4 pt-4">
+          <div>
+            <h3 className="text-3xl leading-8 text-primary font-mono font-bold uppercase">
+              {project.title}
+            </h3>
+            <p className="leading-5 text-primary/50 font-mono uppercase mt-1">
+              {project.description}
+            </p>
+          </div>
+
+          <p className="text-sm text-primary leading-5 font-mono font-semibold uppercase">
+            [{project.tags.join(' / ')}]
+          </p>
+        </div>
+
+        <div className="flex-1 aspect-video md:aspect-auto relative bg-light/10 rounded-xl overflow-hidden -z-[1]"> {/* THUMBNAIL */}
           <Image
             src={project.thumbnail}
             alt={project.title}

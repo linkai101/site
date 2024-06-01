@@ -57,10 +57,8 @@ export default function Card({ project, className, ...rest }: { className?: stri
           variants={{
             open: {
               translateY: "-4.5rem",
-              // bottom: "4.5rem",
               transition: {
                 type: 'spring',
-                // delay: 0.2,
                 duration: 0.5,
               }
             },

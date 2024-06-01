@@ -24,7 +24,7 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
   }
 
   return (
-    <div className={cn("min-h-dvh relative bg-primary text-light overflow-hidden", className)} {...rest}>
+    <div className={cn("min-h-screen relative bg-primary text-light overflow-hidden", className)} {...rest}>
       <MenuBar className="absolute top-0 inset-x-0"/>
 
       <div className="absolute left-1/2 top-[calc(50%-3rem)] -translate-x-1/2 -translate-y-1/2 w-[70rem] h-[36rem] flex items-center justify-center">
