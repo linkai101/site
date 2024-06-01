@@ -1,7 +1,9 @@
+"use client";
 import Image from 'next/image';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import ContrastLink from '@/components/ui/contrast-link';
 
-import { Fragment } from 'react';
 import { cn } from '@/utils/cn';
 
 const featured = [
@@ -34,67 +36,181 @@ const featured = [
 ];
 
 export default function SelectedWorks({ className, ...rest }: { className?: string, [key: string]: any }) {
+  const ref = useRef<HTMLHeadingElement>(null);
+  const isInView = useInView(ref, { amount: 0 });
+
   return (
-    <div className={cn("pt-24 pb-36 px-2 relative overflow-hidden", className)} {...rest}>
-      <h2 className="container max-w-3xl text-6xl text-center font-heading">
+    <motion.div
+      className={cn("pt-24 pb-36 px-2 relative overflow-hidden", className)}
+      
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      {...rest}
+    >
+      <motion.h2
+        className="container max-w-3xl text-6xl text-center font-heading"
+        ref={ref}
+        variants={{
+          hidden: {
+            opacity: 0,
+            scale: 0.9,
+          },
+          visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+              type: 'spring',
+              duration: 1,
+            }
+          },
+        }}
+      >
         The{' '}
         <span className="relative text-primary font-cursive">
           intersection
-          <BgArc width={100} height={60} className="absolute -bottom-[2rem] left-1/2 -translate-x-[calc(50%+2rem)] w-[100rem] -rotate-[10deg] -z-50"/>
-          <BgArc width={200} height={150} className="absolute -top-[2.5rem] left-1/2 -translate-x-[calc(50%-9rem)] w-[200rem] rotate-[170deg] -z-50"/>
+          <BgArc width={50} height={20} className="absolute -bottom-[2rem] left-1/2 -translate-x-[calc(50%-1rem)] w-[50rem] -rotate-[10deg] -z-50"/>
+          <BgArc width={100} height={60} className="absolute -top-[2rem] left-1/2 -translate-x-[calc(50%-2rem)] w-[100rem] rotate-[170deg] -z-50"/>
         </span>
         {' '}of tech, art, and people is where I like to be.
-      </h2>
+      </motion.h2>
 
       <div className="container max-w-5xl flex flex-col gap-24 mt-24">
         {featured.map((project, i) => (
-          <div className={cn(i % 2 === 0 ? "mr-auto md:-rotate-1" : "ml-auto md:rotate-2", "w-full max-w-3xl pr-3 pl-5 py-3 aspect-video flex gap-8 border-2 border-light/5 rounded-xl")} key={project.title}>
-            <div className="max-w-48 flex flex-col justify-between gap-4 pt-4">
-              <div>
-                <h3 className="text-3xl leading-8 text-primary font-mono font-bold uppercase">
-                  {project.title}
-                </h3>
-                <p className="leading-5 text-primary/50 font-mono uppercase mt-1">
-                  {project.description}
-                </p>
-              </div>
-
-              <p className="text-sm text-primary leading-5 font-mono font-semibold uppercase">
-                [{project.tags.join(' / ')}]
-              </p>
-            </div>
-
-            <div className="flex-1 relative bg-light/10 rounded-xl overflow-hidden -z-[1]"> {/* THUMBNAIL */}
-              <Image
-                src={project.thumbnail}
-                alt={project.title}
-                fill
-                className="object-cover object-center"
-              />
-            </div>
-          </div>
+          <Card
+            key={project.title}
+            className={cn(i % 2 === 0 ? "mr-auto md:-rotate-1" : "ml-auto md:rotate-2", "w-full max-w-3xl")}
+            project={project}
+            i={i}
+          />
         ))}
 
-        <div className={featured.length % 2 === 0 ? "md:mr-auto md:-rotate-1" : "md:ml-auto md:rotate-2"}>
-          <p className="container max-w-xs text-lg leading-6 text-center font-mono uppercase">
-            Designing, developing, and learning for meaningful impact.
-          </p>
-
-          <p className="text-center mt-8">
-            <ContrastLink href="/portfolio" className="text-5xl font-heading">
-              View my portfolio
-            </ContrastLink>
-          </p>
-        </div>
+        <PortfolioCard
+          className={featured.length % 2 === 0 ? "md:mr-auto md:-rotate-1" : "md:ml-auto md:rotate-2"}
+        />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 function BgArc({ width, height, ...rest }: { width: number, height: number, [key: string]: any }) {
   return (
-    <svg viewBox={`0 0 ${width} ${height+2}`} xmlns="http://www.w3.org/2000/svg" {...rest}>
-      <path fill="transparent" stroke="#C7956D" strokeOpacity="0.2" strokeWidth={0.25} d={`M0,1 Q${width/2},${height*2+1} ${width},1`}></path>
-    </svg>
+    <motion.svg viewBox={`0 0 ${width} ${height+2}`} xmlns="http://www.w3.org/2000/svg" {...rest}>
+      <motion.path
+        variants={{
+          hidden: {
+            pathLength: 0,
+          },
+          visible: {
+            pathLength: 1,
+            transition: {
+              type: 'spring',
+              duration: 4,
+              delay: 0.2,
+            }
+          },
+        }}
+        fill="transparent"
+        stroke="#C7956D"
+        strokeOpacity={0.2}
+        strokeWidth={0.25}
+        d={`M0,1 Q${width/2},${height*2+1} ${width},1`}
+      />
+    </motion.svg>
+  );
+}
+
+function Card({ project, i, className, ...rest }: { project: any, i: number, className?: string, [key: string]: any }) {
+  const ref = useRef<HTMLHeadingElement>(null);
+  const isInView = useInView(ref, { amount: 0.2 });
+
+  return (
+    <div
+      className={className}
+      ref={ref}
+    >
+      <motion.div
+        className="h-full pr-3 pl-5 py-3 aspect-video flex gap-8 border-2 border-light/5 rounded-xl"
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={{
+          hidden: {
+            opacity: 0,
+            translateY: 80,
+            scale: 0.9,
+          },
+          visible: {
+            opacity: 1,
+            translateY: 0,
+            scale: 1,
+            transition: {
+              type: 'spring',
+              duration: 0.5,
+            }
+          },
+        }}
+        {...rest}
+      >
+        <div className="max-w-48 flex flex-col justify-between gap-4 pt-4">
+          <div>
+            <h3 className="text-3xl leading-8 text-primary font-mono font-bold uppercase">
+              {project.title}
+            </h3>
+            <p className="leading-5 text-primary/50 font-mono uppercase mt-1">
+              {project.description}
+            </p>
+          </div>
+
+          <p className="text-sm text-primary leading-5 font-mono font-semibold uppercase">
+            [{project.tags.join(' / ')}]
+          </p>
+        </div>
+
+        <div className="flex-1 relative bg-light/10 rounded-xl overflow-hidden -z-[1]"> {/* THUMBNAIL */}
+          <Image
+            src={project.thumbnail}
+            alt={project.title}
+            fill
+            className="object-cover object-center"
+          />
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+function PortfolioCard({ ...rest }: { [key: string]: any }) {
+  const ref = useRef<HTMLHeadingElement>(null);
+  const isInView = useInView(ref, { amount: 0.8 });
+
+  return (
+    <motion.div
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={{
+        hidden: {
+          opacity: 0,
+        },
+        visible: {
+          opacity: 1,
+          transition: {
+            type: 'spring',
+            duration: 1.2,
+            delay: 0.1,
+          }
+        },
+      }}
+      ref={ref}
+      {...rest}
+    >
+      <p className="container max-w-xs text-lg leading-6 text-center font-mono uppercase">
+        Designing, developing, and learning for meaningful impact.
+      </p>
+
+      <p className="text-center mt-8">
+        <ContrastLink href="/portfolio" className="text-5xl font-heading">
+          View my portfolio
+        </ContrastLink>
+      </p>
+    </motion.div>
   );
 }
