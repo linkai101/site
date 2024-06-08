@@ -20,12 +20,6 @@ const featured = [
     tags: ['dev', 'ux'],
     thumbnail: '/assets/portfolio/stemtothesky.png',
   },
-  // {
-  //   title: 'Oracle of Blair',
-  //   description: 'Website & predictive model',
-  //   tags: ['data', 'dev', 'ux'],
-  //   thumbnail: '/assets/portfolio/oracleofblair.png',
-  // },
   {
     title: 'Boba Barista',
     description: '3D character design',
@@ -37,7 +31,7 @@ const featured = [
 
 export default function SelectedWorks({ className, ...rest }: { className?: string, [key: string]: any }) {
   const ref = useRef<HTMLHeadingElement>(null);
-  const isInView = useInView(ref, { amount: 0 });
+  const isInView = useInView(ref, { once: true, amount: 0 });
 
   return (
     <motion.div
@@ -125,7 +119,7 @@ function BgArc({ width, height, ...rest }: { width: number, height: number, [key
 
 function Card({ project, i, className, ...rest }: { project: any, i: number, className?: string, [key: string]: any }) {
   const ref = useRef<HTMLHeadingElement>(null);
-  const isInView = useInView(ref, { amount: 0.2 });
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
     <div
@@ -239,7 +233,7 @@ function CardMobile({ project, i, className, ...rest }: { project: any, i: numbe
 
 function PortfolioCard({ ...rest }: { [key: string]: any }) {
   const ref = useRef<HTMLHeadingElement>(null);
-  const isInView = useInView(ref, { amount: 0.8 });
+  const isInView = useInView(ref, { once: true, amount: 0.8 });
 
   return (
     <motion.div

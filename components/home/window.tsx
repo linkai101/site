@@ -21,6 +21,7 @@ export default function Window({ children, className, ...rest }: { children?: Re
         visible: {
           opacity: 1,
           scale: 1,
+          cursor: 'grab',
           transition: {
             type: 'spring',
             delay: Math.random() * 0.2,
@@ -28,8 +29,9 @@ export default function Window({ children, className, ...rest }: { children?: Re
           }
         },
         interact: {
-          scale: 1.01,
+          scale: 0.99,
           opacity: 0.9,
+          cursor: 'grabbing',
           transition: {
             type: 'spring',
             duration: 0.1,
