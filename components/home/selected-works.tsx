@@ -9,21 +9,26 @@ import { cn } from '@/utils/cn';
 const featured = [
   {
     title: 'Wisconsin Robotics',
-    description: 'Website & outreach',
+    tagline: 'Website & outreach',
     tags: ['dev', 'ux', 'electrical'],
+    description: 'The website for UW-Madison\'s competitive robotics team. I also aided in CAD and electrical design for outreach projects!',
     thumbnail: '/assets/portfolio/wisconsinrobotics.png',
+    url: 'https://wisconsinrobotics.org',
     wide: true,
   },
   {
     title: 'STEM to the Sky',
-    description: 'Website & CMS',
+    tagline: 'Website & CMS',
     tags: ['dev', 'ux'],
+    description: 'The website for a nonprofit that promotes STEM careers to students.',
     thumbnail: '/assets/portfolio/stemtothesky.png',
+    url: 'https://stemtothesky.org',
   },
   {
     title: 'Boba Barista',
-    description: '3D character design',
+    tagline: '3D modeling',
     tags: ['3d'],
+    description: 'A character I designed for a 3D art project incorporating a few of my favorite things!',
     thumbnail: '/assets/portfolio/redpandabobabarista.png',
     wide: true,
   },
@@ -153,9 +158,22 @@ function Card({ project, i, className, ...rest }: { project: any, i: number, cla
             <h3 className="text-3xl leading-8 text-primary font-mono font-bold uppercase">
               {project.title}
             </h3>
-            <p className="leading-5 text-primary/50 font-mono uppercase mt-1">
+
+            <p className="text-sm leading-4 text-primary/50 font-mono mt-3">
               {project.description}
             </p>
+
+            {project.url &&
+              <ContrastLink
+                href={project.url}
+                className="text-2xl text-primary hover:text-light font-heading whitespace-nowrap mt-6"
+                innerClassName="bg-primary"
+                target={project.url.startsWith('http') ? '_blank' : undefined}
+                rel="noopener noreferrer"
+              >
+                Learn more
+              </ContrastLink>
+            }
           </div>
 
           <p className="text-sm text-primary leading-5 font-mono font-semibold uppercase">
@@ -186,7 +204,7 @@ function CardMobile({ project, i, className, ...rest }: { project: any, i: numbe
       ref={ref}
     >
       <motion.div
-        className="h-full pr-3 pl-5 py-3 md:aspect-video flex flex-col md:flex-row gap-8 border-2 border-light/5 rounded-xl"
+        className="h-full px-5 pt-7 pb-5 md:aspect-video flex flex-col md:flex-row gap-8 border-2 border-light/5 rounded-xl"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={{
@@ -203,28 +221,41 @@ function CardMobile({ project, i, className, ...rest }: { project: any, i: numbe
         }}
         {...rest}
       >
-        <div className="max-w-48 flex flex-col justify-between gap-4 pt-4">
-          <div>
-            <h3 className="text-3xl leading-8 text-primary font-mono font-bold uppercase">
-              {project.title}
-            </h3>
-            <p className="leading-5 text-primary/50 font-mono uppercase mt-1">
-              {project.description}
-            </p>
+        <div>
+          <h3 className="text-3xl leading-8 text-primary font-mono font-bold uppercase">
+            {project.title}
+          </h3>
+
+          <p className="text-sm leading-4 text-primary/50 font-mono mt-2">
+            {project.description}
+          </p>
+
+          <div className="flex-1 aspect-video md:aspect-auto relative bg-light/10 rounded-xl overflow-hidden -z-[1] mt-6"> {/* THUMBNAIL */}
+            <Image
+              src={project.thumbnail}
+              alt={project.title}
+              fill
+              className="object-cover object-center"
+            />
           </div>
 
-          <p className="text-sm text-primary leading-5 font-mono font-semibold uppercase">
-            [{project.tags.join(' / ')}]
-          </p>
-        </div>
-
-        <div className="flex-1 aspect-video md:aspect-auto relative bg-light/10 rounded-xl overflow-hidden -z-[1]"> {/* THUMBNAIL */}
-          <Image
-            src={project.thumbnail}
-            alt={project.title}
-            fill
-            className="object-cover object-center"
-          />
+          <div className="flex items-end justify-end mt-6">
+            {project.url &&
+              <ContrastLink
+                href={project.url}
+                className="text-2xl text-primary hover:text-light font-heading whitespace-nowrap"
+                innerClassName="bg-primary"
+                target={project.url.startsWith('http') ? '_blank' : undefined}
+                rel="noopener noreferrer"
+              >
+                Learn more
+              </ContrastLink>
+            }
+            
+            <p className="flex-1 text-sm text-end text-primary leading-5 font-mono font-semibold uppercase">
+              [{project.tags.join(' / ')}]
+            </p>
+          </div>
         </div>
       </motion.div>
     </div>
