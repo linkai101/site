@@ -116,11 +116,11 @@ export default function Card({ project, className, ...rest }: { project: any, cl
       
       {/* PROJECT DESCRIPTION  */}
       <div
-        className="absolute bottom-0 inset-x-0 px-4 py-2 pt-4 flex flex-col md:flex-row items-center md:items-end justify-end gap-2"
+        className={cn("absolute bottom-0 inset-x-0 px-4 py-2 pt-4 flex flex-col items-center gap-2", project.wide ? "md:flex-row md:items-end md:justify-end" : "")}
         ref={descriptionRef}
       >
         {project.description &&
-          <p className="flex-1 text-sm leading-4 text-dark font-mono">
+          <p className="w-full md:w-auto flex-1 text-sm leading-4 text-dark font-mono">
             {project.description}
           </p>
         }
