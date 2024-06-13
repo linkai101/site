@@ -1,3 +1,4 @@
+"use client";
 import Image from 'next/image';
 
 export default function MenuBar({ className, ...rest }: { className?: string, [key: string]: any }) {
