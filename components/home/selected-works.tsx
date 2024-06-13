@@ -11,7 +11,7 @@ const featured = [
     title: 'Wisconsin Robotics',
     tagline: 'Website & outreach',
     tags: ['dev', 'ux', 'electrical'],
-    description: 'The website for UW-Madison\'s competitive robotics team. I also aided in CAD and electrical design for outreach projects!',
+    description: 'The website for UW-Madison\'s competitive robotics team. I also did CAD and electrical design for a few outreach projects!',
     thumbnail: '/assets/portfolio/wisconsinrobotics.png',
     url: 'https://wisconsinrobotics.org',
     wide: true,
