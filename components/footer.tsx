@@ -11,14 +11,14 @@ export default function Footer({ className, ...rest }: { className?: string, [ke
         //   <p>You&apos;ve reached the end</p>
         // )}
         slides={[
-          <p>You&apos;ve reached the end</p>,
-          <p>ʕ•̫͡•ʕ*̫͡*ʕ-̫͡-ʕ•̫͡•ʔ*̫͡*ʔ-̫͡-ʔ </p>,
-          <p>You&apos;ve reached the end</p>,
-          <p>óÔÔò ʕ·͡ᴥ·ʔ óÔÔò</p>,
-          <p>You&apos;ve reached the end</p>,
-          <p>(╯°□°）╯︵ ┻━┻</p>,
-          <p>You&apos;ve reached the end</p>,
-          <p>龴ↀ◡ↀ龴</p>,
+          <p key="1">You&apos;ve reached the end</p>,
+          <p key="2">ʕ•̫͡•ʕ*̫͡*ʕ-̫͡-ʕ•̫͡•ʔ*̫͡*ʔ-̫͡-ʔ </p>,
+          <p key="3">You&apos;ve reached the end</p>,
+          <p key="4">óÔÔò ʕ·͡ᴥ·ʔ óÔÔò</p>,
+          <p key="5">You&apos;ve reached the end</p>,
+          <p key="6">(╯°□°）╯︵ ┻━┻</p>,
+          <p key="7">You&apos;ve reached the end</p>,
+          <p key="8">龴ↀ◡ↀ龴</p>,
         ]}
         className="text-dark/25 dark:text-light/25 text-base font-medium dark:font-normal font-mono uppercase select-none"
       />
@@ -72,14 +72,14 @@ export default function Footer({ className, ...rest }: { className?: string, [ke
         //   </p>
         // )}
         slides={[
-          <p>Linkai Wu &copy; {new Date().getFullYear()}</p>,
-          <p>( ^-^)_旦 pancakes?</p>,
-          <p>Linkai Wu &copy; {new Date().getFullYear()}</p>,
-          <p>ᕕ( ᐛ )ᕗ going for a walk</p>,
-          <p>Linkai Wu &copy; {new Date().getFullYear()}</p>,
-          <p>d[o_0]b beep boop</p>,
-          <p>Linkai Wu &copy; {new Date().getFullYear()}</p>,
-          <p>ᒡ◯ᵔØᒢ oh no my glasses!</p>,
+          <p key="1">Linkai Wu &copy; {new Date().getFullYear()}</p>,
+          <p key="2">( ^-^)_旦 pancakes?</p>,
+          <p key="3">Linkai Wu &copy; {new Date().getFullYear()}</p>,
+          <p key="4">ᕕ( ᐛ )ᕗ going for a walk</p>,
+          <p key="5">Linkai Wu &copy; {new Date().getFullYear()}</p>,
+          <p key="6">d[o_0]b beep boop</p>,
+          <p key="7">Linkai Wu &copy; {new Date().getFullYear()}</p>,
+          <p key="8">ᒡ◯ᵔøᒢ oh no my glasses!</p>,
         ]}
         className="text-dark/25 dark:text-light/25 text-base font-medium dark:font-normal font-mono uppercase select-none"
       />

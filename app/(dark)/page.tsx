@@ -1,7 +1,7 @@
 import Hero from '@/components/home/hero';
 import HeroMobile from '@/components/home/hero-mobile';
 import SelectedWorks from '@/components/home/selected-works';
-import Footer from '@/components/home/footer';
+import Footer from '@/components/footer';
 
 import type { Metadata } from 'next';
 

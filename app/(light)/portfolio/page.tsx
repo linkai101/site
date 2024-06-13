@@ -1,5 +1,5 @@
 import Card from '@/components/portfolio/card';
-import Footer from '@/components/home/footer';
+import Footer from '@/components/footer';
 
 import type { Metadata } from 'next';
 import { cn } from '@/utils/cn';
@@ -23,8 +23,8 @@ const projects: Project[] = [
   {
     title: 'Wisconsin Robotics',
     tagline: 'Website & outreach',
-    tags: ['dev', 'ux', 'electrical'],
-    description: 'The website for UW-Madison\'s competitive robotics team. I also aided in CAD and electrical design for outreach projects!',
+    tags: ['dev', 'web', 'ux', 'electrical'],
+    description: 'The website for UW-Madison\'s competitive robotics team. I also did CAD and electrical design for a few outreach projects!',
     thumbnail: '/assets/portfolio/wisconsinrobotics.png',
     url: 'https://wisconsinrobotics.org',
     wide: true,
@@ -32,7 +32,7 @@ const projects: Project[] = [
   {
     title: 'STEM to the Sky',
     tagline: 'Website & CMS',
-    tags: ['dev', 'ux'],
+    tags: ['dev', 'web', 'ux'],
     description: 'The website for a nonprofit that promotes STEM careers to students.',
     thumbnail: '/assets/portfolio/stemtothesky.png',
     url: 'https://stemtothesky.org',
@@ -40,7 +40,7 @@ const projects: Project[] = [
   {
     title: 'IUFRO Tree Biotech',
     tagline: 'Website & CMS',
-    tags: ['dev', 'ux'],
+    tags: ['dev', 'web', 'ux'],
     description: 'The website for an international conference by organizers at the University of Maryland.',
     thumbnail: '/assets/portfolio/iufro.png',
     url: 'https://treebiotech.org',
@@ -48,7 +48,7 @@ const projects: Project[] = [
   {
     title: 'Oracle of Blair',
     tagline: 'Website & predictive model',
-    tags: ['data', 'dev', 'ux'],
+    tags: ['data', 'dev', 'web', 'ux'],
     description: 'Web and graphic design for our senior class model of the 2022 US elections.',
     thumbnail: '/assets/portfolio/oracleofblair.png',
     url: 'https://polistat-site-2022.vercel.app/',
@@ -56,7 +56,7 @@ const projects: Project[] = [
   {
     title: 'Boba Barista',
     tagline: '3D modeling',
-    tags: ['3d'],
+    tags: ['3d', 'maya'],
     description: 'A character I designed for a 3D art project incorporating a few of my favorite things!',
     thumbnail: '/assets/portfolio/redpandabobabarista.png',
     wide: true,
@@ -64,36 +64,53 @@ const projects: Project[] = [
   {
     title: '3D Club Village',
     tagline: 'Collaborative workshop',
-    tags: ['3d'],
-    description: 'An intro 3D-modeling workshop I wrote for Hack Club!',
+    tags: ['3d', 'spline'],
+    description: 'An intro 3D-modeling workshop I wrote for Hack Club. Check it out!',
     thumbnail: '/assets/portfolio/3dworkshop.png',
     url: 'https://jams.hackclub.com/jam/3d-club-village',
   },
   {
     title: '\"Housewarming\"',
     tagline: '3D modeling',
-    tags: ['3d'],
-    description: 'My first 3D modeling scene in Maya!',
+    tags: ['3d', 'maya'],
     thumbnail: '/assets/portfolio/vanitas.jpg',
   },
   {
     title: '\"The Boys Crossing the Delaware\"',
     tagline: 'Photoshop',
-    tags: ['2d'],
+    tags: ['2d', 'photoshop'],
     thumbnail: '/assets/portfolio/fortnitedelaware.jpg',
     wide: true,
   },
   {
     title: '\"Vintage Dino\"',
     tagline: 'Photoshop',
-    tags: ['2d'],
+    tags: ['2d', 'photoshop'],
     thumbnail: '/assets/portfolio/vintagedino.jpg',
   },
   {
-    title: '\"Area 51\"',
-    tagline: 'Photoshop',
-    tags: ['2d'],
-    thumbnail: '/assets/portfolio/area51.jpg',
+    title: 'Wordle Archive',
+    tagline: 'Word game clone',
+    tags: ['dev', 'web'],
+    description: 'Ranked #3 on Google for "wordle archive"!',
+    thumbnail: '',
+    url: 'https://wordle.linkaiwu.com',
+  },
+  {
+    title: 'Bongo Cat',
+    tagline: 'Instrument simulator',
+    tags: ['dev', 'web'],
+    thumbnail: '',
+    url: 'https://bongocat.linkaiwu.com',
+  },
+  {
+    title: 'Among Us 3D',
+    tagline: 'ඞ',
+    tags: ['dev', 'game', 'unity'],
+    description: 'A lil experiment in Unity from a long time ago :)',
+    thumbnail: '',
+    url: 'https://github.com/linkai101/Among-Us-3D/releases',
+    wide: true,
   },
 ];
 
