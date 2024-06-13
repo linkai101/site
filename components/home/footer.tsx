@@ -7,9 +7,19 @@ export default function Footer({ className, ...rest }: { className?: string, [ke
     <footer className={cn("container max-w-7xl", className)} {...rest}>
       <Slider
         direction="left"
-        slides={new Array(7).fill(
-          <p>You&apos;ve reached the end</p>
-        )}
+        // slides={new Array(7).fill(
+        //   <p>You&apos;ve reached the end</p>
+        // )}
+        slides={[
+          <p>You&apos;ve reached the end</p>,
+          <p>ʕ•̫͡•ʕ*̫͡*ʕ-̫͡-ʕ•̫͡•ʔ*̫͡*ʔ-̫͡-ʔ </p>,
+          <p>You&apos;ve reached the end</p>,
+          <p>óÔÔò ʕ·͡ᴥ·ʔ óÔÔò</p>,
+          <p>You&apos;ve reached the end</p>,
+          <p>(╯°□°）╯︵ ┻━┻</p>,
+          <p>You&apos;ve reached the end</p>,
+          <p>龴ↀ◡ↀ龴</p>,
+        ]}
         className="text-dark/25 dark:text-light/25 text-base font-medium dark:font-normal font-mono uppercase select-none"
       />
 
@@ -56,12 +66,22 @@ export default function Footer({ className, ...rest }: { className?: string, [ke
 
       <Slider
         direction="right"
-        slides={new Array(8).fill(
-          <p className="text-dark/25 dark:text-light/25 text-base font-medium dark:font-normal font-mono uppercase">
-            Linkai Wu &copy; {new Date().getFullYear()}
-          </p>
-        )}
-        className="select-none"
+        // slides={new Array(8).fill(
+        //   <p>
+        //     Linkai Wu &copy; {new Date().getFullYear()}
+        //   </p>
+        // )}
+        slides={[
+          <p>Linkai Wu &copy; {new Date().getFullYear()}</p>,
+          <p>( ^-^)_旦 pancakes?</p>,
+          <p>Linkai Wu &copy; {new Date().getFullYear()}</p>,
+          <p>ᕕ( ᐛ )ᕗ going for a walk</p>,
+          <p>Linkai Wu &copy; {new Date().getFullYear()}</p>,
+          <p>d[o_0]b beep boop</p>,
+          <p>Linkai Wu &copy; {new Date().getFullYear()}</p>,
+          <p>ᒡ◯ᵔØᒢ oh no my glasses!</p>,
+        ]}
+        className="text-dark/25 dark:text-light/25 text-base font-medium dark:font-normal font-mono uppercase select-none"
       />
     </footer>
   );
