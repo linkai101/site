@@ -108,7 +108,7 @@ const projects: Project[] = [
     tagline: 'ඞ',
     tags: ['dev', 'game', 'unity'],
     description: 'A lil experiment in Unity from a long time ago :)',
-    thumbnail: '/assets/portfolio/amongus3d2.png',
+    thumbnail: '/assets/portfolio/amongus3d.png',
     url: 'https://github.com/linkai101/Among-Us-3D/releases',
     wide: true,
   },
