@@ -6,7 +6,7 @@ import { cn } from '@/utils/cn';
 
 export const metadata: Metadata = {
   title: "portfolio — linkai wu",
-  description: "",
+  description: "my work in development, design, and more. i'm a developer, designer, and student fascinated with the intersection of tech, art, and people.",
 };
 
 interface Project {
