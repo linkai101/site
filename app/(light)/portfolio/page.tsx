@@ -92,7 +92,7 @@ const projects: Project[] = [
     title: 'Wordle Archive',
     tagline: 'Word game clone',
     tags: ['dev', 'web'],
-    description: 'Ranked #3 on Google for "wordle archive"!',
+    description: 'On the first page of Google for "wordle archive"!',
     thumbnail: '/assets/portfolio/wordlearchive.png',
     url: 'https://wordle.linkaiwu.com',
   },
