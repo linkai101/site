@@ -21,13 +21,21 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: 'Badgerfly',
+    tagline: 'Website',
+    tags: ['figma', 'ux', 'framer'],
+    description: 'The website for UW-Madison\'s competitive drone team, designed in Figma and developed in Framer.',
+    thumbnail: '/assets/portfolio/badgerfly.png',
+    url: 'https://badger-fly.com',
+    wide: true,
+  },
+  {
     title: 'Wisconsin Robotics',
     tagline: 'Website & outreach',
     tags: ['dev', 'web', 'ux', 'electrical'],
     description: 'The website for UW-Madison\'s competitive robotics team. I also did CAD and electrical design for a few outreach projects!',
     thumbnail: '/assets/portfolio/wisconsinrobotics.png',
     url: 'https://wisconsinrobotics.org',
-    wide: true,
   },
   {
     title: 'STEM to the Sky',
@@ -52,6 +60,7 @@ const projects: Project[] = [
     description: 'Web and graphic design for our senior class model of the 2022 US elections.',
     thumbnail: '/assets/portfolio/oracleofblair.png',
     url: 'https://polistat-site-2022.vercel.app/',
+    wide: true,
   },
   {
     title: 'Boba Barista',

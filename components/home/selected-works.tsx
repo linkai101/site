@@ -8,13 +8,12 @@ import { cn } from '@/utils/cn';
 
 const featured = [
   {
-    title: 'Wisconsin Robotics',
-    tagline: 'Website & outreach',
-    tags: ['dev', 'ux', 'electrical'],
-    description: 'The website for UW-Madison\'s competitive robotics team. I also did CAD and electrical design for a few outreach projects!',
-    thumbnail: '/assets/portfolio/wisconsinrobotics.png',
-    url: 'https://wisconsinrobotics.org',
-    wide: true,
+    title: 'Badgerfly',
+    tagline: 'Website',
+    tags: ['figma', 'ux', 'framer'],
+    description: 'The website for UW-Madison\'s competitive drone team, designed in Figma and developed in Framer.',
+    thumbnail: '/assets/portfolio/badgerfly.png',
+    url: 'https://badger-fly.com',
   },
   {
     title: 'STEM to the Sky',
@@ -23,6 +22,14 @@ const featured = [
     description: 'The website for a nonprofit that promotes STEM careers to students.',
     thumbnail: '/assets/portfolio/stemtothesky.png',
     url: 'https://stemtothesky.org',
+  },
+  {
+    title: 'Wisconsin Robotics',
+    tagline: 'Website & outreach',
+    tags: ['dev', 'ux', 'electrical'],
+    description: 'The website for UW-Madison\'s competitive robotics team. I also did CAD and electrical design for a few outreach projects!',
+    thumbnail: '/assets/portfolio/wisconsinrobotics.png',
+    url: 'https://wisconsinrobotics.org',
   },
   {
     title: 'Boba Barista',
