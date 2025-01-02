@@ -1,5 +1,4 @@
 import WindowMobile from './window-mobile';
-import MenuBar from './menu-bar';
 import TiltChip from '@/components/ui/tilt-chip';
 
 import Image from 'next/image';
@@ -10,8 +9,6 @@ import { TbBrandGithubCopilot, TbBrandLinkedin, TbMail } from "react-icons/tb";
 export default function HeroMobile({ className, ...rest }: { className?: string, [key: string]: any }) {
   return (
     <div className={cn("min-h-screen relative bg-primary text-light overflow-hidden", className)} {...rest}>
-      <MenuBar className="absolute top-0 inset-x-0"/>
-
       <div className="absolute inset-0 scale-[0.7]">
         <h1 className="sr-only">
           I&apos;m Linkai

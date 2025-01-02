@@ -1,7 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap');
 
@@ -20,28 +16,12 @@ body {
 }
 
 
-/* components/ui/slider.tsx */
+/* components/ui/ticker.tsx */
 @layer utilities {
   .pause {
     animation-play-state: paused;
   }
 }
-/* @keyframes scroll-5 {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-12rem * 5));
-  }
-}
-@keyframes -scroll-5 {
-  0% {
-    transform: translateX(calc(-12rem * 5));
-  }
-  100% {
-    transform: translateX(0);
-  }
-} */
 @keyframes scroll-10 {
   0% {
     transform: translateX(0);
@@ -58,12 +38,12 @@ body {
     transform: translateX(0);
   }
 }
-.slider {
+.ticker {
   position: relative;
   overflow: hidden;
 }
-.slider::before,
-.slider::after {
+.ticker::before,
+.ticker::after {
   background: linear-gradient(to right, theme('colors.light') 0%, #ffffff00 100%);
   content: '';
   z-index: 2;
@@ -72,8 +52,8 @@ body {
   width: 6rem;
   pointer-events: none;
 }
-.dark .slider::before,
-.dark .slider::after {
+.dark .ticker::before,
+.dark .ticker::after {
   background: linear-gradient(to right, theme('colors.dark') 0%, #ffffff00 100%);
   content: '';
   z-index: 2;
@@ -82,31 +62,21 @@ body {
   width: 6rem;
   pointer-events: none;
 }
-.slider::after {
+.ticker::after {
   right: 0;
   top: 0;
   transform: rotateZ(180deg);
 }
-.slider::before {
+.ticker::before {
   left: 0;
   top: 0;
 }
-/* .slider .slide-track-5 {
-  animation: scroll-5 30s linear infinite;
-  display: flex;
-  width: calc(12rem * 5 * 2);
-}
-.slider .-slide-track-5 {
-  animation: -scroll-5 30s linear infinite;
-  display: flex;
-  width: calc(12rem * 5 * 2);
-} */
-.slider .slide-track-10 {
+.ticker .slide-track-10 {
   animation: scroll-10 60s linear infinite;
   display: flex;
   width: calc(12rem * 10 * 2);
 }
-.slider .-slide-track-10 {
+.ticker .-slide-track-10 {
   animation: -scroll-10 60s linear infinite;
   display: flex;
   width: calc(12rem * 10 * 2);

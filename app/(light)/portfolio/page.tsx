@@ -125,7 +125,7 @@ const projects: Project[] = [
 
 export default function PortfolioPage() {
   return <>
-    <div className="container max-w-7xl px-4 py-16">
+    <div className="container max-w-7xl px-4 pt-20 pb-16">
       <div className="flex justify-center">
         <h1 className="flex flex-col text-[5rem] md:text-9xl leading-[4rem] md:leading-[5.5rem] font-heading font-bold lowercase">
           <span className="md:-ml-12 text-5xl md:text-6xl font-bold font-cursive">

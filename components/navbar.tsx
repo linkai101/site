@@ -10,12 +10,12 @@ export default function Navbar({ className, ...rest }: { className?: string; [ke
 
   return (
     <motion.div
-      className={cn("fixed bottom-6 left-1/2 py-0.5 flex text-light backdrop-blur-sm rounded-xl border border-light/20 overflow-hidden z-20", className)}
+      className={cn("fixed top-3 left-1/2 py-0.5 flex text-light backdrop-blur-sm rounded-xl border border-light/20 overflow-hidden z-20", className)}
       style={{ boxShadow: "inset 0 0 0 3000px rgba(31, 17, 17, 0.3)" }}
       initial={{
         opacity: 0,
         x: "-50%",
-        y: 100,
+        y: -100,
       }}
       animate={{
         opacity: 1,
@@ -35,13 +35,14 @@ export default function Navbar({ className, ...rest }: { className?: string; [ke
             src="/assets/logo_white.png"
             alt="Linkai's logo"
             fill
+            className="pointer-events-none"
           />
         </div>
       </div>
 
       <div className="px-4 py-0.5 flex gap-3">
         <motion.div
-          className="h-full px-3 flex items-center text-lg font-heading rounded-md hover:bg-light/15 transition-colors duration-300 ease-in-out"
+          className="h-full px-3 flex items-center text-lg font-heading font-semibold rounded-md hover:bg-light/15 transition-colors duration-300 ease-in-out"
           initial="initial"
           animate={pathname === "/" ? "active" : "initial"}
           whileHover={pathname === "/" ? "active" : "hover"}
@@ -59,7 +60,7 @@ export default function Navbar({ className, ...rest }: { className?: string; [ke
         </motion.div>
 
         <motion.div
-          className="h-full px-3 flex items-center text-lg font-heading rounded-md hover:bg-light/15 transition-colors duration-300 ease-in-out"
+          className="h-full px-3 flex items-center text-lg font-heading font-semibold rounded-md hover:bg-light/15 transition-colors duration-300 ease-in-out"
           initial="initial"
           animate={pathname === "/portfolio" ? "active" : "initial"}
           whileHover={pathname === "/portfolio" ? "active" : "hover"}

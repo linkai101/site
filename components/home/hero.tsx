@@ -1,6 +1,5 @@
 "use client";
 import Window from './window';
-import MenuBar from './menu-bar';
 import TiltChip from '@/components/ui/tilt-chip';
 
 import Image from 'next/image';
@@ -25,8 +24,6 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
 
   return (
     <div className={cn("min-h-screen relative bg-primary text-light overflow-hidden", className)} {...rest}>
-      <MenuBar className="absolute top-0 inset-x-0"/>
-
       <div className="absolute left-1/2 top-[calc(50%-3rem)] -translate-x-1/2 -translate-y-1/2 w-[70rem] h-[36rem] flex items-center justify-center">
         <h1 className="pl-[calc(1rem-1.5px)] text-10xl text-light/10 font-sketch uppercase whitespace-nowrap pointer-events-none select-none">
           I&apos;m Linkai
@@ -90,33 +87,30 @@ export default function Hero({ className, ...rest }: { className?: string, [key:
         onMouseDown={() => handleWindowMouseDown(3)}
       >
         <div className="h-full p-4 flex flex-col items-center justify-center">
-          <p className="text-3xl text-center font-heading">
+          <p className="text-3xl text-center font-heading uppercase">
             A developer, designer, and student.
           </p>
 
           <div className="flex justify-center flex-wrap gap-x-3 gap-y-2 mt-3">
             <Link href="https://github.com/linkai101" target="_blank" rel="noopener noreferrer">
-              <TiltChip className="flex items-center gap-2 text-sm font-mono uppercase">
+              <TiltChip className="flex items-center gap-2 text-sm font-mono font-medium uppercase">
                 <TbBrandGithubCopilot size={16}/>
                 GitHub
               </TiltChip>
             </Link>
 
             <Link href="https://www.linkedin.com/in/linkaiwu/" target="_blank" rel="noopener noreferrer">
-              <TiltChip className="flex items-center gap-2 text-sm font-mono uppercase">
+              <TiltChip className="flex items-center gap-2 text-sm font-mono font-medium uppercase">
                 <TbBrandLinkedin size={20} className="-mr-0.5"/>
                 LinkedIn
               </TiltChip>
             </Link>
 
             <Link href="mailto:linkai@linkaiwu.com" target="_blank" rel="noopener noreferrer">
-              <TiltChip className="flex items-center gap-2 text-sm font-mono">
+              <TiltChip className="flex items-center gap-2 text-sm font-mono font-medium">
                 <div className="-ml-1 px-[4px] py-[1px] bg-primary text-light font-bold uppercase rounded-full">
                   <TbMail size={18}/>
                 </div>
-                {/* <div className="-ml-1 px-1.5 bg-primary text-light font-bold uppercase rounded-full">
-                  Email me!
-                </div> */}
 
                 linkai@linkaiwu.com
               </TiltChip>

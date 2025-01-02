@@ -1,15 +1,12 @@
-import Slider from '@/components/ui/slider';
-
+"use client";
 import { cn } from '@/utils/cn';
+import Ticker from '@/components/ui/ticker';
 
 export default function Footer({ className, ...rest }: { className?: string, [key: string]: any }) {
   return (
     <footer className={cn("container max-w-7xl", className)} {...rest}>
-      <Slider
+      <Ticker
         direction="left"
-        // slides={new Array(7).fill(
-        //   <p>You&apos;ve reached the end</p>
-        // )}
         slides={[
           <p key="1">You&apos;ve reached the end</p>,
           <p key="2">ʕ•̫͡•ʕ*̫͡*ʕ-̫͡-ʕ•̫͡•ʔ*̫͡*ʔ-̫͡-ʔ </p>,
@@ -18,12 +15,12 @@ export default function Footer({ className, ...rest }: { className?: string, [ke
           <p key="5">You&apos;ve reached the end</p>,
           <p key="6">(╯°□°）╯︵ ┻━┻</p>,
           <p key="7">You&apos;ve reached the end</p>,
-          <p key="8">龴ↀ◡ↀ龴</p>,
+          <p key="8">¯\_(ツ)_/¯ </p>,
         ]}
-        className="text-dark/25 dark:text-light/25 text-base font-medium dark:font-normal font-mono uppercase select-none"
+        className="text-dark/25 dark:text-light/25 text-base font-medium font-mono dark:font-normal tracking-tight uppercase select-none"
       />
 
-      <div className="px-2 md:px-4 py-4">
+      <div className="px-4 py-3">
         <div className="p-4 h-80 relative flex justify-between gap-8 text-light dark:text-dark bg-primary rounded-xl overflow-hidden">
           <h2 className="text-8xl leading-[5.5rem] sm:text-9xl sm:leading-[6.5rem] font-heading select-none">
             Come back <span className="font-cursive">soon!</span>
@@ -64,13 +61,8 @@ export default function Footer({ className, ...rest }: { className?: string, [ke
         </div>
       </div>
 
-      <Slider
+      <Ticker
         direction="right"
-        // slides={new Array(8).fill(
-        //   <p>
-        //     Linkai Wu &copy; {new Date().getFullYear()}
-        //   </p>
-        // )}
         slides={[
           <p key="1">Linkai Wu &copy; {new Date().getFullYear()}</p>,
           <p key="2">( ^-^)_旦 pancakes?</p>,
@@ -81,7 +73,7 @@ export default function Footer({ className, ...rest }: { className?: string, [ke
           <p key="7">Linkai Wu &copy; {new Date().getFullYear()}</p>,
           <p key="8">ᒡ◯ᵔøᒢ oh no my glasses!</p>,
         ]}
-        className="text-dark/25 dark:text-light/25 text-base font-medium dark:font-normal font-mono uppercase select-none"
+        className="text-dark/25 dark:text-light/25 text-base font-medium dark:font-normal font-mono tracking-tight uppercase select-none"
       />
     </footer>
   );

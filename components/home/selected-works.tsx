@@ -47,7 +47,7 @@ export default function SelectedWorks({ className, ...rest }: { className?: stri
 
   return (
     <motion.div
-      className={cn("pt-24 pb-36 px-2 relative overflow-hidden", className)}
+      className={cn("pt-24 pb-36 px-4 relative overflow-hidden", className)}
       
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}

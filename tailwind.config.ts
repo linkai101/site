@@ -1,6 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: 'selector', // bool or 'media' (system setting) or 'selector' (toggle manually)
+import type { Config } from "tailwindcss";
+
+export default {
+  darkMode: 'selector',
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -12,9 +13,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Geist", "sans-serif"],
         heading: ["Koulen", "sans-serif"],
-        mono: ["Reddit Mono", "monospace"],
+        mono: ["Geist Mono", "monospace"],
         cursive: ["Pinyon Script", "cursive"],
         sketch: ["Londrina Solid", "sans-serif"],
         sketchOutline: ["Londrina Sketch", "sans-serif"],
@@ -31,4 +32,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+} satisfies Config;
