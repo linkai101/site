@@ -4,7 +4,7 @@ import { useRef, Fragment } from 'react';
 import { motion, useInView } from 'framer-motion';
 import ContrastLink from '@/components/ui/contrast-link';
 
-import { cn } from '@/utils/cn';
+import { cn } from '@/lib/utils';
 
 const featured = [
   {

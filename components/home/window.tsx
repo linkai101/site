@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { cn } from '@/utils/cn';
+import { cn } from '@/lib/utils';
 
 export default function Window({ children, className, ...rest }: { children?: React.ReactNode, className?: string, [key: string]: any }) {
   const ref = useRef<HTMLHeadingElement>(null);

@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn';
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
 export default function ContrastLink({ href, children, className, innerClassName, ...rest }: { href: string; children?: React.ReactNode; className?: string; innerClassName?: string; [key: string]: any }) {

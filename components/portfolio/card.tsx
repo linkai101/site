@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
-import { cn } from '@/utils/cn';
+import { cn } from '@/lib/utils';
 import ContrastLink from '@/components/ui/contrast-link';
 
 export default function Card({ project, className, ...rest }: { project: any, className?: string, [key: string]: any }) {

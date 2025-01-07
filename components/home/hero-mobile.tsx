@@ -3,7 +3,7 @@ import TiltChip from '@/components/ui/tilt-chip';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { cn } from '@/utils/cn';
+import { cn } from '@/lib/utils';
 import { TbBrandGithubCopilot, TbBrandLinkedin, TbMail } from "react-icons/tb";
 
 export default function HeroMobile({ className, ...rest }: { className?: string, [key: string]: any }) {
