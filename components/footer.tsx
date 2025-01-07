@@ -17,7 +17,7 @@ export default function Footer({ className, ...rest }: { className?: string, [ke
           <p key="7">You&apos;ve reached the end</p>,
           <p key="8">¯\_(ツ)_/¯ </p>,
         ]}
-        className="text-dark/25 dark:text-light/25 text-base font-medium font-mono dark:font-normal tracking-tight uppercase select-none"
+        className="text-dark/25 dark:text-light/25 text-base font-mono tracking-tight uppercase select-none"
       />
 
       <div className="px-4 py-3">
@@ -73,7 +73,7 @@ export default function Footer({ className, ...rest }: { className?: string, [ke
           <p key="7">Linkai Wu &copy; {new Date().getFullYear()}</p>,
           <p key="8">ᒡ◯ᵔøᒢ oh no my glasses!</p>,
         ]}
-        className="text-dark/25 dark:text-light/25 text-base font-medium dark:font-normal font-mono tracking-tight uppercase select-none"
+        className="text-dark/25 dark:text-light/25 text-base font-mono tracking-tight uppercase select-none"
       />
     </footer>
   );

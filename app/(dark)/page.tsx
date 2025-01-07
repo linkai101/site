@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "i'm linkai wu",
-  description: "a developer, designer, and student fascinated with the intersection of tech, art, and people.",
+  description: "A developer, designer, and student fascinated with the intersection of tech, art, and people.",
 };
 
 export default function HomePage() {
