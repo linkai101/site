@@ -1,10 +1,10 @@
 import '../globals.css';
 import { cn } from '@/lib/utils';
-import { Geist, Koulen, Geist_Mono, Pinyon_Script } from "next/font/google";
+import { Epilogue, Koulen, Geist_Mono, Pinyon_Script } from "next/font/google";
 import Navbar from '@/components/navbar';
 
-const geist = Geist({
-  variable: "--font-geist",
+const epilogue = Epilogue({
+  variable: "--font-epilogue",
   subsets: ["latin"],
 });
 
@@ -35,9 +35,9 @@ export default function DarkLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </head>
-      <body className={cn("antialiased bg-dark text-light", geist.variable, koulen.variable, geistMono.variable, pinyonScript.variable)}>
-        {children}
+      <body className={cn("antialiased bg-dark text-light", epilogue.variable, koulen.variable, geistMono.variable, pinyonScript.variable)}>
         <Navbar/>
+        {children}
       </body>
     </html>
   )

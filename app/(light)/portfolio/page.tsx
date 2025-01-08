@@ -16,7 +16,7 @@ interface Project {
   url?: string;
 }
 
-const experience = [
+const experience: Project[] = [
   // {
   //   title: 'Chemicals + toxicity prediction',
   //   tagline: 'Projects at Hansoh Bio',
@@ -38,7 +38,7 @@ const experience = [
   // },
 ];
 
-const projects = [
+const projects: Project[] = [
   // {
   //   title: 'Young-adult cooking app',
   //   tagline: 'UX case study',
@@ -68,7 +68,7 @@ const projects = [
   },
 ];
 
-const experiments = [
+const experiments: Project[] = [
   {
     title: 'Football graphic',
     tagline: 'Animated web component',
