@@ -1,11 +1,10 @@
 "use client";
-import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { cn } from '@/utils/cn';
-import ContrastLink from '@/components/ui/contrast-link';
 import { TbArrowUpRight } from "react-icons/tb";
+
 import type { PortfolioProject } from "@/components/home/portfolio";
 
 export default function PortfolioCard({ project, className, ...rest }: { project: PortfolioProject, className?: string, [key: string]: any }) {
@@ -72,7 +71,7 @@ export default function PortfolioCard({ project, className, ...rest }: { project
       {/* PROJECT TITLE */}
       <div className="mt-3">
         <div className="flex items-center gap-1">
-          <h2 className="text-sm leading-tight font-mono font-semibold uppercase">
+          <h2 className="text-base md:text-sm leading-tight font-mono font-semibold uppercase">
             {project.title}
           </h2>
           {(project.url && project.urlIsExternal) && <TbArrowUpRight strokeWidth={2.5}/>}

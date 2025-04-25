@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import Card from '@/components/home/portfolio-card';
 
 export interface PortfolioProject {
@@ -14,11 +16,13 @@ const experience: PortfolioProject[] = [
     title: 'Hansoh Bio',
     tagline: 'Chemical toxicity prediction',
     thumbnail: '/assets/portfolio/stemtothesky.png',
+    url: '/hansoh-bio',
   },
   {
     title: 'NASA',
     tagline: 'Atmospheric gravity waves',
     thumbnail: '/assets/portfolio/stemtothesky.png',
+    url: '/nasa',
   },
 ];
 
@@ -27,6 +31,7 @@ const projects: PortfolioProject[] = [
     title: 'Young-adult cooking app',
     tagline: 'UX case study',
     thumbnail: '/assets/portfolio/stemtothesky.png',
+    url: '/young-adult-cooking-app',
   },
   {
     title: 'STEM to the Sky',
@@ -56,6 +61,7 @@ const experiments: PortfolioProject[] = [
     title: 'Boba Barista',
     tagline: '3D character modeling',
     thumbnail: '/assets/portfolio/bobabarista.png',
+    url: '/boba-barista',
   },
   {
     title: 'Bongo Cat',
@@ -83,10 +89,22 @@ export default function Portfolio() {
           </h2>
           <div className="mt-4 flex flex-col gap-8">
             {experience.map((project, i) => (
-              <Card
-                key={i}
-                project={project}
-              />
+              project.url ?
+                <Link
+                  href={project.url}
+                  target={project.urlIsExternal ? "_blank" : "_self"}
+                  rel="noopener noreferrer"
+                >
+                  <Card
+                    key={i}
+                    project={project}
+                  />
+                </Link>
+              :
+                <Card
+                  key={i}
+                  project={project}
+                />
             ))}
           </div>
         </section>
@@ -100,10 +118,22 @@ export default function Portfolio() {
 
           <div className="mt-4 flex flex-col gap-8">
             {projects.map((project, i) => (
-              <Card
-                key={i}
-                project={project}
-              />
+              project.url ?
+                <Link
+                  href={project.url}
+                  target={project.urlIsExternal ? "_blank" : "_self"}
+                  rel="noopener noreferrer"
+                >
+                  <Card
+                    key={i}
+                    project={project}
+                  />
+                </Link>
+              :
+                <Card
+                  key={i}
+                  project={project}
+                />
             ))}
           </div>
         </section>
@@ -117,10 +147,22 @@ export default function Portfolio() {
 
           <div className="mt-4 flex flex-col gap-8">
             {experiments.map((project, i) => (
-              <Card
-                key={i}
-                project={project}
-              />
+              project.url ?
+                <Link
+                  href={project.url}
+                  target={project.urlIsExternal ? "_blank" : "_self"}
+                  rel="noopener noreferrer"
+                >
+                  <Card
+                    key={i}
+                    project={project}
+                  />
+                </Link>
+              :
+                <Card
+                  key={i}
+                  project={project}
+                />
             ))}
           </div>
         </section>
