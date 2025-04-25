@@ -59,7 +59,7 @@ export default function Navbar({ className, ...rest }: { className?: string; [ke
           </Link>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           className="h-full px-3 flex items-center text-lg font-heading font-semibold rounded-md hover:bg-light/15 transition-colors duration-300 ease-in-out"
           initial="initial"
           animate={pathname === "/portfolio" ? "active" : "initial"}
@@ -75,7 +75,7 @@ export default function Navbar({ className, ...rest }: { className?: string; [ke
           >
             Portfolio
           </Link>
-        </motion.div>
+        </motion.div> */}
       </div>
     </motion.div>
   );
