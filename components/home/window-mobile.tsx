@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn';
+import { cn } from '@/lib/utils';
 
 export default function Window({ children, className, ...rest }: { children?: React.ReactNode, drag?: boolean, className?: string, [key: string]: any }) {
   return (

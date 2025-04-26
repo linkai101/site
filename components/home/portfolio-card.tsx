@@ -2,7 +2,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
-import { cn } from '@/utils/cn';
+import { cn } from '@/lib/utils';
 import { TbArrowUpRight } from "react-icons/tb";
 
 import type { PortfolioProject } from "@/components/home/portfolio";

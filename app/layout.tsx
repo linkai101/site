@@ -1,5 +1,5 @@
 import './globals.css';
-import { cn } from '@/utils/cn';
+import { cn } from '@/lib/utils';
 import { Geist, Koulen, Geist_Mono, Pinyon_Script } from "next/font/google";
 import Navbar from '@/components/navbar';
 

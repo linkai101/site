@@ -94,9 +94,9 @@ export default function Portfolio() {
                   href={project.url}
                   target={project.urlIsExternal ? "_blank" : "_self"}
                   rel="noopener noreferrer"
+                  key={i}
                 >
                   <Card
-                    key={i}
                     project={project}
                   />
                 </Link>
@@ -123,9 +123,9 @@ export default function Portfolio() {
                   href={project.url}
                   target={project.urlIsExternal ? "_blank" : "_self"}
                   rel="noopener noreferrer"
+                  key={i}
                 >
                   <Card
-                    key={i}
                     project={project}
                   />
                 </Link>
@@ -152,9 +152,9 @@ export default function Portfolio() {
                   href={project.url}
                   target={project.urlIsExternal ? "_blank" : "_self"}
                   rel="noopener noreferrer"
+                  key={i}
                 >
                   <Card
-                    key={i}
                     project={project}
                   />
                 </Link>

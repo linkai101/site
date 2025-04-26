@@ -1,6 +1,5 @@
 import Hero from '@/components/home/hero';
 import HeroMobile from '@/components/home/hero-mobile';
-import SelectedWorks from '@/components/home/selected-works';
 import Portfolio from '@/components/home/portfolio';
 import Footer from '@/components/footer';
 

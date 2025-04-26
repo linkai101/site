@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { cn } from '@/utils/cn';
+import { cn } from '@/lib/cn';
 
 export default function Navbar({ className, ...rest }: { className?: string; [key: string]: any }) {
   const pathname = usePathname();

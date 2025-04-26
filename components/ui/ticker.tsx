@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn';
+import { cn } from '@/lib/cn';
 
 export default function Ticker({ slides, direction="left", className, ...rest }: {
   slides: React.ReactNode[],
