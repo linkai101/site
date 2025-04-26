@@ -1,5 +1,5 @@
 "use client";
-import { cn } from '@/lib/cn';
+import { cn } from '@/lib/utils';
 import Ticker from '@/components/ui/ticker';
 
 export default function Footer({ className, ...rest }: { className?: string, [key: string]: any }) {
