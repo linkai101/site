@@ -13,15 +13,15 @@ export interface PortfolioProject {
 
 const experience: PortfolioProject[] = [
   {
-    title: 'Hansoh Bio',
+    title: 'Hansoh Pharma',
     tagline: 'Chemical toxicity prediction',
-    thumbnail: '/assets/portfolio/stemtothesky.png',
+    thumbnail: '/assets/thumbnails/hansoh-bio.png',
     url: '/hansoh-bio',
   },
   {
     title: 'NASA',
-    tagline: 'Atmospheric gravity waves',
-    thumbnail: '/assets/portfolio/stemtothesky.png',
+    tagline: 'Climate research',
+    thumbnail: '/assets/thumbnails/nasa.png',
     url: '/nasa',
   },
 ];
@@ -30,20 +30,20 @@ const projects: PortfolioProject[] = [
   {
     title: 'Young-adult cooking app',
     tagline: 'UX case study',
-    thumbnail: '/assets/portfolio/stemtothesky.png',
+    thumbnail: '/assets/thumbnails/young-adult-cooking-app.png',
     url: '/young-adult-cooking-app',
   },
   {
     title: 'STEM to the Sky',
     tagline: 'Website design',
-    thumbnail: '/assets/portfolio/stemtothesky.png',
+    thumbnail: '/assets/thumbnails/stemtothesky.png',
     url: 'https://stemtothesky.org',
     urlIsExternal: true,
   },
   {
     title: 'Oracle of Blair',
     tagline: '2022 U.S. elections forecast',
-    thumbnail: '/assets/portfolio/oracleofblair.png',
+    thumbnail: '/assets/thumbnails/oracleofblair.png',
     url: 'https://polistat-site-2022.vercel.app',
     urlIsExternal: true,
   },
@@ -53,27 +53,27 @@ const experiments: PortfolioProject[] = [
   {
     title: 'Football graphic',
     tagline: 'Animated web component',
-    thumbnail: '/assets/portfolio/football.png',
+    thumbnail: '/assets/thumbnails/football.png',
     url: 'https://football.linkai.dev',
     urlIsExternal: true,
   },
   {
     title: 'Boba Barista',
     tagline: '3D character modeling',
-    thumbnail: '/assets/portfolio/bobabarista.png',
+    thumbnail: '/assets/thumbnails/boba-barista.png',
     url: '/boba-barista',
   },
   {
     title: 'Bongo Cat',
     tagline: 'Instrument simulator',
-    thumbnail: '/assets/portfolio/bongocat.png',
+    thumbnail: '/assets/thumbnails/bongocat.png',
     url: 'https://bongocat.linkai.dev',
     urlIsExternal: true,
   },
   {
     title: 'Wordle Archive',
     tagline: 'Word game clone',
-    thumbnail: '/assets/portfolio/wordlearchive.png',
+    thumbnail: '/assets/thumbnails/wordlearchive.png',
     url: 'https://wordle.linkaiwu.com',
     urlIsExternal: true,
   },

@@ -6,6 +6,15 @@ import rehypeHighlight from "rehype-highlight";
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  async redirects() {
+    return [
+      {
+        source: '/portfolio',
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
 };
 
 const withMDX = createMDX({

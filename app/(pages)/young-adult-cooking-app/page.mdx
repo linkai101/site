@@ -1,9 +1,19 @@
 import { Columns } from "@/components/pages/columns";
 import { ImageGroup } from "@/components/pages/image-group";
+import AffinityDiagram from "./affinity-diagram.png";
+import DotVoting from "./dot-voting.png";
+import Wireframe from "./wireframe.png";
+import Wireframe2 from "./wireframe2.png";
+import Wireframe3 from "./wireframe3.png";
+import DesignSystem from "./design-system.png";
+import DesignSystem2 from "./design-system2.png";
+import Prototype from "./prototype.png";
+import Prototype2 from "./prototype2.png";
+import Prototype3 from "./prototype3.png";
 
 export const metadata = {
   title: "Designing a cooking app for young-adults",
-  description: "",
+  description: "A UX case study for L I S 470: Interaction Design Studio",
 };
 
 # Designing a cooking app for young-adults
@@ -29,7 +39,7 @@ export const metadata = {
   </div>
 </Columns>
 
-> This UX case study was done for a final project of L I S 470: Interaction Design Studio.
+> This UX case study was submitted as a final project for L I S 470: Interaction Design Studio.
 
 Cooking can be a daunting task, especially for young adults and college students living on their own. From finding easy-to-follow recipes to buying the right groceries and ensuring they have the proper equipment, new cooks often face significant barriers to entry. These challenges can make home cooking feel overwhelming.
 
@@ -66,6 +76,14 @@ Through these sessions, we documented pain points and used an affinity diagram t
 ## Defining pain points
 After conducting contextual inquiries with real participants, our team built an affinity diagram to gather and visualize our observations.
 
+<ImageGroup
+  images={[
+    { src: AffinityDiagram, alt: "Affinity diagram", width: 800, height: 600 },
+  ]}
+  caption="Affinity diagram of contextual inquiry observations"
+  className="rounded-lg"
+/>
+
 Our research revealed several key insights based on their issues, goals, and recipe preferences:
 
 - Participants found time to be the biggest deterrent from cooking at home, citing inaccurate prep times on recipes, uncertainty in cook times for particular ingredients, and difficulties with managing time.
@@ -90,14 +108,47 @@ With these insights in mind, we brainstormed potential solutions using the brain
 
 Then, using dot voting, we prioritized features we could focus on towards building an initial Minimum Viable Product (MVP).
 
+<ImageGroup
+  images={[
+    { src: DotVoting, alt: "Dot voting", width: 800, height: 600 },
+  ]}
+  caption="Dot voting on a diagram of brainstormed ideas grouped by theme"
+/>
+
 ## Prototyping a solution
 We began with low-fidelity sketches and wireframes to outline the user journey and potential UI directions. While user flow diagrams could have been more emphasized, we established a solid foundation for the design process.
+
+<ImageGroup
+  images={[
+    { src: Wireframe, alt: "Wireframe", width: 800, height: 600 },
+    { src: Wireframe2, alt: "Wireframe 2", width: 800, height: 600 },
+    { src: Wireframe3, alt: "Wireframe 3", width: 800, height: 600 },
+  ]}
+  caption="Wireframes for views of the recipe page"
+/>
 
 Before jumping into the UI design process, I took on the role of creating a basic design system for the project, which is a library collection of colors and reusable components. This helped with delivering consistent user interfaces in time.
 
 The system I developed was very barebones — with the time constraints, I wanted to get an earlier start on the design process.
 
+<ImageGroup
+  images={[
+    { src: DesignSystem, alt: "Design System", width: 400, height: 400 },
+    { src: DesignSystem2, alt: "Design System 2", width: 400, height: 400 },
+  ]}
+  caption="A barebones design system for the cooking app"
+/>
+
 We then built out a medium-fidelity prototype with interactive-elements and several adjustments and improvements from the original wireframes.
+
+<ImageGroup
+  images={[
+    { src: Prototype, alt: "Prototype", width: 600, height: 800 },
+    { src: Prototype2, alt: "Prototype 2", width: 600, height: 800 },
+    { src: Prototype3, alt: "Prototype 3", width: 600, height: 800 },
+  ]}
+  caption="Auth, home, and search views of the prototype"
+/>
 
 Try our interactive prototype preview below!
 
