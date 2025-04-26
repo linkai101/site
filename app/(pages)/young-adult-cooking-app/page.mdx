@@ -1,0 +1,136 @@
+import { Columns } from "@/components/pages/columns";
+import { ImageGroup } from "@/components/pages/image-group";
+
+export const metadata = {
+  title: "Designing a cooking app for young-adults",
+  description: "",
+};
+
+# Designing a cooking app for young-adults
+<p className="-mt-7 text-dark/25">UX case study</p>
+
+<Columns num={3}>
+  <div>
+    **ROLES**<br/>
+    UX Research<br/>
+    Wireframing<br/>
+    Figma Prototyping
+  </div>
+  
+  <div>
+    **COLLABORATORS**<br/>
+    Kolby Boesel<br/>
+    William Young
+  </div>
+
+  <div>
+    **TIMELINE**<br/>
+    10.2024-12.2024
+  </div>
+</Columns>
+
+> This UX case study was done for a final project of L I S 470: Interaction Design Studio.
+
+Cooking can be a daunting task, especially for young adults and college students living on their own. From finding easy-to-follow recipes to buying the right groceries and ensuring they have the proper equipment, new cooks often face significant barriers to entry. These challenges can make home cooking feel overwhelming.
+
+Our team set out to create a solution to alleviate these stresses, focusing on college students on our campus.
+
+## Personal exploration
+Prior to the formal start of this project, I was preparing for my sophomore year of college. I was going to live in my own off-campus apartment, and, for the first time, I was going to have to cook for myself without a meal plan. Having only ever successfully made scrambled eggs and sandwiches, I was underprepared to say the least.
+
+First, I set out by gathering family recipes, observing and assisting the home cooking of my parents. I then moved onto searching for recipes on TikTok, a short-form video platform, and I found many quick and easy recipes geared specifically for college students like me, such as low-effort meals and easy rice cooker recipes.
+
+I loved the visuals, narration, and captions with ingredient details. Cooking while following the short-form videos felt personal, almost as if someone was guiding me step by step.
+
+However, I found the pacing of TikTok videos frustrating — constantly having to pause and rewind disrupted my flow. This sparked the idea for a cooking app combining short-form video tutorials with step-by-step pacing tailored to the user's progress.
+
+## Initial user research
+While I entered the project with preliminary ideas, it was essential to understand the broader challenges faced by my peers. To do so, we conducted contextual inquiries, observing and interviewing six students as they prepared dishes using traditional text-based recipes. Our sample met the following criteria:
+
+- Students at UW-Madison
+- Age range between 18-22 years old
+- Having reliable access to a kitchen and common cooking equipment
+- Able to give honest and relatable feedback
+
+These criteria closely matches those of our target audience. In total, we observed 6 different sessions with interested individuals, who cooked the following meals:
+
+- Homemade burger for lunch
+- Sweet potato fries as a snack
+- French toast for brunch
+- Dumplings from scratch for meal prep
+- Baking cookies
+- Pesto pasta with steak for meal prep
+
+Through these sessions, we documented pain points and used an affinity diagram to synthesize our findings.
+
+## Defining pain points
+After conducting contextual inquiries with real participants, our team built an affinity diagram to gather and visualize our observations.
+
+Our research revealed several key insights based on their issues, goals, and recipe preferences:
+
+- Participants found time to be the biggest deterrent from cooking at home, citing inaccurate prep times on recipes, uncertainty in cook times for particular ingredients, and difficulties with managing time.
+- Participants often had difficulties with cooking environment and equipment, citing cluttered or limiting cooking environment, less-than-ideal equipment, and uncertainty with proper equipment usage.
+- Participants mostly found that prepping ingredients takes the longest.
+- Participants found themselves making ingredient substitutions for convenience, accessibility, and allergies.
+- Participants had different goals for cooking, including for self-sustenance, for the convenience of meal prepping, for the social aspect (cooking with friends), for therapeutic results, and for high nutrient value.
+- Participants had different preferences when it came to recipe format, with some preferring visual recipes, some preferring text-based recipes, and some preferring a hybrid format.
+- Participants found recipes through social media, from family, and from online websites.
+- Participants, when cooking, display recipes on their phone or computer.
+
+## Ideation
+With these insights in mind, we brainstormed potential solutions using the brainwalking method. Each team member generated ideas without judgement, then building on top of one another’s suggestions. Here were the overarching themes we saw in our ideas:
+
+- Recipes with a hybrid format of video and text instructions, with settings to adjust the format to personal liking.
+- Automatically offer ingredient substitutes and in-line tips on technique and equipment usage on recipes
+- Recipe discovery based on ingredient/equipment availability. Additional search options could include budget, allergies, duration, and auto-proportion adjustment.
+- A shopping list-builder based on selected recipes
+- Local recipe discovery with social and content-sharing features to share photos of results.
+- Voice-based AI cooking companion for hands-free recipe control and inquiry.
+- Seamless import of traditional recipes or online video recipes into the app.
+
+Then, using dot voting, we prioritized features we could focus on towards building an initial Minimum Viable Product (MVP).
+
+## Prototyping a solution
+We began with low-fidelity sketches and wireframes to outline the user journey and potential UI directions. While user flow diagrams could have been more emphasized, we established a solid foundation for the design process.
+
+Before jumping into the UI design process, I took on the role of creating a basic design system for the project, which is a library collection of colors and reusable components. This helped with delivering consistent user interfaces in time.
+
+The system I developed was very barebones — with the time constraints, I wanted to get an earlier start on the design process.
+
+We then built out a medium-fidelity prototype with interactive-elements and several adjustments and improvements from the original wireframes.
+
+Try our interactive prototype preview below!
+
+<iframe
+  src="https://embed.figma.com/proto/mKSBlrYNNoGidQ0eZcHWBm/RecipeTok-Wireframe?page-id=0%3A1&node-id=243-1251&p=f&viewport=765%2C315%2C0.15&scaling=scale-down&content-scaling=fixed&starting-point-node-id=243%3A1251&show-proto-sidebar=1&embed-host=share"
+  allowFullScreen
+  className="w-full h-[40rem] border border-dark/10 rounded-lg"
+/>
+
+Though I am proud with our delivered prototype, there are a couple of areas needing improvement in my opinion:
+
+- The consistency of spacing in cookbook and profile views
+- Recipe viewer with the hybrid video and text format as described in the ideation phase
+
+## What's next?
+While this concludes our progress within the limited timeframe of the project, it holds significant potential.
+
+The next stage would involve testing, where we would convert the prototype into a functional state and evaluate the app's usability and effectiveness with actual recipes. User interviews could be conducted to gather actionable insight into refining the UI. Additional contextual inquiries could be conducted to gather insight into the recipe format and overall cooking experience, addressing users' needs.
+
+Once sufficient, development could be started for an MVP including the app's core features. With this version, we can conduct real-world testing and collect feedback to guide future iterations, ensuring the app delivers meaningful value to its users.
+
+## What I learned
+This project marked my first experience following the stages of interaction design, and it taught me a lot about designing and prototyping in a structured and collaborative manner.
+
+### Staying organized
+With the many stages of design thinking — empathizing, defining, ideating, and prototyping — we had to frequently communicate about project goals and progress to ensure alignment among the team. Also, we had to keep our work organized, including all the physical post-its and sketching from brainstorming sessions to all the digital files generated in ideation and prototyping. Figma helped a lot in, especially in streamlining the design process.
+
+### Team dynamics
+The techniques in effective ideation that we learned in class were very effective. The brainwalking and dot-voting techniques underscored the value of diverse perspectives, even with the small scale of our project.
+
+### Managing expectations
+Focusing on achievable goals within constraints was key to making meaningful progress. Although we had ambitious ideas, prioritizing features allowed us to stay on track and deliver a functional prototype.
+
+---
+
+Thanks for reading! And thank you to everyone involved in this effort: Kolby, William, T.A. Sri Pandey, and Professor Corey Jackson of L I S 470.
