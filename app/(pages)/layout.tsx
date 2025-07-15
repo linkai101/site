@@ -39,7 +39,7 @@ export default function PagesLayout({
       <body className={cn("bg-light text-dark", epilogue.variable, koulen.variable, geistMono.variable, pinyonScript.variable)}>
         <Navbar/>
 
-        <main className="container max-w-3xl px-4 pt-20 md:pt-24 pb-16 prose prose-theme prose-h1:text-3xl prose-h2:mb-2 prose-h3:text-lg prose-h3:mb-2 prose-code:text-xs prose-hr:border-dark/10">
+        <main className="container max-w-4xl px-4 pt-20 md:pt-24 pb-16 prose prose-theme prose-h1:text-3xl prose-h2:mb-2 prose-h3:text-lg prose-h3:mb-2 prose-code:text-xs prose-hr:border-dark/10">
           {children}
         </main>
 

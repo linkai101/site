@@ -1,10 +1,9 @@
 "use client";
-import { cn } from '@/lib/utils';
 import Ticker from '@/components/ui/ticker';
 
-export default function Footer({ className, ...rest }: { className?: string, [key: string]: any }) {
+export default function Footer() {
   return (
-    <footer className={cn("container max-w-7xl", className)} {...rest}>
+    <footer className="">
       <Ticker
         direction="left"
         slides={[

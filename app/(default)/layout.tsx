@@ -1,7 +1,12 @@
 import '../globals.css';
 import { cn } from '@/lib/utils';
-import { Geist, Koulen, Geist_Mono, Pinyon_Script } from "next/font/google";
+import { Epilogue, Geist, Koulen, Geist_Mono, Pinyon_Script } from "next/font/google";
 import Navbar from '@/components/navbar';
+
+const epilogue = Epilogue({
+  variable: "--font-epilogue",
+  subsets: ["latin"],
+});
 
 const geist = Geist({
   variable: "--font-geist",
@@ -35,7 +40,7 @@ export default function LightLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </head>
-      <body className={cn("bg-light text-dark", geist.variable, koulen.variable, geistMono.variable, pinyonScript.variable)}>
+      <body className={cn("bg-light text-dark", epilogue.variable, geist.variable, koulen.variable, geistMono.variable, pinyonScript.variable)}>
         {children}
         <Navbar/>
       </body>
