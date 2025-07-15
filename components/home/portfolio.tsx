@@ -81,7 +81,7 @@ const experiments: PortfolioProject[] = [
 
 export default function Portfolio() {
   return (
-    <div className="px-4 pt-16 pb-20 container-max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-24 md:gap-8">
+    <div className="px-4 pt-16 pb-20 container max-w-8xl grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-8">
       <div className="relative">
         <section className="sticky top-16">
           <h2 className="text-center text-lg text-dark/25 font-mono font-medium uppercase italic">
@@ -109,6 +109,8 @@ export default function Portfolio() {
           </div>
         </section>
       </div>
+
+      <hr className="block lg:hidden border-primary/25 border-1.5"/>
 
       <div className="relative">
         <section className="sticky top-16">
@@ -138,6 +140,8 @@ export default function Portfolio() {
           </div>
         </section>
       </div>
+
+      <hr className="block lg:hidden border-primary/25 border-1.5"/>
 
       <div className="relative">
         <section className="sticky top-16">

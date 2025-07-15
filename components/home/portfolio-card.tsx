@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { TbArrowUpRight } from "react-icons/tb";
+import { TbArrowUpRight, TbExternalLink } from "react-icons/tb";
 
 import type { PortfolioProject } from "@/components/home/portfolio";
 
@@ -40,7 +40,7 @@ export default function PortfolioCard({ project, className, ...rest }: { project
       }}
       {...rest}
     >
-      <div className="relative rounded-xl overflow-hidden">
+      <div className="relative rounded-xl overflow-hidden select-none">
         <Image
           src={project.thumbnail}
           alt={project.title}
@@ -52,7 +52,7 @@ export default function PortfolioCard({ project, className, ...rest }: { project
 
         {/* TINT */}
         <motion.div
-          className="absolute inset-0 bg-dark/5"
+          className="absolute inset-0 bg-dark/5 rounded-xl shadow-inner"
           initial={{
             opacity: 0,
           }}
@@ -61,25 +61,58 @@ export default function PortfolioCard({ project, className, ...rest }: { project
               opacity: project.url ? 1 : 0,
               transition: {
                 duration: 0.3,
-                delay: 0,
               }
             },
           }}
         />
       </div>
       
-      {/* PROJECT TITLE */}
+      {/* PROJECT INFO */}
       <div className="mt-3">
         <div className="flex items-center gap-1">
-          <h2 className="text-base md:text-sm leading-tight font-mono font-semibold uppercase">
+          <motion.h2
+            className="text-base md:text-sm leading-tight font-mono font-medium uppercase"
+            initial={{
+              fontWeight: 500
+            }}
+            variants={{
+              active: {
+                fontWeight: 600,
+              },
+            }}
+          >
             {project.title}
-          </h2>
-          {(project.url && project.urlIsExternal) && <TbArrowUpRight strokeWidth={2.5}/>}
+          </motion.h2>
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 2,
+            }}
+            variants={{
+              active: {
+                opacity: 1,
+                y: 0,
+              },
+            }}
+          >
+            {(project.url && project.urlIsExternal) && <TbExternalLink strokeWidth={2.5} className="mx-0.5"/>}
+            {(project.url && !project.urlIsExternal) && <TbArrowUpRight strokeWidth={2.5}/>}
+          </motion.div>
         </div>
 
-        <p className="text-sm text-dark/25 leading-tight font-mono uppercase">
+        <motion.p
+          className="text-sm text-dark/25 leading-tight font-mono uppercase"
+          initial={{
+            fontWeight: 400,
+          }}
+          variants={{
+            active: {
+              fontWeight: 500,
+            },
+          }}
+        >
           {project.tagline}
-        </p>
+        </motion.p>
       </div>
     </motion.div>
   );
