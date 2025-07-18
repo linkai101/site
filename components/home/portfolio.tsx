@@ -41,6 +41,13 @@ const projects: PortfolioProject[] = [
     urlIsExternal: true,
   },
   {
+    title: '3D Village Workshop',
+    tagline: '3D modeling workshop for clubs',
+    thumbnail: '/assets/thumbnails/3d-workshop.png',
+    url: 'https://jams.hackclub.com/jam/3d-club-village',
+    urlIsExternal: true,
+  },
+  {
     title: 'Oracle of Blair',
     tagline: '2022 U.S. elections forecast',
     thumbnail: '/assets/thumbnails/oracleofblair.png',
