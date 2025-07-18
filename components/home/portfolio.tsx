@@ -13,14 +13,20 @@ export interface PortfolioProject {
 
 const experience: PortfolioProject[] = [
   {
+    title: 'Amazon',
+    tagline: 'Summer 2025 · Seattle',
+    thumbnail: '/assets/thumbnails/amazon.png',
+    url: '/amazon',
+  },
+  {
     title: 'Hansoh Pharma',
-    tagline: 'Chemical toxicity prediction',
-    thumbnail: '/assets/thumbnails/hansoh-bio.png',
-    url: '/hansoh-bio',
+    tagline: 'Summer 2024 · Rockville + Shanghai',
+    thumbnail: '/assets/thumbnails/hansoh-pharma.png',
+    url: '/hansoh-pharma',
   },
   {
     title: 'NASA',
-    tagline: 'Climate research',
+    tagline: 'Summer 2022 · Goddard Space Flight Center',
     thumbnail: '/assets/thumbnails/nasa.png',
     url: '/nasa',
   },
