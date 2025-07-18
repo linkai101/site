@@ -34,12 +34,6 @@ const experience: PortfolioProject[] = [
 
 const projects: PortfolioProject[] = [
   {
-    title: 'Young-adult cooking app',
-    tagline: 'UX case study',
-    thumbnail: '/assets/thumbnails/young-adult-cooking-app.png',
-    url: '/young-adult-cooking-app',
-  },
-  {
     title: 'STEM to the Sky',
     tagline: 'Website design',
     thumbnail: '/assets/thumbnails/stemtothesky.png',
