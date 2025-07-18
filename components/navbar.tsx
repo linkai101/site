@@ -11,7 +11,7 @@ export default function Navbar({ className, ...rest }: { className?: string; [ke
   return (
     <motion.div
       className={cn("fixed top-3 left-1/2 py-0.5 flex text-light backdrop-blur-sm rounded-xl border border-light/20 overflow-hidden z-20", className)}
-      style={{ boxShadow: "inset 0 0 0 3000px rgba(31, 17, 17, 0.3)" }}
+      style={{ boxShadow: "inset 0 0 0 3000px rgba(31, 17, 17, 0.35)" }}
       initial={{
         opacity: 0,
         x: "-50%",

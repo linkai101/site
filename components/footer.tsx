@@ -35,13 +35,7 @@ export default function Footer() {
             <p className="font-sketchOutline">
               Thank you
             </p>
-            <p className="font-sketchOutline">
-              Thank you
-            </p>
             <p className="font-sketch">
-              Thank you
-            </p>
-            <p className="font-sketchOutline">
               Thank you
             </p>
             <p className="font-sketchOutline">
