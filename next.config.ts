@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/portfolio',
-        destination: '/',
+        destination: '/#portfolio',
         permanent: true,
       },
     ]

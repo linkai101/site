@@ -81,7 +81,7 @@ const experiments: PortfolioProject[] = [
 
 export default function Portfolio() {
   return (
-    <div className="px-4 pt-16 pb-20 container max-w-8xl grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-8">
+    <div className="px-4 pt-16 pb-20 container max-w-8xl grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-8" id="portfolio">
       <div className="relative">
         <section className="sticky top-16">
           <h2 className="text-center text-lg text-dark/25 font-mono font-medium uppercase italic">
