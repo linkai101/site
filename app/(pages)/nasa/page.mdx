@@ -1,0 +1,98 @@
+import Image from "next/image";
+import { Columns } from "@/components/pages/columns";
+import { ImageGroup } from "@/components/pages/image-group";
+import Tse2020Path from "./tse-2020-path.jpg";
+import Cloud from "./cloud.png";
+import GwBeforeDetrend from "./gw-beforedetrend.png";
+import GwAfterDetrend from "./gw-afterdetrend.png";
+import Zebra from "./zebra.jpg";
+import ZebraGabor from "./zebra_gabor.jpg";
+import GwAllComparison from "./gw-ALL-comparison.png";
+
+export const metadata = {
+  title: "NASA",
+  description: "SUMMER 2022 — A research project at the NASA Climate and Radiation Lab",
+};
+
+<Image
+  src="/assets/thumbnails/nasa.png"
+  alt="NASA thumbnail"
+  width={3200}
+  height={1200}
+  className="rounded-lg"
+/>
+
+# NASA
+<p className="-mt-7 text-dark/25 font-mono uppercase">Summer 2022 · Goddard Space Flight Center</p>
+
+<Columns num={3} borderVisible>
+  <div>
+    **ROLE**<br/>
+    Research Intern
+  </div>
+
+  <div>
+    **TIMELINE**<br/>
+    06.2022 - 08.2022
+  </div>
+
+  <div>
+    **TOOLS**<br/>
+    Python<br/>
+    Matplotlib<br/>
+    NumPy
+  </div>
+</Columns>
+
+As my high school senior research project, I spent the summer of 2022 doing climate research for NASA's Climate and Radiation Lab under the mentorship of Dr. Jie Gong. I researched atmospheric gravity waves caused the total solar eclipse of 2020 and performed data visualization on satellite data.
+
+## The project
+
+Atmospheric gravity waves are subtle atmospheric disturbances caused by air moving in different directions. They are often caused by weather systems, but can also be caused by other factors like solar eclipses and volcanic eruptions. Understanding their behavior is important for predicting weather patterns and climate change.
+
+As a part of the NASA-funded Nationwide Eclipse Ballooning Project (NEBP), I developed a Python-based analysis tool to detect and visualize these gravity waves, focusing on the 2022 total solar eclipse event in South America.
+
+<ImageGroup
+  images={[
+    { src: Tse2020Path, alt: "Eclipse path over Chile and Argentina on December 14, 2020", width: 1144, height: 652 },
+    { src: Cloud, alt: "Cloud map over Chile and Argentina on December 14, 2020", width: 1144, height: 652 },
+  ]}
+  caption="Eclipse path and cloud map over Chile and Argentina on December 14, 2020"
+  className="rounded-lg"
+/>
+
+I implemented signal processing techniques—including background detrending and Gabor filtering—to extract concentric wave patterns from the noisy atmospheric datasets measuring temperature. First, I applied background detrending to remove the large-scale weather patterns, revealing the underlying shifts in atmospheric pressure.
+
+<ImageGroup
+  images={[
+    { src: GwBeforeDetrend, alt: "Temperature map before detrending", width: 800, height: 600 },
+    { src: GwAfterDetrend, alt: "Temperature map after detrending", width: 800, height: 600 },
+  ]}
+  caption="Applying background detrending to the temperature map"
+  className="rounded-lg"
+/>
+
+Then, I applied Gabor filtering to the temperature map to extract the wave patterns. See it in action on a zebra!
+
+<ImageGroup
+  images={[
+    { src: Zebra, alt: "Photo of zebra", width: 500, height: 500 },
+    { src: ZebraGabor, alt: "Photo of zebra after Gabor filtering", width: 500, height: 500 },
+  ]}
+  caption="Applying the Gabor filter to a photo of a zebra"
+  className="rounded-lg"
+/>
+
+<ImageGroup
+  images={[
+    { src: GwAllComparison, alt: "Comparison of temperature maps before and after wave patterns", width: 1879, height: 1600 },
+  ]}
+  caption="Comparison of temperature maps before and after wave patterns"
+  className="rounded-lg"
+/>
+
+This work helped transition NEBP's existing analysis tools to a more accessible and extensible Python framework, laying the groundwork for future wavelet-based spectral analysis and expanded scientific collaboration.
+
+Thank you to Dr. Gong for the mentorship and the opportunity to work on this project!
+
+> [Check out my intern of the week spotlight!](https://x.com/SpaceClubNews/status/1633478809100984325)
