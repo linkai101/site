@@ -14,7 +14,6 @@ export default function Window({ children, className, ...rest }: { children?: Re
       {...rest}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      whileTap="interact"
       variants={{
         hidden: {
           opacity: 0,
@@ -27,14 +26,6 @@ export default function Window({ children, className, ...rest }: { children?: Re
             type: 'spring',
             delay: Math.random() * 0.2,
             duration: 0.5,
-          }
-        },
-        interact: {
-          scale: 0.99,
-          opacity: 0.9,
-          transition: {
-            type: 'spring',
-            duration: 0.1,
           }
         },
       }}
