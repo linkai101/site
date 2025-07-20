@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { cn } from '@/utils/cn';
+import { cn } from '@/lib/utils';
 
 export default function Navbar({ className, ...rest }: { className?: string; [key: string]: any }) {
   const pathname = usePathname();
@@ -11,7 +11,7 @@ export default function Navbar({ className, ...rest }: { className?: string; [ke
   return (
     <motion.div
       className={cn("fixed top-3 left-1/2 py-0.5 flex text-light backdrop-blur-sm rounded-xl border border-light/20 overflow-hidden z-20", className)}
-      style={{ boxShadow: "inset 0 0 0 3000px rgba(31, 17, 17, 0.3)" }}
+      style={{ boxShadow: "inset 0 0 0 3000px rgba(31, 17, 17, 0.35)" }}
       initial={{
         opacity: 0,
         x: "-50%",
@@ -59,7 +59,7 @@ export default function Navbar({ className, ...rest }: { className?: string; [ke
           </Link>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           className="h-full px-3 flex items-center text-lg font-heading font-semibold rounded-md hover:bg-light/15 transition-colors duration-300 ease-in-out"
           initial="initial"
           animate={pathname === "/portfolio" ? "active" : "initial"}
@@ -75,7 +75,7 @@ export default function Navbar({ className, ...rest }: { className?: string; [ke
           >
             Portfolio
           </Link>
-        </motion.div>
+        </motion.div> */}
       </div>
     </motion.div>
   );

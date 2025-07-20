@@ -1,0 +1,95 @@
+import Image from "next/image";
+import { Columns } from "@/components/pages/columns";
+import { ImageGroup } from "@/components/pages/image-group";
+import ChemicalInventory from "./chemicalinventory.png";
+import ChemicalInventoryAddItems from "./chemicalinventory-additems.png";
+import ToxicityAppChat from "./toxicityapp-chat.png";
+import ToxicityAppChemicalPage from "./toxicityapp-chemicalpage.png";
+import ToxicityAppWorkflow from "./toxicityapp-workflow.png";
+
+export const metadata = {
+  title: "Hansoh Pharma",
+  description: "SUMMER 2024 — Software development in chemical inventory and toxicity prediction",
+};
+
+<Image
+  src="/assets/thumbnails/hansoh-pharma.png"
+  alt="Hansoh Pharma thumbnail"
+  width={3200}
+  height={1200}
+  className="rounded-lg"
+/>
+
+# Hansoh Pharma
+<p className="-mt-7 text-dark/25 font-mono uppercase">Summer 2024 · Rockville, MD</p>
+
+<Columns num={3} borderVisible>
+  <div>
+    **ROLE**<br/>
+    Software Engineering Intern
+  </div>
+
+  <div>
+    **TIMELINE**<br/>
+    05.2024 - 07.2024
+  </div>
+
+  <div>
+    **TOOLS**<br/>
+    React<br/>
+    PostgreSQL<br/>
+    Python
+  </div>
+</Columns>
+
+During the summer of 2024, I interned at Hansoh Pharma as a software engineer on the operations and science teams. During my time there, I worked on two major projects impacting operations and science research.
+
+## Chemical inventory
+
+When I started, the lab used a messy Excel spreadsheet to track their inventory of 1k+ hazerdous and fragile chemicals, which was quite inefficient and error prone.
+
+I designed and built an inventory management system in PostgreSQL, along with a web-based interface and a barcode-scanning standard operating procedure to track and manage their chemical inventory.
+
+<ImageGroup
+  images={[
+    { src: ChemicalInventory, alt: "Dashboard interface of the chemical inventory", width: 1117, height: 662 },
+  ]}
+  caption="Dashboard of the chemical inventory interface"
+  className="rounded-lg"
+/>
+
+<ImageGroup
+  images={[
+    { src: ChemicalInventoryAddItems, alt: "Interface for scanning in new items to the chemical inventory", width: 1117, height: 861 },
+  ]}
+  caption="Scanning in new items to the chemical inventory"
+  className="rounded-lg"
+/>
+
+## Molecule toxicity prediction
+
+Meanwile, a science research team overseas in China was working on a predictive AI model to predict the toxicity characteristics of new chemical compounds. I built a fullstack molecule toxicity prediction system, an early version of a tool utilizing the predictive AI model to be used by the science team.
+
+<ImageGroup
+  images={[
+    { src: ToxicityAppChat, alt: "Chat interface of the molecule toxicity prediction app", width: 1119, height: 691 },
+  ]}
+  caption="Chat interface of the toxicity prediction app"
+  className="rounded-lg"
+/>
+
+<ImageGroup
+  images={[
+    { src: ToxicityAppChemicalPage, alt: "Chemical details popout of the molecule toxicity prediction app", width: 1119, height: 685 },
+  ]}
+  caption="Chemical details popout of the toxicity prediction app"
+  className="rounded-lg"
+/>
+
+<ImageGroup
+  images={[
+    { src: ToxicityAppWorkflow, alt: "Wrkflow of the molecule toxicity prediction app", width: 1920, height: 1080 },
+  ]}
+  caption="High-level fullstack workflow of the system"
+  className="rounded-lg"
+/>
