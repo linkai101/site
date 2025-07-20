@@ -14,19 +14,19 @@ export interface PortfolioProject {
 const experience: PortfolioProject[] = [
   {
     title: 'Amazon',
-    tagline: 'Summer 2025 · Seattle',
+    tagline: 'Summer 2025 · Bellevue, WA',
     thumbnail: '/assets/thumbnails/amazon.png',
     url: '/amazon',
   },
   {
     title: 'Hansoh Pharma',
-    tagline: 'Summer 2024 · Rockville + Shanghai',
+    tagline: 'Summer 2024 · Rockville, MD',
     thumbnail: '/assets/thumbnails/hansoh-pharma.png',
     url: '/hansoh-pharma',
   },
   {
     title: 'NASA',
-    tagline: 'Summer 2022 · Goddard Space Flight Center',
+    tagline: 'Summer 2022 · Greenbelt, MD',
     thumbnail: '/assets/thumbnails/nasa.png',
     url: '/nasa',
   },
