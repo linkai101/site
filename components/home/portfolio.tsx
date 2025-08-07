@@ -41,10 +41,10 @@ const projects: PortfolioProject[] = [
     urlIsExternal: true,
   },
   {
-    title: '3D Village Workshop',
-    tagline: '3D modeling workshop for clubs',
-    thumbnail: '/assets/thumbnails/3d-workshop.png',
-    url: 'https://jams.hackclub.com/jam/3d-club-village',
+    title: 'Badgerfly',
+    tagline: 'Website design',
+    thumbnail: '/assets/thumbnails/badgerfly.png',
+    url: 'https://badger-fly.com',
     urlIsExternal: true,
   },
   {
