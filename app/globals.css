@@ -18,8 +18,14 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  
   --font-sans: var(--font-epilogue);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-londrina-solid);
+
+  --text-10xl: 10rem; /* 160px */
+  --text-11xl: 12rem; /* 192px */
 }
 
 @utility container {
