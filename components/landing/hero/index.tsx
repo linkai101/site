@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from "motion/react";
 import { LinkaiOS } from "./linkai-os";
+import { GrainedBackground } from "@/components/ui/grained";
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -40,6 +41,7 @@ export function HeroSection() {
             onPointerDown={() => heroRef.current?.scrollIntoView({ block: "start", behavior: "smooth" })}
           >
             <LinkaiOS/>
+            <GrainedBackground className="absolute inset-0 pointer-events-none"/>
           </motion.div>
 
           {/* LAPTOP FRAME */}
