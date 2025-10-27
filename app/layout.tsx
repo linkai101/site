@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Epilogue, Londrina_Solid } from "next/font/google";
+import { Bricolage_Grotesque, Geist_Mono, Londrina_Solid, Londrina_Outline, Londrina_Shadow, Londrina_Sketch } from "next/font/google";
+import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bricolageGrotesque = Bricolage_Grotesque({
+  variable: "--font-bricolage-grotesque",
   subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const epilogue = Epilogue({
-  variable: "--font-epilogue",
   subsets: ["latin"],
 });
 
@@ -23,9 +19,28 @@ const londrinaSolid = Londrina_Solid({
   subsets: ["latin"],
 });
 
+const londrinaOutline = Londrina_Outline({
+  variable: "--font-londrina-outline",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const londrinaShadow = Londrina_Shadow({
+  variable: "--font-londrina-shadow",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const londrinaSketch = Londrina_Sketch({
+  variable: "--font-londrina-sketch",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+
 export const metadata: Metadata = {
   title: "Linkai Wu",
-  description: "A developer, designer, and student fascinated with the intersection of tech, art, and people.",
+  description: "A student, software engineer, and designer exploring the intersection of technology, art, and people.",
 };
 
 export default function RootLayout({
@@ -36,7 +51,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${epilogue.variable} ${londrinaSolid.variable} antialiased`}
+        className={cn(
+          bricolageGrotesque.variable, 
+          geistMono.variable, 
+          londrinaSolid.variable, 
+          londrinaOutline.variable,
+          londrinaShadow.variable, 
+          londrinaSketch.variable, 
+          "antialiased"
+        )}
       >
         {children}
       </body>

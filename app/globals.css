@@ -20,9 +20,12 @@
   --color-primary: var(--primary);
   --color-on-primary: var(--on-primary);
   
-  --font-sans: var(--font-epilogue);
+  --font-sans: var(--font-bricolage-grotesque);
   --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-londrina-solid);
+  --font-londrina-solid: var(--font-londrina-solid);
+  --font-londrina-outline: var(--font-londrina-outline);
+  --font-londrina-shadow: var(--font-londrina-shadow);
+  --font-londrina-sketch: var(--font-londrina-sketch);
 
   --text-10xl: 10rem; /* 160px */
   --text-11xl: 12rem; /* 192px */
@@ -34,4 +37,9 @@
 
 body {
   @apply bg-background text-foreground font-sans;
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--on-primary);
 }
