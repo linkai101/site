@@ -34,7 +34,7 @@ export function HeroSection() {
         <motion.div
           className="perspective-[4000px]"
           style={{
-            scale: useTransform(smoothYProgress, [0, 0.8], [1, 0.4]),
+            scale: useTransform(smoothYProgress, [0, 1], [1, 0.4]),
           }}
         >
           {/* LAPTOP LID */}
@@ -44,7 +44,7 @@ export function HeroSection() {
               "-mt-6 -mb-[calc(3rem-6px)] -mx-6" // margin to offset positioning when expanded
             )}
             style={{
-              rotateX: useTransform(smoothYProgress, [0, 0.8, 1], [0, 10, -90]),
+              rotateX: useTransform(smoothYProgress, [0, 0.4, 1], [0, 10, 25]),
             }}
           >
             {/* LAPTOP SCREEN */}
@@ -86,17 +86,17 @@ export function HeroSection() {
               "-mt-6 -mb-[calc(3rem-6px)] -mx-6" // margin to offset positioning when expanded
             )}
             style={{
-              rotateX: useTransform(smoothYProgress, [0, 0.8, 1], [0, 10, -90]),
+              rotateX: useTransform(smoothYProgress, [0, 0.4, 1], [0, 10, 25]),
             }}
           >
-            <motion.div // thickness
+            {/* <motion.div // thickness
               className={cn(
                 "absolute top-0 inset-x-[3rem] h-3 bg-zinc-500 origin-top rotate-x-[90deg] z-10",
               )}
-            />
+            /> */}
 
             {/* a sad attempt at rounded corners (angled corners) */}
-            <motion.div
+            {/* <motion.div
               className={cn(
                 "absolute top-[3rem] left-0 h-3 w-[68px] origin-top-left bg-zinc-500 rotate-x-[90deg] rotate-y-[-45deg] z-10",
               )}
@@ -105,7 +105,7 @@ export function HeroSection() {
               className={cn(
                 "absolute top-[3rem] right-0 h-3 w-[68px] origin-top-right bg-zinc-500 rotate-x-[90deg] rotate-y-[45deg] z-10",
               )}
-            />
+            /> */}
           </motion.div>
 
           {/* LAPTOP BASE */}
