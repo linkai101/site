@@ -9,8 +9,8 @@ interface LinkaiOSProps {
 
 export function LinkaiOS({ allowInteraction = true }: LinkaiOSProps) {
   return (
-    <div className={cn("h-full relative bg-primary text-on-primary", allowInteraction ? "pointer-events-auto" : "pointer-events-none")}>
-      <h1 className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(-50%-4rem)] text-10xl text-nowrap text-on-primary/10 font-londrina-solid uppercase select-none">
+    <div className={cn("h-full relative bg-primary text-primary-foreground", allowInteraction ? "pointer-events-auto" : "pointer-events-none")}>
+      <h1 className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(-50%-4rem)] text-10xl text-nowrap text-primary-foreground/10 font-londrina-solid uppercase select-none">
         {"Linkai Wu"}
       </h1>
 

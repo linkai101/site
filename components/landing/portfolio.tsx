@@ -75,7 +75,7 @@ function PortfolioCard({ src, alt, title, label, url, urlIsExternal }: (typeof p
 
       <div className="mt-2 flex justify-between items-center gap-4">
         <h3 className="text-lg font-medium transition-[font-weight] duration-300 group-hover:font-semibold">{title}</h3>
-        <p className="text-sm font-mono text-foreground/40 uppercase transition-[font-weight] duration-300 group-hover:font-medium">{label}</p>
+        <p className="text-sm font-mono text-muted uppercase transition-[font-weight] duration-300 group-hover:font-medium">{label}</p>
       </div>
     </>
   );
@@ -114,9 +114,9 @@ export function PortfolioSection() {
           <tbody className="leading-relaxed">
             {experiences.map(({ year, company, role }) => (
               <tr key={year + company}>
-                <td className="text-foreground/40">{year}</td>
+                <td className="text-muted">{year}</td>
                 <td>{company}</td>
-                <td className="text-foreground/40">{role}</td>
+                <td className="text-muted">{role}</td>
               </tr>
             ))}
           </tbody>

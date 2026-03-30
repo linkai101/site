@@ -3,8 +3,9 @@
 :root {
   --background: #FCF5ED;
   --foreground: #1F1717;
+  --muted: #A49C97;
   --primary: #C7956D;
-  --on-primary: #FCF5ED;
+  --primary-foreground: #FCF5ED;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -17,8 +18,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
   --color-primary: var(--primary);
-  --color-on-primary: var(--on-primary);
+  --color-primary-foreground: var(--primary-foreground);
   
   --font-sans: var(--font-bricolage-grotesque);
   --font-mono: var(--font-geist-mono);
@@ -41,5 +43,5 @@ body {
 
 ::selection {
   background-color: var(--primary);
-  color: var(--on-primary);
+  color: var(--primary-foreground);
 }
