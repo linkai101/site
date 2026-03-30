@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { Window, CenteredFixedContentWindow } from "./window";
 
@@ -47,24 +46,20 @@ export function LinkaiOS({ allowInteraction = true }: LinkaiOSProps) {
         </p>
       </CenteredFixedContentWindow>
 
-      <Window className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(-50%+14rem)] w-[32rem] p-4 pt-12 pb-12">
+      <Window className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(3rem)] w-[32rem] p-4 pt-12 pb-12">
         <h2 className="text-2xl font-bold leading-tight">
-          {"Hey! I'm Linkai, a student"}<sup>1</sup>{", software engineer"}<sup>2</sup>{", and designer"}<sup>3</sup>{"."}
+          {"Hey! I'm Linkai, a student, software engineer, and designer."}
         </h2>
 
         <p className="text-lg leading-tight mt-4">
-          {"I'm currently exploring new mediums for storytelling and function, such as the web, mixed reality, and AI."}
+          {"I'm currently studying CS at NYU."}
         </p>
 
-        <p className="text-lg leading-tight mt-4">
-          {"Outside of work and school, I enjoy touching grass, consuming content, and eating food."}
+        <p className="text-lg leading-tight mt-2.5">
+          {"Outside of work and school, I enjoy eating & cooking food, exploring new places, and creating things!"}
         </p>
 
-        <p className="text-sm mt-4">
-          {"1—Studying computer science at NYU"}<br/>
-          {"2—Previously interned at Amazon"}<br/>
-          {"3—Aspiring!"}<br/>
-        </p>
+        <img src="/assets/logo-primary.png" alt="Linkai Wu's logo" className="mx-auto size-12 opacity-50 mt-6"/>
       </Window>
     </div>
   );
