@@ -59,6 +59,7 @@ export function HeroSection() {
   const screenWidth = useTransform(smoothYProgress, [0, 0.8], [viewportWidth, 1512]);
   const screenHeight = useTransform(smoothYProgress, [0, 0.8], [viewportHeight, 982]);
   const screenBorderRadius = useTransform(smoothYProgress, [0, 0.05], [0, 16]);
+  const thicknessZ = useTransform(screenHeight, h => h + 78 - 28);
 
   return (
     <motion.div
@@ -137,11 +138,12 @@ export function HeroSection() {
               "-mt-6 -mb-[calc(3rem-6px)] -mx-6" // margin to offset positioning when expanded
             )}
           />
-          <div // thickness
+          <motion.div // thickness
             className={cn(
-              "absolute bottom-0 inset-x-[3px] h-10 bg-zinc-700 origin-bottom translate-y-10 translate-z-[1030px] -z-30",
+              "absolute bottom-0 inset-x-[3px] h-10 bg-zinc-700 origin-bottom translate-y-10 -z-30",
               "-mt-6 -mb-[calc(3rem-6px)] -mx-6" // margin to offset positioning when expanded
             )}
+            style={{ translateZ: thicknessZ }}
           />
         </motion.div>
       </motion.div>
