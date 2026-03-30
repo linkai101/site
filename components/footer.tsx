@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { ArrowUp } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
@@ -10,14 +9,6 @@ export function Footer() {
   const tickerItems = Array.from({ length: 10 }, (_, index) => (
     <p key={index}>Linkai Wu &copy; {new Date().getFullYear()}</p>
   ));
-  const [hasScrolled, setHasScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setHasScrolled(window.scrollY > 120);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const handleJumpToTop = () => {
     window.scrollTo({
