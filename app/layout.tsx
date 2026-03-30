@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist_Mono, Londrina_Solid, Londrina_Outline, Londrina_Shadow, Londrina_Sketch } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
+import { Footer } from "@/components/footer";
 
 const bricolageGrotesque = Bricolage_Grotesque({
   variable: "--font-bricolage-grotesque",
@@ -61,7 +62,11 @@ export default function RootLayout({
           "antialiased"
         )}
       >
-        {children}
+        <main className="min-h-screen">
+          {children}
+        </main>
+
+        <Footer/>
       </body>
     </html>
   );

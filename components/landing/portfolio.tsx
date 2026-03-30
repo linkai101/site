@@ -14,12 +14,14 @@ const projects = [
     alt: "University shuttle transit app",
     title: "University shuttle transit app",
     label: "Concept (2025)",
+    url: "/2025-nyu-transit-app",
   },
   {
     src: "/assets/thumbnails/bobabarista.png",
-    alt: "Boba Barista",
-    title: "3D character modeling",
-    label: "Boba Barista (2024)",
+    alt: "3D boba barista",
+    title: "3D boba barista",
+    label: "Concept (2024)",
+    url: "/2024-boba-barista",
   },
   {
     src: "/assets/thumbnails/stemtothesky.png",
