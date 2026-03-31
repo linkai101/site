@@ -18,7 +18,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="pt-8">
+    <footer className="pt-6">
       <div className="container max-w-[104rem] px-6 pb-6">
         <div className="flex justify-between items-center gap-12 p-4 border border-primary/30">
           <div>

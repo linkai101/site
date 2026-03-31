@@ -67,16 +67,19 @@ const experiences = [
 function PortfolioCard({ src, alt, title, label, url, urlIsExternal }: (typeof projects)[number]) {
   const content = (
     <>
-      <div className="relative overflow-hidden transition-shadow duration-300 [box-shadow:inset_0_0_20px_rgba(0,0,0,0)] group-hover:[box-shadow:inset_0_0_20px_rgba(0,0,0,0.18)]">
+      <div className="relative overflow-hidden">
         <img
           src={src}
           alt={alt}
-          className="w-full transition-opacity duration-300 group-hover:opacity-80"
+          className="w-full transition-opacity duration-300 group-hover:opacity-95"
         />
+
+        {/* Tint */}
+        <div className="absolute inset-0 bg-foreground/5 shadow-inner opacity-0 group-hover:opacity-100 transition-opacity duration-300"/>
       </div>
 
-      <div className="mt-2 flex justify-between items-center gap-4">
-        <h3 className="text-lg font-medium transition-[font-weight] duration-300 group-hover:font-semibold">{title}</h3>
+      <div className="mt-2.5 flex flex-col sm:flex-row justify-between sm:items-center sm:gap-4">
+        <h3 className="text-lg font-medium leading-snug transition-[font-weight] duration-300 group-hover:font-semibold">{title}</h3>
         <p className="text-sm font-mono text-muted uppercase transition-[font-weight] duration-300 group-hover:font-medium">{label}</p>
       </div>
     </>
@@ -102,23 +105,26 @@ export function PortfolioSection() {
   const rightProjects = projects.filter((_, i) => i % 2 === 1);
 
   return (
-    <div className="container max-w-[104rem] px-6 py-8 grid grid-cols-2 gap-8 items-start">
+    <div className="container max-w-[104rem] px-6 py-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
       <h2 className="sr-only">Portfolio</h2>
 
-      <div className="flex items-end h-32">
-        <p className="text-4xl font-semibold">
+      <div className="flex items-end lg:h-32">
+        <p className="text-3xl lg:text-4xl font-semibold">
           {"I'm Linkai, a student, software engineer, and designer."}
         </p>
       </div>
 
-      <div className="flex items-end h-32">
+      <div className="flex items-end lg:h-32">
         <table className="w-full">
-          <tbody className="leading-relaxed">
+          <tbody className="">
             {experiences.map(({ year, company, role }) => (
               <tr key={year + company}>
-                <td className="text-muted">{year}</td>
-                <td>{company}</td>
-                <td className="text-muted">{role}</td>
+                <td className="text-muted pr-4 py-1.5 sm:py-0.5">{year}</td>
+                <td className="pr-4 py-1.5 sm:py-0.5">
+                  {company}
+                  <p className="block sm:hidden text-sm text-muted leading-none">{role}</p>
+                </td>
+                <td className="hidden sm:table-cell text-muted py-1.5 sm:py-0.5">{role}</td>
               </tr>
             ))}
           </tbody>

@@ -29,7 +29,7 @@ export function Window({ children, style, className, zIndex, onFocus }: WindowPr
       onPointerDown={onFocus}
     >
       <div
-        className="absolute top-0 inset-x-0 p-3 flex items-center gap-2 cursor-grab active:cursor-grabbing"
+        className="absolute top-0 inset-x-0 p-3 flex items-center gap-2 cursor-grab active:cursor-grabbing z-10"
         onPointerDown={e => { setIsPressed(true); dragControls.start(e); }}
         onPointerUp={() => setIsPressed(false)}
         onPointerLeave={() => setIsPressed(false)}
