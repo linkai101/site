@@ -22,21 +22,23 @@ export function Letterhead({ children, title, label, thumbnail, thumbnailAlt, me
   const contentRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="container max-w-6xl px-6 py-12 flex gap-18">
-      <div className="w-60">
+    <div className="container max-w-6xl px-6 py-12 flex flex-col lg:flex-row gap-12 lg:gap-16">
+      <div className="lg:w-60">
         <div className="sticky top-12">
           <Link href="/">
             <Button
               aria-label="Back to homepage"
               variant="link"
-              className="group gap-1 p-0! text-lg font-semibold"
+              className="group gap-1 p-0! text-xl lg:text-lg font-semibold"
             >
-              <ArrowLeft className="size-5 transition-all duration-300 group-hover:-translate-x-1" />
+              <ArrowLeft className="size-6 lg:size-5 transition-all duration-300 group-hover:-translate-x-1" />
               {"Back"}
             </Button>
           </Link>
 
-          <TableOfContents contentRef={contentRef} />
+          <div className="hidden lg:block">
+            <TableOfContents contentRef={contentRef} />
+          </div>
         </div>
       </div>
 
@@ -45,7 +47,7 @@ export function Letterhead({ children, title, label, thumbnail, thumbnailAlt, me
           {label}
         </p>
 
-        <h1 className="text-5xl font-bold mt-1.5">
+        <h1 className="text-4xl lg:text-5xl font-bold mt-1.5">
           {title}
         </h1>
 
@@ -54,7 +56,7 @@ export function Letterhead({ children, title, label, thumbnail, thumbnailAlt, me
         }
 
         {meta && meta.length > 0 && (
-          <div className="grid gap-12 mt-8" style={{ gridTemplateColumns: `repeat(${meta.length}, 1fr)` }}>
+          <div className="grid gap-6 mt-8" style={{ gridTemplateColumns: `repeat(auto-fit, minmax(min(140px, 100%), 1fr))` }}>
             {meta.map((col) => (
               <div key={col.label}>
                 <p className="text-sm text-muted font-mono font-medium uppercase">{col.label}</p>
