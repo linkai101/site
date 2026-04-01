@@ -1,18 +1,28 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, useSpring, useMotionValueEvent, useMotionValue, animate } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring, useMotionValueEvent, useMotionValue, animate } from "motion/react";
+
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { LinkaiOS } from "./linkai-os";
 import { GrainedBackground } from "@/components/ui/grained";
 
-export function HeroSection() {
+export function DesktopHeroSection() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef });
   const smoothYProgress = useSpring(scrollYProgress, { mass: 0.1, damping: 10 });
 
   const [atTop, setAtTop] = useState(true);
-  const outerPadding = useMotionValue(0);
+
   const borderWidth = useMotionValue(0);
   const screenOpacity = useMotionValue(1);
   const notchOpacity = useMotionValue(0);
@@ -27,7 +37,6 @@ export function HeroSection() {
 
     if ((v >= 1) !== atEndRef.current) {
       atEndRef.current = v >= 1;
-      animate(outerPadding, atEndRef.current ? 24 : 0, { duration: 0.5, ease: "easeInOut" });
       animate(borderWidth, atEndRef.current ? 1 : 0, { duration: 0.5, ease: "easeInOut" });
     }
     if ((v >= 0.9) !== screenDimRef.current) {
@@ -54,6 +63,7 @@ export function HeroSection() {
     return () => window.removeEventListener('resize', updateViewport);
   }, []);
 
+  const outerPadding = useTransform(smoothYProgress, [0.95, 1], [0, 24]);
   const laptopScale = useTransform(smoothYProgress, [0, 1], [1, 0.7]);
   const lidRotateX = useTransform(smoothYProgress, [0, 0.4, 1], [0, 10, 25]);
   const screenWidth = useTransform(smoothYProgress, [0, 0.8], [viewportWidth, 1512]);
@@ -71,6 +81,8 @@ export function HeroSection() {
         className="sticky top-0 h-dvh flex items-center justify-center overflow-hidden border-primary/30"
         style={{ borderWidth }}
       >
+        <Image src="/assets/wallpaper.png" alt="Wallpaper" fill className="object-cover" priority />
+        
         {/* LAPTOP */}
         <motion.div
           className="perspective-[4000px]"
@@ -97,7 +109,7 @@ export function HeroSection() {
               // scroll into focus when clicked
               onPointerDown={() => heroRef.current?.scrollIntoView({ block: "start", behavior: "smooth" })}
             >
-              <LinkaiOS allowInteraction={atTop}/>
+              <LinkaiOS allowInteraction={atTop} isLoaded={isLoaded}/>
               <GrainedBackground className="absolute inset-0 pointer-events-none"/>
             </motion.div>
 
@@ -146,6 +158,27 @@ export function HeroSection() {
             style={{ translateZ: thicknessZ }}
           />
         </motion.div>
+
+        {/* Loading screen */}
+        <AnimatePresence onExitComplete={() => setIsLoaded(true)}>
+          {isLoading && (
+            <motion.div
+              className="absolute inset-0 z-50 bg-primary text-primary-foreground flex items-center justify-center"
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+            >
+              <motion.img
+                src="/assets/logo-white.png"
+                alt="Linkai Wu"
+                className="size-24 select-none"
+                initial={{ opacity: 0, scale: 0.75 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.45, ease: [0.34, 1.56, 0.64, 1] }}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </motion.div>
   );
