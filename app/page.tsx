@@ -10,7 +10,16 @@ export default async function Home() {
 
   return (
     <div>
-      {isMobile ? <MobileHeroSection /> : <DesktopHeroSection />}
+      {isMobile ? <>
+        <MobileHeroSection />
+      </> : <>
+        <div className="md:hidden">
+          <MobileHeroSection />
+        </div>
+        <div className="hidden md:block">
+          <DesktopHeroSection />
+        </div>
+      </>}
       <PortfolioSection/>
     </div>
   );
