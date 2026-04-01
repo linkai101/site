@@ -95,13 +95,21 @@ export function PortfolioSection() {
         </table>
       </div>
 
-      <div className="flex flex-col gap-8">
+      {/* Mobile: all projects in order */}
+      <div className="lg:hidden flex flex-col gap-8">
+        {projects.map((project) => (
+          <PortfolioCard key={project.label} {...project} />
+        ))}
+      </div>
+
+      {/* Desktop: two staggered columns */}
+      <div className="hidden lg:flex flex-col gap-8">
         {leftProjects.map((project) => (
           <PortfolioCard key={project.label} {...project} />
         ))}
       </div>
 
-      <div className="flex flex-col gap-8">
+      <div className="hidden lg:flex flex-col gap-8">
         {rightProjects.map((project) => (
           <PortfolioCard key={project.label} {...project} />
         ))}
