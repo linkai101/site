@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Window, CenteredFixedContentWindow } from "./window";
 
@@ -9,6 +9,7 @@ interface LinkaiOSProps {
 }
 
 export function LinkaiOS({ allowInteraction = true }: LinkaiOSProps) {
+  const windowConstraintsRef = useRef<HTMLDivElement>(null);
   const [windowOrder, setWindowOrder] = useState([0, 1, 2, 3]);
 
   const bringToFront = useCallback((id: number) => {
@@ -22,6 +23,9 @@ export function LinkaiOS({ allowInteraction = true }: LinkaiOSProps) {
 
   return (
     <div className={cn("h-full relative bg-primary text-primary-foreground", allowInteraction ? "pointer-events-auto" : "pointer-events-none")}>
+      {/* Window constraint area */}
+      <div ref={windowConstraintsRef} className="invisible absolute top-0 -bottom-36 -inset-x-36 -z-[9999] pointer-events-none"/>
+
       <h1 className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(-50%-4rem)] text-10xl text-nowrap text-primary-foreground/10 font-londrina-solid uppercase select-none">
         {"Linkai Wu"}
       </h1>
@@ -32,6 +36,7 @@ export function LinkaiOS({ allowInteraction = true }: LinkaiOSProps) {
         innerClassName="text-10xl text-nowrap font-londrina-outline uppercase select-none"
         zIndex={getWindowZIndex(0)}
         onFocus={() => bringToFront(0)}
+        dragConstraints={windowConstraintsRef}
       >
         <p className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(-50%-4rem)] text-10xl text-nowrap font-londrina-solid uppercase select-none">
           {"Linkai Wu"}
@@ -45,6 +50,7 @@ export function LinkaiOS({ allowInteraction = true }: LinkaiOSProps) {
         innerClassName="text-10xl text-nowrap font-londrina-shadow uppercase select-none"
         zIndex={getWindowZIndex(1)}
         onFocus={() => bringToFront(1)}
+        dragConstraints={windowConstraintsRef}
       >
         <p className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(-50%-4rem)] text-10xl text-nowrap font-londrina-sketch uppercase select-none">
           {"Linkai Wu"}
@@ -58,6 +64,7 @@ export function LinkaiOS({ allowInteraction = true }: LinkaiOSProps) {
         innerClassName="text-10xl text-nowrap font-londrina-sketch uppercase select-none"
         zIndex={getWindowZIndex(2)}
         onFocus={() => bringToFront(2)}
+        dragConstraints={windowConstraintsRef}
       >
         <p className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(-50%-4rem)] text-10xl text-nowrap font-londrina-shadow uppercase select-none">
           {"Linkai Wu"}
@@ -68,6 +75,7 @@ export function LinkaiOS({ allowInteraction = true }: LinkaiOSProps) {
         className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(3rem)] w-[32rem] p-4 pt-12 pb-12"
         zIndex={getWindowZIndex(3)}
         onFocus={() => bringToFront(3)}
+        dragConstraints={windowConstraintsRef}
       >
         <h2 className="text-2xl font-bold leading-tight">
           {"Hey! I'm Linkai, a student, software engineer, and designer."}

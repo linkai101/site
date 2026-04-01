@@ -10,9 +10,10 @@ interface WindowProps {
   className?: string;
   zIndex?: number;
   onFocus?: () => void;
+  dragConstraints?: React.RefObject<HTMLElement | null>;
 }
 
-export function Window({ children, style, className, zIndex, onFocus }: WindowProps) {
+export function Window({ children, style, className, zIndex, onFocus, dragConstraints }: WindowProps) {
   const dragControls = useDragControls();
   const [isPressed, setIsPressed] = useState(false);
 
@@ -26,6 +27,7 @@ export function Window({ children, style, className, zIndex, onFocus }: WindowPr
       dragControls={dragControls}
       dragListener={false}
       dragMomentum={false}
+      dragConstraints={dragConstraints}
       onPointerDown={onFocus}
     >
       <div
@@ -52,14 +54,16 @@ interface CenteredFixedContentWindowProps {
   offsetY?: number; // pixels
   zIndex?: number;
   onFocus?: () => void;
+  dragConstraints?: React.RefObject<HTMLElement | null>;
 }
 
-export function CenteredFixedContentWindow({ children, className, innerClassName, offsetX = 0, offsetY = 0, zIndex, onFocus }: CenteredFixedContentWindowProps) {
+export function CenteredFixedContentWindow({ children, className, innerClassName, offsetX = 0, offsetY = 0, zIndex, onFocus, dragConstraints }: CenteredFixedContentWindowProps) {
   return (
     <Window
       className={cn("absolute left-1/2 top-1/2", className)}
       zIndex={zIndex}
       onFocus={onFocus}
+      dragConstraints={dragConstraints}
       style={{
         // calculate translation after center offset and additional offset applied
         translate: `calc(-50% ${offsetX >= 0 ? '+' : '-'} ${Math.abs(offsetX)}px) calc(-50% ${offsetY >= 0 ? '+' : '-'} ${Math.abs(offsetY)}px)`,
