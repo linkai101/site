@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PortfolioCard } from "./card";
 
 const projects = [
   {
@@ -63,42 +63,6 @@ const experiences = [
   { year: "2024", company: "Hansoh Bio", role: "Software Engineer Intern" },
   { year: "2022", company: "NASA", role: "Research Intern" },
 ];
-
-function PortfolioCard({ src, alt, title, label, url, urlIsExternal }: (typeof projects)[number]) {
-  const content = (
-    <>
-      <div className="relative overflow-hidden">
-        <img
-          src={src}
-          alt={alt}
-          className="w-full transition-opacity duration-300 group-hover:opacity-95"
-        />
-
-        {/* Tint */}
-        <div className="absolute inset-0 bg-foreground/5 shadow-inner opacity-0 group-hover:opacity-100 transition-opacity duration-300"/>
-      </div>
-
-      <div className="mt-2.5 flex flex-col sm:flex-row justify-between sm:items-center sm:gap-4">
-        <h3 className="text-lg font-medium leading-snug transition-[font-weight] duration-300 group-hover:font-semibold">{title}</h3>
-        <p className="text-sm font-mono text-muted uppercase transition-[font-weight] duration-300 group-hover:font-medium">{label}</p>
-      </div>
-    </>
-  );
-
-  if (url) {
-    return (
-      <Link
-        href={url}
-        className="group block"
-        {...(urlIsExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      >
-        {content}
-      </Link>
-    );
-  }
-
-  return <div className="group">{content}</div>;
-}
 
 export function PortfolioSection() {
   const leftProjects = projects.filter((_, i) => i % 2 === 0);
