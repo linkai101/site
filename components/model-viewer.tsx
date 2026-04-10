@@ -2,11 +2,11 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, OrbitControls, useProgress } from "@react-three/drei";
-import { Suspense, useMemo, useEffect, useRef, useCallback } from "react";
+import { Suspense, useMemo, useEffect, useRef, useCallback, useState } from "react";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import { cn } from "@/lib/utils";
-import { RotateCcw, Move, MousePointer, ScanSearch } from "lucide-react";
+import { RotateCcw, Move, MousePointer, ScanSearch, ZoomIn } from "lucide-react";
 
 // ---------------------------------------------------------------------------
 // Shaders
@@ -38,7 +38,7 @@ const outlineFragmentShader = /* glsl */ `
 
 // Three-stop gradient map → sharp toon shadow band
 function makeToonGradientMap() {
-  const data = new Uint8Array([0, 180, 255]);
+  const data = new Uint8Array([120, 210, 255]);
   const tex = new THREE.DataTexture(data, 3, 1, THREE.RedFormat);
   tex.minFilter = THREE.NearestFilter;
   tex.magFilter = THREE.NearestFilter;
@@ -189,10 +189,16 @@ function ModelScene({
 // DOM overlay – hints + reset button
 // ---------------------------------------------------------------------------
 
-const hints = [
+const desktopHints = [
   { icon: MousePointer, label: "Drag to rotate" },
   { icon: ScanSearch,   label: "Scroll to zoom" },
   { icon: Move,         label: "Right-drag to pan" },
+] as const;
+
+const mobileHints = [
+  { icon: MousePointer, label: "Drag to rotate" },
+  { icon: ZoomIn,       label: "Pinch to zoom" },
+  { icon: Move,         label: "Two-finger pan" },
 ] as const;
 
 interface OverlayProps {
@@ -202,6 +208,18 @@ interface OverlayProps {
 }
 
 function ViewerOverlay({ onReset, loading, progress }: OverlayProps) {
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(pointer: coarse)");
+    setIsTouch(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsTouch(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  const hints = isTouch ? mobileHints : desktopHints;
+
   return (
     <div className="absolute inset-0 pointer-events-none select-none flex flex-col justify-between p-3">
       {/* ── top-right: reset ── */}
@@ -317,7 +335,7 @@ export function ModelViewer({ model, height = "480px", className }: ModelViewerP
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden",
+        "relative w-full overflow-hidden select-none",
         "bg-foreground/[0.03] border border-foreground/10",
         className,
       )}
