@@ -122,6 +122,7 @@ export function GrainedBackground({
           ${prefix}animation-timing-function: steps(${settings.grainSpeed}, end);
         `;
       });
+      rules += `will-change: transform;`;
     }
 
     rules += `}`;

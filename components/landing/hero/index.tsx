@@ -50,24 +50,30 @@ export function DesktopHeroSection() {
     }
   });
 
-  const [viewportWidth, setViewportWidth] = useState(0);
-  const [viewportHeight, setViewportHeight] = useState(0);
+  const viewportWidth = useMotionValue(0);
+  const viewportHeight = useMotionValue(0);
   useEffect(() => {
     const updateViewport = () => {
-      setViewportWidth(window.innerWidth);
-      setViewportHeight(window.innerHeight);
+      viewportWidth.set(window.innerWidth);
+      viewportHeight.set(window.innerHeight);
     };
 
     updateViewport();
     window.addEventListener('resize', updateViewport);
     return () => window.removeEventListener('resize', updateViewport);
-  }, []);
+  }, [viewportWidth, viewportHeight]);
 
   const outerPadding = useTransform(smoothYProgress, [0.95, 1], [0, 24]);
   const laptopScale = useTransform(smoothYProgress, [0, 1], [1, 0.7]);
   const lidRotateX = useTransform(smoothYProgress, [0, 0.4, 1], [0, 10, 25]);
-  const screenWidth = useTransform(smoothYProgress, [0, 0.8], [viewportWidth, 1512]);
-  const screenHeight = useTransform(smoothYProgress, [0, 0.8], [viewportHeight, 982]);
+  const screenWidth = useTransform([smoothYProgress, viewportWidth], ([progress, vw]: number[]) => {
+    const t = Math.min(progress / 0.8, 1);
+    return vw + (1512 - vw) * t;
+  });
+  const screenHeight = useTransform([smoothYProgress, viewportHeight], ([progress, vh]: number[]) => {
+    const t = Math.min(progress / 0.8, 1);
+    return vh + (982 - vh) * t;
+  });
   const screenBorderRadius = useTransform(smoothYProgress, [0, 0.05], [0, 16]);
   const thicknessZ = useTransform(screenHeight, h => h + 78 - 28);
 
@@ -110,7 +116,7 @@ export function DesktopHeroSection() {
               onPointerDown={() => heroRef.current?.scrollIntoView({ block: "start", behavior: "smooth" })}
             >
               <LinkaiOS allowInteraction={atTop} isLoaded={isLoaded}/>
-              <GrainedBackground className="absolute inset-0 pointer-events-none"/>
+              <GrainedBackground className="absolute inset-0 pointer-events-none z-20"/>
             </motion.div>
 
             {/* LAPTOP NOTCH */}

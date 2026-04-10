@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { memo, useState, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Window, CenteredFixedContentWindow } from "./window";
 
@@ -9,7 +9,7 @@ interface LinkaiOSProps {
   isLoaded?: boolean;
 }
 
-export function LinkaiOS({ allowInteraction = true, isLoaded = false }: LinkaiOSProps) {
+export const LinkaiOS = memo(function LinkaiOS({ allowInteraction = true, isLoaded = false }: LinkaiOSProps) {
   const windowConstraintsRef = useRef<HTMLDivElement>(null);
   const [windowOrder, setWindowOrder] = useState([0, 1, 2, 3]);
 
@@ -102,4 +102,4 @@ export function LinkaiOS({ allowInteraction = true, isLoaded = false }: LinkaiOS
       </Window>
     </div>
   );
-}
+});

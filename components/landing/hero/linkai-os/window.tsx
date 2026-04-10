@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { memo, useState, useMemo } from "react";
 import { motion, useDragControls } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -15,24 +15,30 @@ interface WindowProps {
   entranceDelay?: number;
 }
 
-export function Window({ children, style, className, zIndex, onFocus, dragConstraints, isVisible = true, entranceDelay = 0 }: WindowProps) {
+export const Window = memo(function Window({ children, style, className, zIndex, onFocus, dragConstraints, isVisible = true, entranceDelay = 0 }: WindowProps) {
   const dragControls = useDragControls();
   const [isPressed, setIsPressed] = useState(false);
   const [hasEntered, setHasEntered] = useState(false);
 
+  const animateProps = useMemo(() => isVisible
+    ? { opacity: isPressed ? 0.9 : 1, scale: isPressed ? 0.99 : 1, y: 0 }
+    : { opacity: 0, scale: 0.88, y: 24 },
+    [isVisible, isPressed]
+  );
+
+  const transitionProps = useMemo(() => hasEntered
+    ? { duration: 0.15 }
+    : { delay: entranceDelay, type: "spring" as const, stiffness: 280, damping: 22 },
+    [hasEntered, entranceDelay]
+  );
+
   return (
     <motion.div
       className={cn("bg-background text-foreground rounded-xl overflow-hidden shadow-xl border border-primary/30 origin-top", className)}
-      style={{ ...style, zIndex }}
+      style={{ ...style, zIndex, willChange: "transform, opacity" }}
       initial={{ opacity: 0, scale: 0.88, y: 24 }}
-      animate={isVisible
-        ? { opacity: isPressed ? 0.9 : 1, scale: isPressed ? 0.99 : 1, y: 0 }
-        : { opacity: 0, scale: 0.88, y: 24 }
-      }
-      transition={hasEntered
-        ? { duration: 0.15 }
-        : { delay: entranceDelay, type: "spring", stiffness: 280, damping: 22 }
-      }
+      animate={animateProps}
+      transition={transitionProps}
       onAnimationComplete={() => { if (isVisible) setHasEntered(true); }}
       drag
       dragControls={dragControls}
@@ -55,7 +61,7 @@ export function Window({ children, style, className, zIndex, onFocus, dragConstr
       {children}
     </motion.div>
   );
-}
+});
 
 interface CenteredFixedContentWindowProps {
   children?: React.ReactNode;
