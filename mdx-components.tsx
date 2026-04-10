@@ -33,6 +33,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     a: ({ href, children }) => (
       <Link
         href={href ?? "#"}
+        target={href?.startsWith("http") ? "_blank" : undefined}
+        rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
         className="text-primary underline underline-offset-4 hover:opacity-70 transition-opacity"
       >
         {children}
