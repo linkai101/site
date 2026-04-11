@@ -177,6 +177,33 @@ function DebugOverlay({
 }
 
 // ---------------------------------------------------------------------------
+// Materials
+// ---------------------------------------------------------------------------
+
+/**
+ * A material specification for a mesh.
+ *
+ * - `string` — a CSS color → creates a MeshToonMaterial with that color.
+ * - object — fine-grained control:
+ *   - `color`  CSS color (default `"#ffffff"`)
+ *   - `type`   which Three.js material class to use (default `"toon"`)
+ */
+export type MaterialSpec =
+  | string
+  | { color?: string; type?: "toon" | "basic" | "standard" | "phong" };
+
+function buildMaterial(spec: MaterialSpec, gradientMap: THREE.DataTexture): THREE.Material {
+  const cfg = typeof spec === "string" ? { color: spec, type: "toon" as const } : spec;
+  const color = new THREE.Color(cfg.color ?? "#ffffff");
+  switch (cfg.type ?? "toon") {
+    case "basic":    return new THREE.MeshBasicMaterial({ color });
+    case "standard": return new THREE.MeshStandardMaterial({ color });
+    case "phong":    return new THREE.MeshPhongMaterial({ color });
+    default:         return new THREE.MeshToonMaterial({ color, gradientMap });
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Scene (inside Canvas)
 // ---------------------------------------------------------------------------
 
@@ -188,7 +215,7 @@ interface PanLimit {
 
 interface ModelSceneProps {
   src: string;
-  materialColors: Record<string, string>;
+  materials: Record<string, MaterialSpec>;
   position: [number, number, number];
   rotation: [number, number, number];
   scale: number;
@@ -205,7 +232,7 @@ interface ModelSceneProps {
 
 function ModelScene({
   src,
-  materialColors,
+  materials,
   position,
   rotation,
   scale,
@@ -243,16 +270,28 @@ function ModelScene({
     const main = scene.clone(true);
     const outline = scene.clone(true);
 
+    // DEBUG: mesh/material name dump
+    if (debug) {
+      console.group(`[ModelViewer] meshes in "${src}"`);
+      main.traverse((child) => {
+        if (child instanceof THREE.Mesh) {
+          const matName = Array.isArray(child.material)
+            ? child.material.map((m: THREE.Material) => m.name).join(", ")
+            : (child.material?.name ?? "");
+          console.log(`mesh: "${child.name}"  material: "${matName}"`);
+        }
+      });
+      console.groupEnd();
+    }
+
     main.traverse((child) => {
       if (!(child instanceof THREE.Mesh)) return;
       const matName: string = Array.isArray(child.material)
         ? child.material[0]?.name ?? ""
         : child.material?.name ?? "";
-      const color = materialColors[matName] ?? materialColors["*"] ?? "#ffffff";
-      child.material = new THREE.MeshToonMaterial({
-        color: new THREE.Color(color),
-        gradientMap,
-      });
+      // Lookup priority: mesh name → material name → wildcard "*"
+      const spec = materials[child.name] ?? materials[matName] ?? materials["*"];
+      child.material = buildMaterial(spec ?? "#ffffff", gradientMap);
     });
 
     outline.traverse((child) => {
@@ -260,7 +299,7 @@ function ModelScene({
     });
 
     return [main, outline];
-  }, [scene, materialColors, gradientMap, outlineMaterial]);
+  }, [scene, materials, gradientMap, outlineMaterial]);
 
   useFrame(() => {
     const controls = controlsRef.current;
@@ -421,10 +460,19 @@ export interface ModelConfig {
   /** Path to a .glb / .gltf file (relative to /public) */
   src: string;
   /**
-   * Map from material name → CSS hex/named color.
-   * Use `"*"` as a wildcard fallback for any unmatched material.
+   * Map from mesh or material name → MaterialSpec.
+   *
+   * Lookup priority per mesh: mesh name → material name → `"*"` wildcard.
+   * Values can be a CSS color string (→ MeshToonMaterial) or a `MaterialSpec`
+   * object with `color` and `type` fields for full control.
+   *
+   * @example
+   * // simple color by material name
+   * materials: { axeHead: "#8F8F8F", "*": "#ffffff" }
+   * // override a specific mesh with a non-toon material
+   * materials: { badMesh: { color: "#ff0000", type: "standard" } }
    */
-  materialColors?: Record<string, string>;
+  materials?: Record<string, MaterialSpec>;
   /** World-space [x, y, z] offset for the model group (default [0, 0, 0]) */
   position?: [number, number, number];
   /** Euler rotation [x, y, z] in radians applied to the model group (default [0, 0, 0]) */
@@ -473,7 +521,7 @@ const DEFAULT_CAMERA_POSITION: [number, number, number] = [0, 1, 4];
 export function ModelViewer({ model, height = "480px", className, debug = false }: ModelViewerProps) {
   const {
     src,
-    materialColors = {},
+    materials = {},
     position = [0, 0, 0],
     rotation = [0, 0, 0],
     scale = 1,
@@ -515,7 +563,7 @@ export function ModelViewer({ model, height = "480px", className, debug = false 
         <Suspense fallback={null}>
           <ModelScene
             src={src}
-            materialColors={materialColors}
+            materials={materials}
             position={position}
             rotation={rotation}
             scale={scale}
