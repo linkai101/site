@@ -47,6 +47,136 @@ function makeToonGradientMap() {
 }
 
 // ---------------------------------------------------------------------------
+// Debug
+// ---------------------------------------------------------------------------
+
+export interface DebugState {
+  zoom: number;
+  target: [number, number, number];
+  camPos: [number, number, number];
+  boundingBox: { min: [number, number, number]; max: [number, number, number] } | null;
+}
+
+const DEFAULT_DEBUG_STATE: DebugState = {
+  zoom: 0,
+  target: [0, 0, 0],
+  camPos: [0, 0, 0],
+  boundingBox: null,
+};
+
+// Renders inside the Canvas: axes at the rotation origin + bounding box wireframe.
+// Also writes live camera/controls state into debugStateRef each frame.
+function DebugVisuals({
+  groupRef,
+  rotationOrigin,
+  controlsRef,
+  debugStateRef,
+}: {
+  groupRef: React.RefObject<THREE.Group | null>;
+  rotationOrigin: [number, number, number];
+  controlsRef: React.RefObject<OrbitControlsImpl | null>;
+  debugStateRef: React.MutableRefObject<DebugState>;
+}) {
+  const box = useMemo(() => new THREE.Box3(), []);
+  const helper = useMemo(
+    () => new THREE.Box3Helper(box, new THREE.Color(0x00ff00)),
+    [box],
+  );
+
+  useFrame(({ camera }) => {
+    // Update bounding box from the model group
+    if (groupRef.current) {
+      box.setFromObject(groupRef.current);
+      helper.updateMatrixWorld(true);
+    }
+
+    // Write live state for the DOM overlay
+    const controls = controlsRef.current;
+    const t = controls?.target ?? new THREE.Vector3();
+    const p = camera.position;
+    debugStateRef.current = {
+      zoom: p.distanceTo(t),
+      target: [t.x, t.y, t.z],
+      camPos: [p.x, p.y, p.z],
+      boundingBox: box.isEmpty()
+        ? null
+        : {
+            min: [box.min.x, box.min.y, box.min.z],
+            max: [box.max.x, box.max.y, box.max.z],
+          },
+    };
+  });
+
+  return (
+    <>
+      {/* XYZ axes at the rotation origin */}
+      <axesHelper args={[2]} position={rotationOrigin} />
+      {/* World-space bounding box of the model */}
+      <primitive object={helper} />
+    </>
+  );
+}
+
+// DOM panel that reads from debugStateRef via rAF so it doesn't cause Canvas re-renders.
+function DebugOverlay({
+  debugStateRef,
+  rotationOrigin,
+  minDistance,
+  maxDistance,
+  panLimit,
+}: {
+  debugStateRef: React.MutableRefObject<DebugState>;
+  rotationOrigin: [number, number, number];
+  minDistance: number;
+  maxDistance: number;
+  panLimit: PanLimit;
+}) {
+  const [s, setS] = useState<DebugState>(DEFAULT_DEBUG_STATE);
+
+  useEffect(() => {
+    let rafId: number;
+    const tick = () => {
+      setS({ ...debugStateRef.current });
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [debugStateRef]);
+
+  const f = (n: number) => n.toFixed(3);
+  const fv3 = (v: [number, number, number]) =>
+    `${f(v[0])}, ${f(v[1])}, ${f(v[2])}`;
+
+  return (
+    <div className="absolute top-10 left-2 pointer-events-none select-none font-mono text-[10px] leading-relaxed text-emerald-400 bg-black/70 rounded-md px-2.5 py-2 space-y-0.5">
+      <div className="text-emerald-300 font-semibold mb-1">debug</div>
+
+      <div className="text-foreground/40">— camera —</div>
+      <div>zoom: <span className="text-white">{f(s.zoom)}</span></div>
+      <div>pos: <span className="text-white">{fv3(s.camPos)}</span></div>
+
+      <div className="text-foreground/40 mt-1">— orbit target —</div>
+      <div>target: <span className="text-white">{fv3(s.target)}</span></div>
+
+      <div className="text-foreground/40 mt-1">— config —</div>
+      <div>origin: <span className="text-white">{fv3(rotationOrigin)}</span></div>
+      <div>zoom range: <span className="text-white">[{f(minDistance)}, {f(maxDistance)}]</span></div>
+      {panLimit.x && <div>pan.x: <span className="text-white">[{f(panLimit.x[0])}, {f(panLimit.x[1])}]</span> <span className="text-foreground/40">→ [{f(rotationOrigin[0] + panLimit.x[0])}, {f(rotationOrigin[0] + panLimit.x[1])}]</span></div>}
+      {panLimit.y && <div>pan.y: <span className="text-white">[{f(panLimit.y[0])}, {f(panLimit.y[1])}]</span> <span className="text-foreground/40">→ [{f(rotationOrigin[1] + panLimit.y[0])}, {f(rotationOrigin[1] + panLimit.y[1])}]</span></div>}
+      {panLimit.z && <div>pan.z: <span className="text-white">[{f(panLimit.z[0])}, {f(panLimit.z[1])}]</span> <span className="text-foreground/40">→ [{f(rotationOrigin[2] + panLimit.z[0])}, {f(rotationOrigin[2] + panLimit.z[1])}]</span></div>}
+
+      {s.boundingBox && (
+        <>
+          <div className="text-foreground/40 mt-1">— bounds —</div>
+          <div>min: <span className="text-white">{fv3(s.boundingBox.min)}</span></div>
+          <div>max: <span className="text-white">{fv3(s.boundingBox.max)}</span></div>
+        </>
+      )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Scene (inside Canvas)
 // ---------------------------------------------------------------------------
 
@@ -68,6 +198,9 @@ interface ModelSceneProps {
   minDistance: number;
   maxDistance: number;
   panLimit: PanLimit;
+  rotationOrigin: [number, number, number];
+  debug: boolean;
+  debugStateRef: React.MutableRefObject<DebugState>;
 }
 
 function ModelScene({
@@ -82,8 +215,12 @@ function ModelScene({
   minDistance,
   maxDistance,
   panLimit,
+  rotationOrigin,
+  debug,
+  debugStateRef,
 }: ModelSceneProps) {
   const { scene } = useGLTF(src);
+  const groupRef = useRef<THREE.Group>(null);
 
   const gradientMap = useMemo(() => makeToonGradientMap(), []);
 
@@ -135,9 +272,10 @@ function ModelScene({
     // preserved — otherwise OrbitControls' spherical coords become stale and
     // the next rotation snaps to the wrong origin.
     let dx = 0, dy = 0, dz = 0;
-    if (panLimit.x) { const cx = Math.max(panLimit.x[0], Math.min(panLimit.x[1], t.x)); dx = cx - t.x; t.x = cx; }
-    if (panLimit.y) { const cy = Math.max(panLimit.y[0], Math.min(panLimit.y[1], t.y)); dy = cy - t.y; t.y = cy; }
-    if (panLimit.z) { const cz = Math.max(panLimit.z[0], Math.min(panLimit.z[1], t.z)); dz = cz - t.z; t.z = cz; }
+    // Pan limits are relative to rotationOrigin, so offset each bound before clamping.
+    if (panLimit.x) { const cx = Math.max(rotationOrigin[0] + panLimit.x[0], Math.min(rotationOrigin[0] + panLimit.x[1], t.x)); dx = cx - t.x; t.x = cx; }
+    if (panLimit.y) { const cy = Math.max(rotationOrigin[1] + panLimit.y[0], Math.min(rotationOrigin[1] + panLimit.y[1], t.y)); dy = cy - t.y; t.y = cy; }
+    if (panLimit.z) { const cz = Math.max(rotationOrigin[2] + panLimit.z[0], Math.min(rotationOrigin[2] + panLimit.z[1], t.z)); dz = cz - t.z; t.z = cz; }
     if (dx !== 0 || dy !== 0 || dz !== 0) {
       controls.object.position.x += dx;
       controls.object.position.y += dy;
@@ -159,13 +297,14 @@ function ModelScene({
 
   return (
     <>
-      <group position={position} rotation={rotation} scale={scale}>
+      <group ref={groupRef} position={position} rotation={rotation} scale={scale}>
         <primitive object={outlineScene} />
         <primitive object={mainScene} />
       </group>
 
       <OrbitControls
         ref={controlsRef}
+        target={rotationOrigin}
         enablePan
         enableRotate
         enableZoom
@@ -181,6 +320,15 @@ function ModelScene({
           TWO: THREE.TOUCH.DOLLY_PAN,
         }}
       />
+
+      {debug && (
+        <DebugVisuals
+          groupRef={groupRef}
+          rotationOrigin={rotationOrigin}
+          controlsRef={controlsRef}
+          debugStateRef={debugStateRef}
+        />
+      )}
     </>
   );
 }
@@ -303,6 +451,8 @@ export interface ModelConfig {
     y?: [number, number];
     z?: [number, number];
   };
+  /** World-space pivot point for orbit rotation (default [0, 0, 0]) */
+  rotationOrigin?: [number, number, number];
 }
 
 export interface ModelViewerProps {
@@ -311,9 +461,16 @@ export interface ModelViewerProps {
   /** CSS height of the viewer container (default "480px") */
   height?: string;
   className?: string;
+  /**
+   * Enable debug mode: renders axes at the rotation origin, a bounding box
+   * around the model, and a live overlay with camera/controls numbers.
+   */
+  debug?: boolean;
 }
 
-export function ModelViewer({ model, height = "480px", className }: ModelViewerProps) {
+const DEFAULT_CAMERA_POSITION: [number, number, number] = [0, 1, 4];
+
+export function ModelViewer({ model, height = "480px", className, debug = false }: ModelViewerProps) {
   const {
     src,
     materialColors = {},
@@ -323,14 +480,20 @@ export function ModelViewer({ model, height = "480px", className }: ModelViewerP
     outline: { thickness: outlineThickness = 0.025, color: outlineColor = "#000000" } = {},
     zoom: { min: minDistance = 1, max: maxDistance = 12 } = {},
     pan: panLimit = {},
+    rotationOrigin = [0, 0, 0] as [number, number, number],
   } = model;
 
   const controlsRef = useRef<OrbitControlsImpl>(null);
+  const debugStateRef = useRef<DebugState>(DEFAULT_DEBUG_STATE);
   const { progress, active: isLoading } = useProgress();
 
   const handleReset = useCallback(() => {
-    controlsRef.current?.reset();
-  }, []);
+    const controls = controlsRef.current;
+    if (!controls) return;
+    controls.target.set(...rotationOrigin);
+    controls.object.position.set(...DEFAULT_CAMERA_POSITION);
+    controls.update();
+  }, [rotationOrigin]);
 
   return (
     <div
@@ -342,7 +505,7 @@ export function ModelViewer({ model, height = "480px", className }: ModelViewerP
       style={{ height }}
     >
       <Canvas
-        camera={{ position: [0, 1, 4], fov: 40 }}
+        camera={{ position: DEFAULT_CAMERA_POSITION, fov: 40 }}
         gl={{ antialias: true }}
       >
         <ambientLight intensity={1.2} />
@@ -362,6 +525,9 @@ export function ModelViewer({ model, height = "480px", className }: ModelViewerP
             minDistance={minDistance}
             maxDistance={maxDistance}
             panLimit={panLimit}
+            rotationOrigin={rotationOrigin}
+            debug={debug}
+            debugStateRef={debugStateRef}
           />
         </Suspense>
       </Canvas>
@@ -371,6 +537,16 @@ export function ModelViewer({ model, height = "480px", className }: ModelViewerP
         loading={isLoading}
         progress={progress}
       />
+
+      {debug && (
+        <DebugOverlay
+          debugStateRef={debugStateRef}
+          rotationOrigin={rotationOrigin}
+          minDistance={minDistance}
+          maxDistance={maxDistance}
+          panLimit={panLimit}
+        />
+      )}
     </div>
   );
 }
