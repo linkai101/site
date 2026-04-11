@@ -121,7 +121,7 @@ export function DesktopHeroSection() {
 
             {/* LAPTOP NOTCH */}
             <motion.div
-              className="absolute top-6 left-1/2 -translate-x-1/2 w-48 h-8 bg-zinc-800 rounded-b-xl z-10"
+              className="absolute top-6 left-1/2 -translate-x-1/2 w-48 h-8 bg-zinc-800 rounded-b-xl z-30"
               // show when scrolled past 5%
               style={{ opacity: notchOpacity, y: notchY }}
             />
