@@ -24,12 +24,11 @@ const projects = [
     url: "/2024-boba-barista",
   },
   {
-    src: "/assets/thumbnails/stemtothesky.png",
-    alt: "STEM to the Sky",
-    title: "Showcasing careers in STEM",
-    label: "STEM to the Sky (2023)",
-    url: "https://stemtothesky.org",
-    urlIsExternal: true,
+    src: "/assets/thumbnails/miscartprojects.png",
+    alt: "Miscellaneous art projects",
+    title: "Miscellaneous art projects",
+    label: "Collection (2023-24)",
+    url: "/2023-misc-art-projects",
   },
   {
     src: "/assets/thumbnails/wordlearchive.png",
@@ -37,6 +36,14 @@ const projects = [
     title: "Wordle game clone",
     label: "Wordle Archive (2023)",
     url: "https://wordle.linkaiwu.com",
+    urlIsExternal: true,
+  },
+  {
+    src: "/assets/thumbnails/stemtothesky.png",
+    alt: "STEM to the Sky",
+    title: "Showcasing careers in STEM",
+    label: "STEM to the Sky (2023)",
+    url: "https://stemtothesky.org",
     urlIsExternal: true,
   },
   {

@@ -1,0 +1,88 @@
+import { Letterhead } from "@/components/letterhead";
+import { ModelViewer } from "@/components/model-viewer";
+import FortniteDelawareImage from "./fortnitedelaware.jpg";
+import VanitasImage from "./vanitas.jpg";
+
+<Letterhead
+  title="Miscellaneous art projects"
+  label="Collection (2023)"
+  thumbnail="/assets/thumbnails/miscartprojects.png"
+  thumbnailAlt="Miscellaneous art projects"
+  meta={[
+    { label: "Timeline", value: <>10.2023 - 04.2024</> },
+    { label: "Skills", value: <>Photoshop<br/>3D modeling</> },
+  ]}
+>
+
+Miscellaneous art projects from 2023-24.
+
+## Washington's Victory Royale
+
+A parody of Emanuel Leutze's "Washington Crossing the Delaware," edited in Photoshop.
+
+<img src={FortniteDelawareImage.src} alt="A photoshopped parody of Crossing the Delaware" className="w-full my-4" />
+
+## Truck
+
+The coolest looking truck on the market! Modeled in Rhino. View a more polished version [here](https://autode.sk/4t3j2Xz).
+
+<ModelViewer
+  height="520px"
+  model={{
+    src: "/assets/cybertruck.glb",
+    materials: {
+      "empty_3": { color: "#343434", type: "phong" },
+      "empty_10": { color: "#818589", type: "phong" },
+      "empty_15": { color: "#343434", type: "phong" },
+      "empty_16": { color: "#343434", type: "phong" },
+      "empty_17": { color: "#343434", type: "phong" },
+      "empty_18": { color: "#343434", type: "phong" },
+    },
+    position: [-4.2, -0.75, -3],
+    rotation: [-1.6, 0, -0.6],
+    rotationOrigin: [-1.5, 0, -4.5],
+    scale: 0.02,
+    outline: { thickness: 0.005, color: "#000000" },
+    zoom: { min: 2, max: 8 },
+    pan: { x: [-2, 2], y: [-2, 2], z: [-2, 2] },
+  }}
+/>
+
+## Axe
+
+Modeled after Thor's Stormbreaker in Maya.
+
+<ModelViewer
+  height="520px"
+  model={{
+    src: "/assets/axe.glb",
+    materials: {
+      "axeHandleShader": "#9E806F",
+      "axeHeadShader": "#8F8F8F",
+    },
+    position: [0, 1, 0],
+    rotation: [0, Math.PI, 0],
+    scale: 0.1,
+    outline: { thickness: 0.005, color: "#000000" },
+    zoom: { min: 2, max: 8 },
+    pan: { x: [-2, 2], y: [-2, 2], z: [-2, 2] },
+  }}
+/>
+
+## Boba barista
+
+An original 3D character concept. Designed, modeled, and rigged in Maya.
+
+Learn more about this project → [**3D boba barista**](/2024-boba-barista)
+
+<img src="/assets/thumbnails/bobabarista.png" alt="Boba barista" className="w-full my-4" />
+
+## Housewarming
+
+A vanitas scene. Modeled and rendered in Maya.
+
+> **vanitas** [van-i-tahs] /vän-ə-təs/ (noun): a symbolic representation of the transience of life, often including elements of death, decay, and the passing of time.
+
+<img src={VanitasImage.src} alt="Vanitas" className="w-full my-4" />
+
+</Letterhead>
