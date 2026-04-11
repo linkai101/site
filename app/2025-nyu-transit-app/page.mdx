@@ -1,4 +1,6 @@
 import { Letterhead } from "@/components/letterhead";
+import PassioGoImage from "./passiogo.png";
+import SpreadsheetImage from "./spreadsheet.png";
 
 <Letterhead
   title="University shuttle transit app"
@@ -13,44 +15,75 @@ import { Letterhead } from "@/components/letterhead";
   ]}
 >
 
-University shuttle transit app.
+A mobile app that provides end-to-end trip planning for NYU's free shuttle system, replacing scattered schedules and a broken official app with a unified, route-aware navigator.
 
-## Section 1
+## The problem
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+NYU's free shuttle system connects Washington Square to the Brooklyn campus and dozens of buildings across the city. For students watching subway fares inch toward $3 a ride, it's essential infrastructure, yet the tools for using it are a mess. Passio GO, the official app, is widely criticized for its opaque UI and lack of any meaningful trip planning. Spreadsheet schedules require you to already know which stops exist and where they are. There's no way to say "get me from my dorm to Brooklyn by 10am" and actually get an answer.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+The core gap: no end-to-end routing. Every existing tool assumes you already know the system.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+<img src={SpreadsheetImage.src} alt="Spreadsheet schedules" className="w-full my-4" />  
+<img src={PassioGoImage.src} alt="Passio GO" className="w-full my-4" />
 
-## Section 2
+## Research
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+I led the early needfinding phase with a set of formative interviews, framing the problem around affordability, accessibility, and the particular friction of navigating a fragmented multi-campus university. Six interviews with NYU undergraduates confirmed the pattern clearly—**67% regularly commute between Manhattan and Brooklyn**—and surfaced consistent pain points: unpredictable wait times, no sense of when the next bus arrives, and safety concerns at night.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+That last point mattered more than I initially expected. NYU's campus isn't a quad—it's scattered across lower Manhattan, with shuttle stops that can feel exposed late at night. Safe Ride exists as a free late-night option, but almost no one knows how to factor it into trip planning.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+The design question I landed on: *How might we make the shuttle system understandable and reliable for students who don't already know it by heart?*
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+## Wireframes
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+I designed the full wireframe set in Figma, working through five distinct views:
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+- **Home map view:** Nearby routes and arrival estimates at a glance, with color-coded route lines and direction arrows. Input a destination to kick off planning.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+- **Trip builder:** Origin/destination input, not just stop-to-stop. Defaults to current location. Filters by leave-at or arrive-by time.
 
-## Section 3
+- **Trip comparison:** Side-by-side route options accounting for walking legs and transfers, with Safe Ride surfaced when relevant.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+- **Trip journey view:** Step-by-step directions with alternate bus times in case you miss the first one.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+- **Route schedule view:** Full schedule per route with upcoming arrivals per stop, for users who prefer to browse.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+The design principle throughout: minimize the knowledge burden. You shouldn't need to know what "Route A" is or where its stops are before you can use the app.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+<iframe
+  styles={{ border: "1px solid rgba(0, 0, 0, 0.1);" }}
+  width="100%"
+  height="600px"
+  src="https://embed.figma.com/proto/NsYfEQULGOs0oJKoqeoosA/NYU-Transit-app?page-id=0%3A1&node-id=1-2&p=f&viewport=419%2C325%2C0.32&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2&embed-host=share"
+  allowFullScreen={true}
+/>
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+## Backend implementation
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+My technical work centered on the backend stack, which ended up being the harder engineering problem.
+
+**Database:** PostgreSQL with spatial extensions, storing routes, stops with coordinates, trip segments, and schedule variations. The schedule complexity was significant. For example, Route A runs on different schedules Monday-Thursday, Friday, and weekends, with certain stops only serviced at specific times. Getting the schema right took deliberate upfront design; a naive structure would have collapsed under that variability.
+
+**API:** A REST API in Express.js running the routing algorithm. The `/plan` endpoint accepts an origin and destination and returns multi-modal itineraries combining walking legs (via OSRM for actual street routing) and bus segments, filtered by real schedule data. Supporting endpoints handled stops, routes, trips, and nearby arrivals.
+
+**AI layer:** Integrated Google's AI API to expose a natural-language interface (`/ai`), a chatbot that can answer trip questions and call into the routing API functions. This aspect was designed with forward compatibility in mind, laying the groundwork for Siri integration or voice queries without rearchitecting the backend.
+
+## Testing & results
+
+We ran a pilot test with 5 NYU students who are regular shuttle users, a mix of undergrad and grad students, in individual sessions using the prototype. Tasks covered route planning, schedule lookup, and live bus location.
+
+- **SUS score: 82.5 / 100** (Grade B+: "Good")
+
+- **10/10 users** successfully completed the route planning task (avg. 2.3 minutes)
+
+- **9/10 users** felt comfortable with the app after a brief walkthrough
+
+Common feedback: the interface was clean and the schedule clarity was a direct improvement over anything currently available. Pain points centered on onboarding: a few button labels needed more context on first use.
+
+## Reflection
+
+The most valuable constraint was time. Knowing we couldn't build everything forced early decisions about what the core had to be: end-to-end routing, correct and schedule-accurate, with a foundation solid enough to extend. We future-proofed the database schema and API design so that realtime bus data, transfer support, and expanded testing could follow without a rewrite.
+
+What I'd prioritize next: swap static schedule data for live Passio GO tracking to generate predicted ETAs, and expand route coverage to handle transfers.
 
 </Letterhead>
