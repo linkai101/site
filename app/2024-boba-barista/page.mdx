@@ -1,4 +1,8 @@
 import { Letterhead } from "@/components/letterhead";
+import { ModelViewer } from "@/components/model-viewer";
+import ActionShotImage from "./actionshot.png";
+import EditorImage from "./editor.png";
+import PeekabooImage from "./peekaboo.png";
 
 <Letterhead
   title="3D boba barista"
@@ -6,52 +10,67 @@ import { Letterhead } from "@/components/letterhead";
   thumbnail="/assets/thumbnails/bobabarista.png"
   thumbnailAlt="Boba Barista"
   meta={[
-    { label: "Role", value: <>3D artist</> },
     { label: "Timeline", value: <>04.2024 - 05.2024</> },
     { label: "Skills", value: <>3D modeling<br/>Character design</> },
   ]}
 >
 
-Boba barista.
+An original 3D character concept. Designed, modeled, and rigged in Maya.
 
-## Section 1
+## Meet the boba barista
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+> This is a web-optimized version of the model that may not perfectly reflect the original Maya scene.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+<ModelViewer
+  height="520px"
+  model={{
+    src: "/assets/bobabarista.glb",
+    materials: {
+      "aiToonPandaBlack": "#000000",
+      "aiToonPandaDark": "#36220E",
+      "aiToonPandaOrange": "#C28142",
+      "aiToonPandaWhite": "#FFFFFF",
+      "Default_Material": "#CFB095",
+    },
+    position: [0, -1, 0],
+    rotation: [0, Math.PI, 0],
+    scale: 0.3,
+    outline: { thickness: 0.005, color: "#000000" },
+    zoom: { min: 2, max: 8 },
+    pan: { x: [-2, 2], y: [-2, 2], z: [-2, 2] },
+  }}
+/>
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+## Concept & inspiration
 
-## Section 2
+I was tasked with creating an original character for a 3D design project. I guess I just figured—I like red pandas... I like boba... why not a red panda that makes boba?!
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+## Modeling
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+I built the whole thing from scratch in Maya, starting from the basic cubes and working my way up. From blocking out major sections to refining the topology to UV unwrapping and texturing, each stage was a new challenge.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+The big priority throughout was readability. I wanted clean geometry that would hold up under deformation and a texture palette that felt warm and characterful without being overly detailed. Soft materials, warm tones, nothing trying too hard.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+<img src={EditorImage.src} alt="Editor showing the model with the rigged skeleton and a rendered biew" className="w-full my-4" />
 
-### Mini section
+### Rigging
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Rigging was the part that broke my brain the most. Getting joints, weights, and controls to actually behave the way you want is a lot harder than it looks, and I'm still not sure I got it right. lol
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+I eventually got it to a state that I was satisfied with. It can stretch and wave!
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+<img src={PeekabooImage.src} alt="Peekaboo of the boba barista" className="w-full my-4" />
 
-## Section 3
+> **Fun fact!** When they feel threatened, red pandas stand up and extend their claws to look bigger and more dangerous. [(source)](https://www.reddit.com/r/Awwducational/comments/ioy4n9/when_they_feel_threatened_red_pandas_stand_up_and/)
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+## Reflection
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+I came into this with a background in software and design, comfortable with systems thinking and design patterns, but not in 3D. This project closed a gap I didn't fully appreciate was there.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Modeling, UV unwrapping, texturing, and rigging a full character in one project is genuinely a lot. I have a much deeper respect for professional 3D artists and game developers now. The characters and environments in games I've always just taken for granted look completely different to me on the other side of this. Really talented people built those, and it shows.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+This project didn't make me an expert, but I'm proud of what came out of it! It's made me want to keep exploring the world of 3D, and maybe one day build something with it.
 
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-This is a section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+<img src={ActionShotImage.src} alt="Action shot of the boba barista" className="w-full my-4" />
 
 </Letterhead>
