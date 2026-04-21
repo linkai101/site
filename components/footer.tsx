@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import AutoScroll from "embla-carousel-auto-scroll";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, SquareArrowOutUpRight, ArrowUpRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 
@@ -18,30 +19,44 @@ export function Footer() {
   };
 
   return (
-    <footer className="pt-6">
-      <div className="container max-w-[104rem] px-6 pb-6">
-        <div className="flex justify-between items-center gap-12 p-4 border border-primary/30">
-          <div>
-            <p className="font-medium">
-              {"You've reached the end."}
-            </p>
-
-            <p className="text-sm text-muted">
-              {"Last updated March 2026."}
-            </p>
-          </div>
-
-          <div className="flex items-center gap-6">
+    <footer className="relative pt-6">
+      <div className="px-6 py-3 border-t border-primary/30">
+        <div className="flex item-center justify-center gap-5">
+          <Link href="https://www.linkedin.com/in/linkaiwu/" target="_blank" rel="noopener noreferrer">
             <Button
-              onClick={handleJumpToTop}
-              aria-label="Jump to top"
+              aria-label="LinkedIn"
               variant="link"
-              className="group h-auto gap-1 p-0! text-base font-semibold"
+              className="group h-auto gap-1.5 p-0! text-sm font-mono uppercase font-medium text-primary"
             >
-              {"Jump to top"}
-              <ArrowUp className="size-0 translate-y-0.5 opacity-0 transition-all duration-300 group-hover:size-5 group-hover:translate-y-0 group-hover:opacity-100" />
+              {"LinkedIn"}
+              <ArrowUpRight className="size-0 translate-y-0.5 opacity-0 transition-all duration-300 group-hover:size-4 group-hover:translate-y-0 group-hover:opacity-100" />
             </Button>
-          </div>
+          </Link>
+
+          <Link href="mailto:linkai@linkaiwu.com" target="_blank" rel="noopener noreferrer">
+            <Button
+              aria-label="Email"
+              variant="link"
+              className="group h-auto gap-1.5 p-0! text-sm font-mono uppercase font-medium text-primary"
+            >
+              {"Email"}
+              <ArrowUpRight className="size-0 translate-y-0.5 opacity-0 transition-all duration-300 group-hover:size-4 group-hover:translate-y-0 group-hover:opacity-100" />
+            </Button>
+          </Link>
+
+          <p className="text-sm text-primary/30">
+            {"|"}
+          </p>
+
+          <Button
+            onClick={handleJumpToTop}
+            aria-label="Jump to top"
+            variant="link"
+            className="group h-auto gap-1.5 p-0! text-sm font-mono uppercase text-muted"
+          >
+            {"Jump to top"}
+            <ArrowUp className="size-0 translate-y-0.5 opacity-0 transition-all duration-300 group-hover:size-4 group-hover:translate-y-0 group-hover:opacity-100" />
+          </Button>
         </div>
       </div>
 
