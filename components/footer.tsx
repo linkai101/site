@@ -1,73 +1,105 @@
 "use client";
-import Ticker from '@/components/ui/ticker';
 
-export default function Footer() {
+import Link from "next/link";
+import AutoScroll from "embla-carousel-auto-scroll";
+import { ArrowUp, SquareArrowOutUpRight, ArrowUpRight } from "lucide-react";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
+
+export function Footer() {
+  const tickerItems = Array.from({ length: 10 }, (_, index) => (
+    <p key={index}>Linkai Wu &copy; {new Date().getFullYear()}</p>
+  ));
+
+  const handleJumpToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <footer className="">
-      <Ticker
-        direction="left"
-        slides={[
-          <p key="1">You&apos;ve reached the end</p>,
-          <p key="2">ʕ•̫͡•ʕ*̫͡*ʕ-̫͡-ʕ•̫͡•ʔ*̫͡*ʔ-̫͡-ʔ </p>,
-          <p key="3">You&apos;ve reached the end</p>,
-          <p key="4">óÔÔò ʕ·͡ᴥ·ʔ óÔÔò</p>,
-          <p key="5">You&apos;ve reached the end</p>,
-          <p key="6">(╯°□°）╯︵ ┻━┻</p>,
-          <p key="7">You&apos;ve reached the end</p>,
-          <p key="8">¯\_(ツ)_/¯ </p>,
-        ]}
-        className="text-dark/25 dark:text-light/25 text-base font-medium font-mono dark:font-normal tracking-tight uppercase select-none"
-      />
+    <footer className="relative pt-6">
+      <div className="px-6 py-3 border-t border-primary/30">
+        <div className="flex item-center justify-center gap-5">
+          <Link href="https://www.linkedin.com/in/linkaiwu/" target="_blank" rel="noopener noreferrer">
+            <Button
+              aria-label="LinkedIn"
+              variant="link"
+              className="group h-auto gap-1.5 p-0! text-sm font-mono uppercase font-medium text-primary"
+            >
+              {"LinkedIn"}
+              <ArrowUpRight className="size-0 translate-y-0.5 opacity-0 transition-all duration-300 group-hover:size-4 group-hover:translate-y-0 group-hover:opacity-100" />
+            </Button>
+          </Link>
 
-      <div className="px-4 py-3">
-        <div className="p-4 h-80 relative flex justify-between gap-8 text-light dark:text-dark bg-primary rounded-xl overflow-hidden">
-          <h2 className="text-8xl leading-[5.5rem] sm:text-9xl sm:leading-[6.5rem] font-heading select-none">
-            Come back <span className="font-cursive">soon!</span>
-          </h2>
+          <Link href="mailto:linkai@linkaiwu.com" target="_blank" rel="noopener noreferrer">
+            <Button
+              aria-label="Email"
+              variant="link"
+              className="group h-auto gap-1.5 p-0! text-sm font-mono uppercase font-medium text-primary"
+            >
+              {"Email"}
+              <ArrowUpRight className="size-0 translate-y-0.5 opacity-0 transition-all duration-300 group-hover:size-4 group-hover:translate-y-0 group-hover:opacity-100" />
+            </Button>
+          </Link>
 
-          <div className="
-            absolute top-1/2 -translate-y-1/2 right-1/2 sm:right-4 translate-x-1/2 sm:translate-x-0
-            text-8xl leading-[4.1rem] sm:text-9xl sm:leading-[5.5rem] text-light/10 dark:text-dark/10 uppercase whitespace-nowrap select-none
-          ">
-            <p className="font-sketchOutline">
-              Thank you
-            </p>
-            <p className="font-sketchOutline">
-              Thank you
-            </p>
-            <p className="font-sketch">
-              Thank you
-            </p>
-            <p className="font-sketchOutline">
-              Thank you
-            </p>
-            <p className="font-sketchOutline">
-              Thank you
-            </p>
-          </div>
+          <p className="text-sm text-primary/30">
+            {"|"}
+          </p>
 
-          <div className="absolute bottom-4 right-4 flex flex-col items-end justify-end gap-2">
-            <h3 className="text-3xl tracking-wider leading-6 text-right font-sketch font-bold normal-case select-none">
-              Have A Nice Day
-            </h3>
-          </div>
+          <Button
+            onClick={handleJumpToTop}
+            aria-label="Jump to top"
+            variant="link"
+            className="group h-auto gap-1.5 p-0! text-sm font-mono uppercase text-muted"
+          >
+            {"Jump to top"}
+            <ArrowUp className="size-0 translate-y-0.5 opacity-0 transition-all duration-300 group-hover:size-4 group-hover:translate-y-0 group-hover:opacity-100" />
+          </Button>
         </div>
       </div>
 
-      <Ticker
-        direction="right"
-        slides={[
-          <p key="1">Linkai Wu &copy; {new Date().getFullYear()}</p>,
-          <p key="2">( ^-^)_旦 pancakes?</p>,
-          <p key="3">Linkai Wu &copy; {new Date().getFullYear()}</p>,
-          <p key="4">ᕕ( ᐛ )ᕗ going for a walk</p>,
-          <p key="5">Linkai Wu &copy; {new Date().getFullYear()}</p>,
-          <p key="6">d[o_0]b beep boop</p>,
-          <p key="7">Linkai Wu &copy; {new Date().getFullYear()}</p>,
-          <p key="8">ᒡ◯ᵔøᒢ oh no my glasses!</p>,
-        ]}
-        className="text-dark/25 dark:text-light/25 text-base font-medium dark:font-normal font-mono tracking-tight uppercase select-none"
-      />
+      {/* TICKER */}
+      <div className="bg-primary text-primary-foreground">
+        <div className="relative container max-w-[104rem] font-mono uppercase py-1">
+          <Ticker items={tickerItems} />
+
+          {/* Fade in/out */}
+          <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-primary to-transparent z-10"/>
+          <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-primary to-transparent z-10"/>
+        </div>
+      </div>
     </footer>
+  );
+}
+
+function Ticker({ items }: { items: React.ReactNode[] }) {
+  return (
+    <Carousel
+      opts={{
+        loop: true,
+        watchDrag: false,
+      }}
+      plugins={[
+        AutoScroll({
+          playOnInit: true,
+          speed: 0.5,
+          stopOnMouseEnter: true,
+          stopOnFocusIn: false,
+          stopOnInteraction: false,
+          startDelay: 0,
+        }),
+      ]}
+      className="relative overflow-hidden select-none"
+    >
+      <CarouselContent className="ml-0 items-center">
+        {items.map((item, index) => (
+          <CarouselItem key={index} className="relative basis-auto pl-20">
+            {item}
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+    </Carousel>
   );
 }

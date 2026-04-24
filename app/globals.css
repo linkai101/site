@@ -1,83 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  --background: #FCF5ED;
+  --foreground: #1F1717;
+  --muted: #A49C97;
+  --primary: #C7956D;
+  --primary-foreground: #FCF5ED;
+}
 
-html {
-  padding: 0;
-  margin: 0;
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  
+  --font-sans: var(--font-bricolage-grotesque);
+  --font-mono: var(--font-geist-mono);
+  --font-londrina-solid: var(--font-londrina-solid);
+  --font-londrina-outline: var(--font-londrina-outline);
+  --font-londrina-shadow: var(--font-londrina-shadow);
+  --font-londrina-sketch: var(--font-londrina-sketch);
+
+  --text-10xl: 10rem; /* 160px */
+  --text-11xl: 12rem; /* 192px */
+}
+
+@utility container {
+  margin-inline: auto;
 }
 
 body {
-  padding: 0;
-  margin: 0;
+  @apply bg-background text-foreground font-sans;
 }
 
-
-/* components/ui/ticker.tsx */
-@layer utilities {
-  .pause {
-    animation-play-state: paused;
-  }
-}
-@keyframes scroll-10 {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-12rem * 10));
-  }
-}
-@keyframes -scroll-10 {
-  0% {
-    transform: translateX(calc(-12rem * 10));
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-.ticker {
-  position: relative;
-  overflow: hidden;
-}
-.ticker::before,
-.ticker::after {
-  background: linear-gradient(to right, theme('colors.light') 0%, #ffffff00 100%);
-  content: '';
-  z-index: 2;
-  position: absolute;
-  height: 100%;
-  width: 6rem;
-  pointer-events: none;
-}
-.dark .ticker::before,
-.dark .ticker::after {
-  background: linear-gradient(to right, theme('colors.dark') 0%, #ffffff00 100%);
-  content: '';
-  z-index: 2;
-  position: absolute;
-  height: 100%;
-  width: 6rem;
-  pointer-events: none;
-}
-.ticker::after {
-  right: 0;
-  top: 0;
-  transform: rotateZ(180deg);
-}
-.ticker::before {
-  left: 0;
-  top: 0;
-}
-.ticker .slide-track-10 {
-  animation: scroll-10 60s linear infinite;
-  display: flex;
-  width: calc(12rem * 10 * 2);
-}
-.ticker .-slide-track-10 {
-  animation: -scroll-10 60s linear infinite;
-  display: flex;
-  width: calc(12rem * 10 * 2);
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
 }
