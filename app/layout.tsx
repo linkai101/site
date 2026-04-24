@@ -42,6 +42,14 @@ const londrinaSketch = Londrina_Sketch({
 export const metadata: Metadata = {
   title: "Linkai Wu",
   description: "A student, software engineer, and designer.",
+  openGraph: {
+    title: "Linkai Wu",
+    description: "A student, software engineer, and designer.",
+    images: [{ url: "/assets/wallpaper.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
