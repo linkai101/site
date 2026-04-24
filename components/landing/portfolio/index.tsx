@@ -65,7 +65,7 @@ const projects = [
 ];
 
 const experiences = [
-  // { year: "2026", company: "Zoox", role: "Software Engineer Intern" },
+  { year: "2026", company: "Zoox", role: "Software Engineer Intern" },
   { year: "2025", company: "Amazon", role: "Software Development Engineer Intern" },
   { year: "2024", company: "Hansoh Bio", role: "Software Engineer Intern" },
   { year: "2022", company: "NASA", role: "Research Intern" },

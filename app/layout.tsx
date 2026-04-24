@@ -41,7 +41,7 @@ const londrinaSketch = Londrina_Sketch({
 
 export const metadata: Metadata = {
   title: "Linkai Wu",
-  description: "A student, software engineer, and designer exploring the intersection of technology, art, and people.",
+  description: "A student, software engineer, and designer.",
 };
 
 export default function RootLayout({

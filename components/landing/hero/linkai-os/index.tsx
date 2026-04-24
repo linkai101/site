@@ -41,6 +41,12 @@ export const LinkaiOS = memo(function LinkaiOS({ allowInteraction = true, isLoad
         isVisible={isLoaded}
         entranceDelay={0}
       >
+        <img
+          src="/assets/hero/selfie-zoox.jpg"
+          alt="Linkai taking a selfie"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(-50%-9rem)] w-64 bg-primary/30 rounded-xl shadow-2xl opacity-40"
+        />
+
         <p className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(-50%-4rem)] text-10xl text-nowrap font-londrina-solid uppercase select-none">
           {"Linkai Wu"}
         </p>
@@ -57,6 +63,12 @@ export const LinkaiOS = memo(function LinkaiOS({ allowInteraction = true, isLoad
         isVisible={isLoaded}
         entranceDelay={0.1}
       >
+        <img
+          src="/assets/hero/oregon.jpg"
+          alt="Linkai exploring Oregon"
+          className="absolute left-1/2 top-1/2 -translate-x-[calc(50%+28rem)] -translate-y-13 w-64 bg-primary/30 rounded-xl shadow-2xl opacity-30"
+        />
+
         <p className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(-50%-4rem)] text-10xl text-nowrap font-londrina-sketch uppercase select-none">
           {"Linkai Wu"}
         </p>
@@ -73,6 +85,12 @@ export const LinkaiOS = memo(function LinkaiOS({ allowInteraction = true, isLoad
         isVisible={isLoaded}
         entranceDelay={0.2}
       >
+        <img
+          src="/assets/hero/snowboarding.jpg"
+          alt="Linkai snowboarding!"
+          className="absolute left-1/2 top-1/2 -translate-x-[calc(50%-27rem)] -translate-y-18 w-48 bg-primary/30 rounded-xl shadow-2xl opacity-40"
+        />
+
         <p className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[calc(-50%-4rem)] text-10xl text-nowrap font-londrina-shadow uppercase select-none">
           {"Linkai Wu"}
         </p>
@@ -95,7 +113,7 @@ export const LinkaiOS = memo(function LinkaiOS({ allowInteraction = true, isLoad
         </p>
 
         <p className="text-lg leading-tight mt-2.5">
-          {"Outside of work and school, I enjoy eating & cooking food, exploring new places, and creating things!"}
+          {"Outside of work and school, you can find me trying new foods, exploring new places, and creating things!"}
         </p>
 
         <img src="/assets/logo-primary.png" alt="Linkai Wu's logo" className="mx-auto size-12 opacity-50 select-none pointer-events-none mt-6"/>
