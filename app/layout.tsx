@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Linkai Wu",
     description: "A student, software engineer, and designer.",
-    images: [{ url: "/assets/wallpaper.png" }],
+    images: [{ url: "/assets/wallpaper-alt.png" }],
   },
   twitter: {
     card: "summary_large_image",
