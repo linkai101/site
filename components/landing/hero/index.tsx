@@ -24,6 +24,7 @@ export function DesktopHeroSection() {
   const [atTop, setAtTop] = useState(true);
 
   const borderWidth = useMotionValue(0);
+  const borderShadow = useTransform(borderWidth, v => `inset 0 0 0 ${v}px rgba(199,149,109,0.3)`);
   const screenOpacity = useMotionValue(1);
   const notchOpacity = useMotionValue(0);
   const notchY = useMotionValue(-12);
@@ -64,18 +65,14 @@ export function DesktopHeroSection() {
   }, [viewportWidth, viewportHeight]);
 
   const outerPadding = useTransform(smoothYProgress, [0.95, 1], [0, 24]);
-  const laptopScale = useTransform(smoothYProgress, [0, 1], [1, 0.7]);
   const lidRotateX = useTransform(smoothYProgress, [0, 0.4, 1], [0, 10, 25]);
-  const screenWidth = useTransform([smoothYProgress, viewportWidth], ([progress, vw]: number[]) => {
-    const t = Math.min(progress / 0.8, 1);
-    return vw + (1512 - vw) * t;
-  });
-  const screenHeight = useTransform([smoothYProgress, viewportHeight], ([progress, vh]: number[]) => {
-    const t = Math.min(progress / 0.8, 1);
-    return vh + (982 - vh) * t;
+  const laptopScale = useTransform([smoothYProgress, viewportWidth, viewportHeight], ([progress, vw, vh]: number[]) => {
+    const t = Math.min((progress as number) / 0.8, 1);
+    const startScale = Math.max((vw as number) / 1512, (vh as number) / 982);
+    const fill = startScale + (1 - startScale) * t;
+    return fill * (1 - 0.3 * (progress as number));
   });
   const screenBorderRadius = useTransform(smoothYProgress, [0, 0.05], [0, 16]);
-  const thicknessZ = useTransform(screenHeight, h => h + 78 - 28);
 
   return (
     <motion.div
@@ -84,8 +81,8 @@ export function DesktopHeroSection() {
       style={{ paddingLeft: outerPadding, paddingRight: outerPadding, paddingTop: outerPadding }}
     >
       <motion.div
-        className="sticky top-0 h-dvh flex items-center justify-center overflow-hidden border-primary/30"
-        style={{ borderWidth }}
+        className="sticky top-0 h-dvh flex items-center justify-center overflow-hidden"
+        style={{ boxShadow: borderShadow }}
       >
         <Image src="/assets/wallpaper.png" alt="Wallpaper" fill className="object-cover" priority />
         
@@ -97,17 +94,19 @@ export function DesktopHeroSection() {
           {/* LAPTOP LID */}
           <motion.div
             className={cn(
-              "pt-6 pb-12 px-6 bg-zinc-800 rounded-t-[3rem] rounded-b-2xl border-x-6 border-t-6 border-zinc-500 origin-bottom backface-hidden transform-3d",
+              "relative bg-zinc-800 rounded-t-[3rem] rounded-b-2xl border-x-6 border-t-6 border-zinc-500 origin-bottom backface-hidden transform-3d",
               "-mt-6 -mb-[calc(3rem-6px)] -mx-6" // margin to offset positioning when expanded
             )}
-            style={{ rotateX: lidRotateX }}
+            style={{ rotateX: lidRotateX, width: 1572, height: 1060 }}
           >
             {/* LAPTOP SCREEN */}
             <motion.div
-              className="relative overflow-hidden"
+              className="absolute overflow-hidden"
               style={{
-                width: screenWidth,
-                height: screenHeight,
+                top: 24,
+                left: 24,
+                width: 1512,
+                height: 982,
                 borderTopLeftRadius: screenBorderRadius,
                 borderTopRightRadius: screenBorderRadius,
                 opacity: screenOpacity,
@@ -116,7 +115,7 @@ export function DesktopHeroSection() {
               onPointerDown={() => heroRef.current?.scrollIntoView({ block: "start", behavior: "smooth" })}
             >
               <LinkaiOS allowInteraction={atTop} isLoaded={isLoaded}/>
-              <GrainedBackground className="absolute inset-0 pointer-events-none z-20"/>
+              <GrainedBackground className="absolute inset-0 pointer-events-none z-20" grainChaos={0.5} grainSpeed={8}/>
             </motion.div>
 
             {/* LAPTOP NOTCH */}
@@ -161,7 +160,7 @@ export function DesktopHeroSection() {
               "absolute bottom-0 inset-x-[3px] h-10 bg-zinc-700 origin-bottom translate-y-10 -z-30",
               "-mt-6 -mb-[calc(3rem-6px)] -mx-6" // margin to offset positioning when expanded
             )}
-            style={{ translateZ: thicknessZ }}
+            style={{ translateZ: 1032 }}
           />
         </motion.div>
 
