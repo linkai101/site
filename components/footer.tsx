@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import AutoScroll from "embla-carousel-auto-scroll";
-import { ArrowUp, SquareArrowOutUpRight, ArrowUpRight } from "lucide-react";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import { LinkButton } from "@/components/ui/link-button";
 
 export function Footer() {
   const tickerItems = Array.from({ length: 10 }, (_, index) => (
@@ -22,29 +23,22 @@ export function Footer() {
     <footer className="relative pt-6">
       <div className="px-6 py-3 border-t border-primary/30">
         <div className="flex item-center justify-center gap-5">
-          <Link href="https://www.linkedin.com/in/linkaiwu/" target="_blank" rel="noopener noreferrer">
-            <Button
-              aria-label="LinkedIn"
-              variant="link"
-              className="group h-auto gap-1.5 p-0! text-sm font-mono uppercase font-medium text-primary"
-            >
-              {"LinkedIn"}
-              <ArrowUpRight className="size-0 translate-y-0.5 opacity-0 transition-all duration-300 group-hover:size-4 group-hover:translate-y-0 group-hover:opacity-100" />
-            </Button>
-          </Link>
+          <LinkButton
+            href="https://www.linkedin.com/in/linkaiwu/"
+            isExternal
+            className="text-sm font-mono font-medium uppercase"
+          >
+            LinkedIn
+          </LinkButton>
+          <LinkButton
+            href="mailto:linkai@linkaiwu.com"
+            isExternal
+            className="text-sm font-mono font-medium uppercase"
+          >
+            Email
+          </LinkButton>
 
-          <Link href="mailto:linkai@linkaiwu.com" target="_blank" rel="noopener noreferrer">
-            <Button
-              aria-label="Email"
-              variant="link"
-              className="group h-auto gap-1.5 p-0! text-sm font-mono uppercase font-medium text-primary"
-            >
-              {"Email"}
-              <ArrowUpRight className="size-0 translate-y-0.5 opacity-0 transition-all duration-300 group-hover:size-4 group-hover:translate-y-0 group-hover:opacity-100" />
-            </Button>
-          </Link>
-
-          <p className="text-sm text-primary/30">
+          <p className="text-sm text-muted/30">
             {"|"}
           </p>
 
