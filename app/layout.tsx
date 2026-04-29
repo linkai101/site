@@ -43,6 +43,7 @@ const londrinaSketch = Londrina_Sketch({
 export const metadata: Metadata = {
   title: "Linkai Wu",
   description: "A student, software engineer, and designer.",
+  metadataBase: new URL("https://linkaiwu.com"),
   openGraph: {
     title: "Linkai Wu",
     description: "A student, software engineer, and designer.",
