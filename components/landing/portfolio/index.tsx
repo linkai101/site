@@ -1,9 +1,16 @@
 import { PortfolioCard } from "./card";
 
+const experiences = [
+  { year: "2026", company: "Zoox", role: "Software Engineer Intern" },
+  { year: "2025", company: "Amazon", role: "Software Development Engineer Intern" },
+  { year: "2024", company: "Hansoh Bio", role: "Software Engineer Intern" },
+  { year: "2022", company: "NASA", role: "Research Intern" },
+];
+
 const projects = [
   {
     src: "/assets/thumbnails/nyustartupweek26.png",
-    alt: "NYU Startup Week",
+    alt: "A preview of NYU Startup Week 2026's website design",
     title: "A week of entrepreneurial inspiration",
     label: "NYU Startup Week (2026)",
     url: "https://nyusw.com",
@@ -11,21 +18,21 @@ const projects = [
   },
   {
     src: "/assets/thumbnails/nyutransitapp.png",
-    alt: "University shuttle transit app",
+    alt: "Logo and mockups of the NYU Transit app concept",
     title: "University shuttle transit app",
     label: "Concept (2025)",
     url: "/2025-nyu-transit-app",
   },
   {
     src: "/assets/thumbnails/bobabarista.png",
-    alt: "3D boba barista",
+    alt: "Front and side view of a 3D boba barista character",
     title: "3D boba barista",
     label: "Concept (2024)",
     url: "/2024-boba-barista",
   },
   {
     src: "/assets/thumbnails/miscartprojects.png",
-    alt: "Miscellaneous art projects",
+    alt: "A showcase of miscellaneous art projects",
     title: "Miscellaneous art projects",
     label: "Collection (2023-24)",
     url: "/2023-misc-art-projects",
@@ -40,7 +47,7 @@ const projects = [
   },
   {
     src: "/assets/thumbnails/stemtothesky.png",
-    alt: "STEM to the Sky",
+    alt: "STEM to the Sky's website landing page",
     title: "Showcasing careers in STEM",
     label: "STEM to the Sky (2023)",
     url: "https://stemtothesky.org",
@@ -48,7 +55,7 @@ const projects = [
   },
   {
     src: "/assets/thumbnails/oracleofblair.png",
-    alt: "Oracle of Blair",
+    alt: "A thumbnail with graphics shown on Oracle of Blair's website",
     title: "U.S. elections forecast",
     label: "Oracle of Blair (2022)",
     url: "https://polistat-site-2022.vercel.app",
@@ -56,19 +63,12 @@ const projects = [
   },
   {
     src: "/assets/thumbnails/bongocat.png",
-    alt: "Bongo Cat",
+    alt: "A thumbnail with bongo cat and a keyboard",
     title: "Virtual instrument playground",
     label: "Bongo Cat (2022)",
     url: "https://bongocat.linkai.dev",
     urlIsExternal: true,
   },
-];
-
-const experiences = [
-  { year: "2026", company: "Zoox", role: "Software Engineer Intern" },
-  { year: "2025", company: "Amazon", role: "Software Development Engineer Intern" },
-  { year: "2024", company: "Hansoh Bio", role: "Software Engineer Intern" },
-  { year: "2022", company: "NASA", role: "Research Intern" },
 ];
 
 export function PortfolioSection() {
