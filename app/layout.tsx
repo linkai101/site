@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Geist_Mono, Londrina_Solid, Londrina_Outline, Londrina_Shadow, Londrina_Sketch } from "next/font/google";
+import Script from "next/script";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 import { Footer } from "@/components/footer";
@@ -75,6 +76,8 @@ export default function RootLayout({
         </main>
 
         <Footer/>
+        
+        <Script defer src="https://cloud.umami.is/script.js" data-website-id="cf22abe0-4c9e-41ca-bc30-b7e681482701" strategy="afterInteractive"/>
       </body>
     </html>
   );
