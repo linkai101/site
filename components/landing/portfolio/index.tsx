@@ -9,10 +9,18 @@ const experiences = [
 
 const projects = [
   {
+    src: "/assets/thumbnails/resolution.png",
+    alt: "A preview of the Resolution web app",
+    title: "An interactive art gallery",
+    label: "Resolution (2026)",
+    url: "https://resolution.linkai.dev",
+    urlIsExternal: true,
+  },
+  {
     src: "/assets/thumbnails/nyustartupweek26.png",
     alt: "A preview of NYU Startup Week 2026's website design",
     title: "A week of entrepreneurial inspiration",
-    label: "NYU Startup Week (2026)",
+    label: "NYU Startup Week (2025-26)",
     url: "https://nyusw.com",
     urlIsExternal: true,
   },
