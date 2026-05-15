@@ -46,19 +46,19 @@ const projects = [
     url: "/2023-misc-art-projects",
   },
   {
-    src: "/assets/thumbnails/wordlearchive.png",
-    alt: "Wordle Archive",
-    title: "Wordle game clone",
-    label: "Wordle Archive (2023)",
-    url: "https://wordle.linkaiwu.com",
-    urlIsExternal: true,
-  },
-  {
     src: "/assets/thumbnails/stemtothesky.png",
     alt: "STEM to the Sky's website landing page",
     title: "Showcasing careers in STEM",
     label: "STEM to the Sky (2023)",
     url: "https://stemtothesky.org",
+    urlIsExternal: true,
+  },
+  {
+    src: "/assets/thumbnails/wordlearchive.png",
+    alt: "A screenshot of the Wordle Archive website",
+    title: "Wordle game clone",
+    label: "Wordle Archive (2023)",
+    url: "https://wordle.linkaiwu.com",
     urlIsExternal: true,
   },
   {
